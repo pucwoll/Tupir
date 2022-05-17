@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 's3',
 
     /*
     |--------------------------------------------------------------------------
@@ -51,10 +51,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key' => 'AKIAT6W77LLHDRWW5VU4',
+            'secret' => 'cBA7CxJ9KVbZDl2Br6MsfwCtvozrEGNMZj1XeD60',
+            'region' => 'eu-central-1',
+            'bucket' => 'tupir',
         ],
 
         'rackspace' => [
