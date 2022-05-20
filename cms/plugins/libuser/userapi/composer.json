@@ -1,0 +1,15 @@
+{
+    "name": "libuser/userapi",
+    "description": "Implement auth API for RainLab.User plugin",
+    "type": "october-plugin",
+    "authors": [
+        {
+            "name": "Patrik Nemeček",
+            "email": "nemecek@wezeo.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "tymon/jwt-auth": "^1.0"
+    }
+}

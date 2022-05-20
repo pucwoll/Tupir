@@ -1,0 +1,24 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: false
+    title:
+        label: Title
+        searchable: true
+        sortable: true
+    lyrics:
+        label: Lyrics
+        searchable: true
+    user[username]:
+        label: Username
+        searchable: true
+    updated_at:
+        label: Updated at
+        type: timesince
+    is_published:
+        label: Is published
+        type: switch

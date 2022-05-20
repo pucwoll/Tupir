@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "username": "roberto",
+        "name": "Robert",
+        "surname": "Geiss",
+        "email": "robert@wezeo.lol",
+        "password": "12345678",
+        "password_confirmation": "12345678",
+        "is_activated": true,
+        "activated_at": "2022-05-19 23:07:52",
+        "is_creator": true
+    },
+    {
+        "id": 2,
+        "username": "psycho",
+        "name": "Roman",
+        "surname": "Sekerka",
+        "email": "psycho@wezeo.lol",
+        "password": "12345678",
+        "password_confirmation": "12345678",
+        "is_activated": true,
+        "activated_at": "2022-05-19 23:07:52",
+        "is_creator": true
+    }
+]

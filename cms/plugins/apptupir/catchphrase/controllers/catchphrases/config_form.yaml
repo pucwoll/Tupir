@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Catchphrase
+
+# Model Form Field configuration
+form: $/apptupir/catchphrase/models/catchphrase/fields.yaml
+
+# Model Class name
+modelClass: AppTupir\Catchphrase\Models\Catchphrase
+
+# Default redirect location
+defaultRedirect: apptupir/catchphrase/catchphrases
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: apptupir/catchphrase/catchphrases/update/:id
+    redirectClose: apptupir/catchphrase/catchphrases
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: apptupir/catchphrase/catchphrases
+    redirectClose: apptupir/catchphrase/catchphrases
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title
