@@ -1,5 +1,6 @@
 <?php namespace AppTupir\Catchphrase\Http\Controllers;
 
+use http\Env\Response;
 use RainLab\User\Models\User;
 use Illuminate\Routing\Controller;
 use AppTupir\Catchphrase\Models\Catchphrase;
@@ -26,7 +27,7 @@ class SearchController extends Controller
         );
 
         if (count($creator) || count($catchphrase)) {
-            return $creator->concat($catchphrase);
+            return response()->json(['data' => $creator->concat($catchphrase)]);
         }
         else {
             return response()->json(['error' => 'No creators or catchphrases found', 'statusCode' => 404], 404);
