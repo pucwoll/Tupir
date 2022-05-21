@@ -1,0 +1,232 @@
+[
+    {
+        "id": 8,
+        "title": "Ako palma",
+        "audio": "/robert-geiss/ako-palma.mp3",
+        "lyrics": "<q>Ako palma.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 9,
+        "title": "Asistentka",
+        "audio": "/robert-geiss/asistentka.mp3",
+        "lyrics": "<q>Aaa co sa tyka tej asistentky, tak je celkom pekna, aj ked ma sikme oci, skoda ze nie je vyssia aspon tak o 20 centimetrov... Ked ju robil jej foter mohol si dat viac zalezat.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 10,
+        "title": "Boze, ten je teply ako fen",
+        "audio": "/robert-geiss/boze-ten-je-teply-ako-fen.mp3",
+        "lyrics": "<q>Boze, ten je teply ako fen.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 11,
+        "title": "Chudak iPhone",
+        "audio": "/robert-geiss/chudak-iphone.mp3",
+        "lyrics": "<q>Chudak iPhone.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 12,
+        "title": "Doparoma, niekto nas musi viest!",
+        "audio": "/robert-geiss/doparoma-niekto-nas-musi-viest.mp3",
+        "lyrics": "<q>Doparoma, niekto nas musi viest!</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 13,
+        "title": "Ide s nami aj homos, boze, ten je teply ako fen",
+        "audio": "/robert-geiss/ide-s-nami-aj-homos-boze-ten-je-teply-ako-fen.mp3",
+        "lyrics": "<q>Ide s nami aj homos, boze, ten je teply ako fen, ruku podava ako zdochlina, vlasy ma natupirovane, kazdy jeden zvlast... Ako palma. S nim este bude veselo.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 14,
+        "title": "Ide s nami aj homos",
+        "audio": "/robert-geiss/ide-s-nami-aj-homos.mp3",
+        "lyrics": "<q>Ide s nami aj homos.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 15,
+        "title": "Ked ju robil jej foter mohol si dat viac zalezat",
+        "audio": "/robert-geiss/ked-ju-robil-jej-foter-mohol-si-dat-viac-zalezat.mp3",
+        "lyrics": "<q>Ked ju robil jej foter mohol si dat viac zalezat.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 16,
+        "title": "Kriste ten je teply",
+        "audio": "/robert-geiss/kriste-ten-je-teply.mp3",
+        "lyrics": "<q>Kriste ten je teply.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 17,
+        "title": "Ma stisk ako zdochlina",
+        "audio": "/robert-geiss/ma-stisk-ako-zdochlina.mp3",
+        "lyrics": "<q>Ma stisk ako zdochlina.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 18,
+        "title": "Masaz ucha cez telefon",
+        "audio": "/robert-geiss/masaz-ucha-cez-telefon.mp3",
+        "lyrics": "<q>Videla si? Ta baba cely cas telefonuje. Zacinam si mysliet ze tu ponukaju masaz ucha cez telefon.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 19,
+        "title": "Nech ide bud Kim alebo ten radiator",
+        "audio": "/robert-geiss/nech-ide-bud-kim-alebo-ten-radiator.mp3",
+        "lyrics": "<q>Nech ide bud Kim alebo ten radiator.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 20,
+        "title": "Podala si mu ruku?",
+        "audio": "/robert-geiss/podala-si-mu-ruku.mp3",
+        "lyrics": "<q>Podala si mu ruku?</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 21,
+        "title": "Pripomina mi to vesmirnu lod Enterprise",
+        "audio": "/robert-geiss/pripomina-mi-to-vesmirnu-lod-enterprise.mp3",
+        "lyrics": "<q>Pripomina mi to vesmirnu lod Enterprise.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 22,
+        "title": "Radiator",
+        "audio": "/robert-geiss/radiator.mp3",
+        "lyrics": "<q>Normalne mi je teplo ako tak kracam vedla toho radiatora.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 23,
+        "title": "Robert!",
+        "audio": "/robert-geiss/robert.mp3",
+        "lyrics": "<q>Robert!</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 24,
+        "title": "S nim este bude veselo",
+        "audio": "/robert-geiss/s-nim-este-bude-veselo.mp3",
+        "lyrics": "<q>S nim este bude veselo.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 25,
+        "title": "Sam sa lici ako zena",
+        "audio": "/robert-geiss/sam-sa-lici-ako-zena.mp3",
+        "lyrics": "<q>Dovolila si mu aby ta nalicil? Ano. Okay, je v tom dobry, sam sa lici ako zena.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 26,
+        "title": "Take kreslo mam aj doma",
+        "audio": "/robert-geiss/take-kreslo-mam-aj-doma.mp3",
+        "lyrics": "<q>Take kreslo mam aj doma.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 27,
+        "title": "Taky je teply",
+        "audio": "/robert-geiss/taky-je-teply.mp3",
+        "lyrics": "<q>Taky je teply.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 28,
+        "title": "Ten chlapec ma stisk ako zena",
+        "audio": "/robert-geiss/ten-chlapec-ma-stisk-ako-zena.mp3",
+        "lyrics": "<q>Ten chlapec ma stisk ako zena</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 29,
+        "title": "Tupir",
+        "audio": "/robert-geiss/tupir.mp3",
+        "lyrics": "<q>Tupir.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    },
+    {
+        "id": 30,
+        "title": "Vlasy ma nutupirovane, kazdy jeden zvlast",
+        "audio": "/robert-geiss/vlasy-ma-nutupirovane-kazdy-jeden-zvlast.mp3",
+        "lyrics": "<q>Vlasy ma nutupirovane, kazdy jeden zvlast.</q>",
+        "user_id": 2,
+        "created_at": "2022-05-21 18:22:45",
+        "updated_at": "2022-05-21 18:22:45",
+        "is_published": true
+    }
+]
