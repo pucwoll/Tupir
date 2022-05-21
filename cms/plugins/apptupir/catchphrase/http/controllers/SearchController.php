@@ -1,6 +1,5 @@
 <?php namespace AppTupir\Catchphrase\Http\Controllers;
 
-use http\Env\Response;
 use RainLab\User\Models\User;
 use Illuminate\Routing\Controller;
 use AppTupir\Catchphrase\Models\Catchphrase;
