@@ -10,6 +10,7 @@ class SimpleUserResource extends Resource
 
     {
         $response = [
+            'type'         => "creator",
             'id'           => $this->id,
             'name'         => $this->name,
             'surname'      => $this->surname,

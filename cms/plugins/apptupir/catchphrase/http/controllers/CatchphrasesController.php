@@ -11,7 +11,7 @@ class CatchphrasesController extends Controller
         return CatchphraseResource::collection(
             Catchphrase::isPublished()
                 ->orderBy('created_at', 'desc')
-                ->paginate(20)
+                ->paginate(Catchphrase::isPublished()->count())
         );
     }
 

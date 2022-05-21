@@ -11,6 +11,7 @@ class CatchphraseResource extends Resource
 
     {
         $response = [
+            'type'        => "catchphrase",
             'id'          => $this->id,
             'title'       => $this->title,
             'audio'       => url(Config::get('cms.storage.media.path')) . $this->audio,
