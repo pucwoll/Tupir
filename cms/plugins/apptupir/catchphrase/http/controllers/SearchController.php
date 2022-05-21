@@ -26,10 +26,7 @@ class SearchController extends Controller
         );
 
         if (count($creator) || count($catchphrase)) {
-            return [
-                $creator,
-                $catchphrase
-            ];
+            return $creator->concat($catchphrase);
         }
         else {
             return response()->json(['error' => 'No creators or catchphrases found', 'statusCode' => 404], 404);
