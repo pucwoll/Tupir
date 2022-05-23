@@ -14,8 +14,8 @@ fields:
         fileTypes: mp3,wav
         useCaption: true
     lyrics:
-        type: richeditor
         label: Lyrics
+        type: richeditor
         span: full
     user:
         label: User
