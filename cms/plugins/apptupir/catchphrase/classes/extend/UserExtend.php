@@ -9,6 +9,7 @@ class UserExtend
     {
         User::extend(function($model) {
             $model->hasMany['catchphrases'] = Catchphrase::class;
+            $model->hasMany['catchphrases_count'] = [Catchphrase::class, 'count' => true];
         });
     }
 

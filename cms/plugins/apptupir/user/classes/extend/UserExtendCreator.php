@@ -36,8 +36,8 @@ class UserExtendCreator
 
             $column->addColumns([
                 'is_creator' => [
-                    'label' => 'Is creator',
-                    'type'  => 'switch',
+                    'label'  => 'Is creator',
+                    'type'   => 'switch',
                 ],
             ]);
         });

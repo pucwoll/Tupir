@@ -10,14 +10,14 @@ class SimpleUserResource extends Resource
 
     {
         $response = [
-            'type'         => "creator",
-            'id'           => $this->id,
-            'name'         => $this->name,
-            'surname'      => $this->surname,
-            'username'     => $this->username,
-            'email'        => $this->email,
-            'catchphrases' => Catchphrase::isPublished()->where('user_id', $this->id)->count(),
-            'avatar'       => $this->avatar,
+            'type'               => "creator",
+            'id'                 => $this->id,
+            'name'               => $this->name,
+            'surname'            => $this->surname,
+            'username'           => $this->username,
+            'email'              => $this->email,
+            'catchphrases_count' => Catchphrase::isPublished()->where('user_id', $this->id)->count(),
+            'avatar'             => $this->avatar,
         ];
 
         return $response;

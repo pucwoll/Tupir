@@ -1,5 +1,6 @@
 <?php namespace AppTupir\User;
 
+use AppTupir\User\Classes\Extend\UserExtendCatchphrasesCount;
 use Backend;
 use System\Classes\PluginBase;
 use AppTupir\User\Classes\Extend\UserExtendCreator;
@@ -35,6 +36,8 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        UserExtendCatchphrasesCount::addCatchphrasesCountToColumns();
+        UserExtendCatchphrasesCount::addCatchphrasesCountToResource();
         UserExtendCreator::addCreatorToFields();
         UserExtendCreator::addCreatorToColumns();
         UserExtendCreator::addCreatorToResource();
