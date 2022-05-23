@@ -2,14 +2,17 @@
 
 use RainLab\User\Models\User;
 use Illuminate\Routing\Controller;
+use October\Rain\Support\Facades\Input;
 use AppTupir\Catchphrase\Models\Catchphrase;
 use Libuser\Userapi\Http\Resources\SimpleUserResource;
 use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
 
 class SearchController extends Controller
 {
-    public function show($search)
+    public function show()
     {
+        $search = Input::get('q');
+
         $creator = SimpleUserResource::collection(
             User::isCreator()
                 ->where('name', 'like', '%' . $search . '%')

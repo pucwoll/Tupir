@@ -23,5 +23,5 @@ Route::group([
 
     $router->get('creators/{id}/catchphrases', [CreatorsCatchphrasesController::class, 'show']);
 
-    $router->get('search/{search}', [SearchController::class, 'show']);
+    $router->get('search/', [SearchController::class, 'show'])->name('q');
 });
