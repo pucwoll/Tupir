@@ -15,7 +15,7 @@ class SimpleUserResource extends Resource
             'name'               => $this->name,
             'surname'            => $this->surname,
             'username'           => $this->username,
-            'email'              => $this->email,
+            'description'        => $this->description,
             'catchphrases_count' => Catchphrase::isPublished()->where('user_id', $this->id)->count(),
             'avatar'             => $this->avatar,
         ];
