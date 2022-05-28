@@ -4,10 +4,13 @@
       <ion-toolbar>
         <ion-title>Tupir</ion-title>
       </ion-toolbar>
+      <ion-toolbar>
+        <ion-searchbar />
+      </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list inset>
-        <ion-list-header>Basic</ion-list-header>
+        <ion-list-header>Legendy</ion-list-header>
         <ion-accordion-group>
           <ion-accordion
             v-for="creator in creators"
@@ -19,12 +22,12 @@
 
             <ion-list slot="content">
               <ion-item
-                v-for="catchPhrase in getCatchPhrasesByCreatorId(creator.id)"
-                :key="catchPhrase.id"
+                v-for="catchphrase in getCatchphrasesByCreatorId(creator.id)"
+                :key="catchphrase.id"
                 button
-                @click="playAudio(catchPhrase)"
+                @click="playAudio(catchphrase)"
               >
-                <ion-label>{{ catchPhrase.title }}</ion-label>
+                <ion-label>{{ catchphrase.title }}</ion-label>
               </ion-item>
             </ion-list>
           </ion-accordion>
@@ -44,12 +47,16 @@ import {
 	IonHeader,
 	IonAccordionGroup,
 	IonLabel,
-	IonList, IonItem, IonAccordion, IonListHeader
+	IonList,
+	IonItem,
+	IonAccordion,
+	IonListHeader,
+	IonSearchbar
 } from '@ionic/vue'
 import {useCatchphrasesStore} from '@/store/catchphrases'
 import {mapActions, mapState} from 'pinia'
-import {print} from 'ionicons/icons'
-
+import type {Catchphrase} from '@/interfaces/catchphrases'
+import {App} from '@capacitor/app'
 
 export default defineComponent({
 	components: {
@@ -63,7 +70,8 @@ export default defineComponent({
 		IonList,
 		IonListHeader,
 		IonItem,
-		IonLabel
+		IonLabel,
+		IonSearchbar
 	},
 	data() {
 		return {
@@ -71,19 +79,26 @@ export default defineComponent({
 		}
 	},
 	computed: {
-		...mapState(useCatchphrasesStore, ['getCatchPhrasesByCreatorId', 'creators'])
+		...mapState(useCatchphrasesStore, ['getCatchphrasesByCreatorId', 'creators'])
 	},
 	async mounted() {
-		await this.fetchCatchPhrases()
-		console.log(this.getCatchPhrasesByCreatorId(1))
+		this.fetchCatchphrases()
+		App.addListener('appStateChange', (state) => {
+			if(!state.isActive) {
+				this.currentAudio.pause()
+			}
+		})
+	},
+	beforeUnmount() {
+		App.removeAllListeners()
 	},
 	methods: {
-		...mapActions(useCatchphrasesStore, ['fetchCatchPhrases']),
-		playAudio(catchPhrase) {
+		...mapActions(useCatchphrasesStore, ['fetchCatchphrases']),
+		playAudio(catchphrase: Catchphrase) {
 			if(!this.currentAudio.paused) {
 				this.currentAudio.pause()
 			}
-			this.currentAudio = new Audio(catchPhrase.audio)
+			this.currentAudio = new Audio(catchphrase.audio)
 			this.currentAudio.play()
 		}
 	}
