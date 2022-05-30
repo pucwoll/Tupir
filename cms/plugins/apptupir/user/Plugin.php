@@ -37,12 +37,12 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        UserExtendCatchphrasesCount::addCatchphrasesCountToColumns();
+        UserExtendCatchphrasesCount::addCatchphrasesCountToResource();
+        UserExtendDescription::addDescriptionToFields();
+        UserExtendDescription::addDescriptionToResource();
         UserExtendCreator::addCreatorToFields();
         UserExtendCreator::addCreatorToColumns();
         UserExtendCreator::addCreatorToResource();
-        UserExtendDescription::addDescriptionToFields();
-        UserExtendDescription::addDescriptionToResource();
-        UserExtendCatchphrasesCount::addCatchphrasesCountToColumns();
-        UserExtendCatchphrasesCount::addCatchphrasesCountToResource();
     }
 }

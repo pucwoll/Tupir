@@ -18,9 +18,10 @@ fields:
         type: richeditor
         span: full
     user:
-        label: User
+        label: Creator
         type: recordfinder
         list: ~/plugins/rainlab/user/models/user/columns.yaml
+        nameFrom: username
         recordsPerPage: 10
     is_published:
         label: Published

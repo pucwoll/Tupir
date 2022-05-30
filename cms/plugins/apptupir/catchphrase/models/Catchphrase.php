@@ -41,7 +41,7 @@ class Catchphrase extends Model
      */
     public $rules = [
         'title'        => 'required',
-        'user_id'      => 'required',
+        'user'         => 'required',
         'audio'        => 'required',
         'is_published' => 'boolean',
     ];
