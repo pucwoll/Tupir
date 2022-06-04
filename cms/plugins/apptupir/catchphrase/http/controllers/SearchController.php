@@ -29,10 +29,15 @@ class SearchController extends Controller
         );
 
         if (count($creator) || count($catchphrase)) {
-            return response()->json(['data' => $creator->concat($catchphrase)]);
+            return response()->json([
+                'data' => $creator->concat($catchphrase)
+            ]);
         }
         else {
-            return response()->json(['error' => 'No creators or catchphrases found', 'statusCode' => 404], 404);
+            return response()->json([
+                'error'      => 'No creators or catchphrases found',
+                'statusCode' => 404
+            ], 404);
         }
     }
 }

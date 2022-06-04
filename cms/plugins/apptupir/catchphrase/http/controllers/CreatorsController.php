@@ -11,7 +11,7 @@ class CreatorsController extends Controller
         return SimpleUserResource::collection(
             User::isCreator()
                 ->orderBy('created_at', 'desc')
-                ->paginate(User::isCreator()->count())
+                ->get()
         );
     }
 

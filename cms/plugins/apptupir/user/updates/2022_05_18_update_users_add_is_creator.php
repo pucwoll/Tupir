@@ -1,4 +1,4 @@
-<?php namespace AppGamisfera\User\Updates;
+<?php namespace AppTupir\User\Updates;
 
 use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
