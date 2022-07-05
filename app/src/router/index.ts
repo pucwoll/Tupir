@@ -1,7 +1,7 @@
-import {createRouter, createWebHashHistory} from '@ionic/vue-router'
+import { createRouter, createWebHashHistory } from '@ionic/vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
-const routes = [
-	// routes go here
+const routes: RouteRecordRaw[] = [
 	{
 		path: '/',
 		redirect: '/home'

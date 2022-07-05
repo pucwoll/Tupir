@@ -18,6 +18,7 @@ module.exports = {
 		'vue/multi-word-component-names': 'off',
 		'no-trailing-spaces': 'error',
 		'indent': ['error', 'tab'],
-		'vue/no-deprecated-slot-attribute': 'off'
+		'vue/no-deprecated-slot-attribute': 'off',
+		'object-curly-spacing': ['error', 'always'],
 	}
 }

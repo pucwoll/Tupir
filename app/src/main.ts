@@ -3,7 +3,7 @@ import App from './App.vue'
 import './theme/index.css'
 import { IonicVue } from '@ionic/vue'
 import router from './router'
-import {createPinia} from 'pinia'
+import { createPinia } from 'pinia'
 
 const app = createApp(App)
 	.use(IonicVue)

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import type {Catchphrase, Creator} from '@/interfaces/catchphrases'
+import type { Catchphrase, Creator } from '@/interfaces/catchphrases'
 
 export const useCatchphrasesStore = defineStore('counter',{
 	state: () => ({
@@ -9,10 +9,10 @@ export const useCatchphrasesStore = defineStore('counter',{
 	}),
 	actions: {
 		async fetchCatchphrases() {
-			const {data: catchphrasesData} = await axios.get('https://tupir.sk/cms/api/v1/catchphrases')
+			const { data: catchphrasesData } = await axios.get('https://tupir.sk/cms/api/v1/catchphrases')
 			this.catchphrases = catchphrasesData.data
 
-			const {data: creatorsData} = await axios.get('https://tupir.sk/cms/api/v1/creators')
+			const { data: creatorsData } = await axios.get('https://tupir.sk/cms/api/v1/creators')
 			this.creators = creatorsData.data
 		}
 	},

@@ -53,11 +53,11 @@ import {
 	IonListHeader,
 	IonSearchbar
 } from '@ionic/vue'
-import {useCatchphrasesStore} from '@/store/catchphrases'
-import {mapActions, mapState} from 'pinia'
-import type {Catchphrase} from '@/interfaces/catchphrases'
-import {App} from '@capacitor/app'
-import {Directory, Filesystem} from '@capacitor/filesystem'
+import { useCatchphrasesStore } from '@/store/catchphrases'
+import { mapActions, mapState } from 'pinia'
+import type { Catchphrase } from '@/interfaces/catchphrases'
+import { App } from '@capacitor/app'
+import { Directory, Filesystem } from '@capacitor/filesystem'
 
 export default defineComponent({
 	components: {
