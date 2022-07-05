@@ -18,7 +18,22 @@ export default defineConfig({
         IconsResolver(),
         (componentName) => {
           if(componentName.startsWith('Ion')) {
-            return { name: componentName, from: '@ionic/vue' }
+            return {
+              name: componentName,
+              from: '@ionic/vue',
+              sideEffects: [
+                '@ionic/vue/css/core.css',
+                '@ionic/vue/css/normalize.css',
+                '@ionic/vue/css/structure.css',
+                '@ionic/vue/css/typography.css',
+                '@ionic/vue/css/padding.css',
+                '@ionic/vue/css/float-elements.css',
+                '@ionic/vue/css/text-alignment.css',
+                '@ionic/vue/css/text-transformation.css',
+                '@ionic/vue/css/flex-utils.css',
+                '@ionic/vue/css/display.css'
+              ]
+            }
           }
         }
       ]
