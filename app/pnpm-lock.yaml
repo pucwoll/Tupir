@@ -1,15 +1,16 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@capacitor/android': 3.6.0
-  '@capacitor/app': ^1.1.1
-  '@capacitor/cli': 3.6.0
-  '@capacitor/core': 3.6.0
-  '@capacitor/filesystem': ^1.1.0
-  '@capacitor/haptics': 1.1.4
-  '@capacitor/ios': 3.6.0
-  '@capacitor/keyboard': 1.2.3
-  '@capacitor/status-bar': 1.0.8
+  '@capacitor/android': 4.0.0-beta.1
+  '@capacitor/app': 4.0.0-beta.0
+  '@capacitor/cli': 4.0.0-beta.1
+  '@capacitor/core': 4.0.0-beta.1
+  '@capacitor/filesystem': 4.0.0-beta.0
+  '@capacitor/haptics': 4.0.0-beta.0
+  '@capacitor/ios': 4.0.0-beta.1
+  '@capacitor/keyboard': 4.0.0-beta.0
+  '@capacitor/splash-screen': 4.0.0-beta.0
+  '@capacitor/status-bar': 4.0.0-beta.0
   '@iconify/json': ^2.1.72
   '@ionic/vue': ^6.1.12
   '@ionic/vue-router': ^6.1.12
@@ -37,24 +38,25 @@ specifiers:
   vue-tsc: ^0.38.2
 
 dependencies:
-  '@capacitor/android': 3.6.0_@capacitor+core@3.6.0
-  '@capacitor/app': 1.1.1_@capacitor+core@3.6.0
-  '@capacitor/core': 3.6.0
-  '@capacitor/filesystem': 1.1.0_@capacitor+core@3.6.0
-  '@capacitor/haptics': 1.1.4_@capacitor+core@3.6.0
-  '@capacitor/ios': 3.6.0_@capacitor+core@3.6.0
-  '@capacitor/keyboard': 1.2.3_@capacitor+core@3.6.0
-  '@capacitor/status-bar': 1.0.8_@capacitor+core@3.6.0
+  '@capacitor/android': 4.0.0-beta.1_qfuzndltgxl2urjhs3dhjxydza
+  '@capacitor/app': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
+  '@capacitor/core': 4.0.0-beta.1
+  '@capacitor/filesystem': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
+  '@capacitor/haptics': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
+  '@capacitor/ios': 4.0.0-beta.1_qfuzndltgxl2urjhs3dhjxydza
+  '@capacitor/keyboard': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
+  '@capacitor/splash-screen': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
+  '@capacitor/status-bar': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
   '@ionic/vue': 6.1.12
   '@ionic/vue-router': 6.1.12
   axios: 0.27.2
   ionicons: 6.0.2
   pinia: 2.0.14_j6bzmzd4ujpabbp5objtwxyjp4
   vue: 3.2.37
-  vue-router: 4.1.0_vue@3.2.37
+  vue-router: 4.1.1_vue@3.2.37
 
 devDependencies:
-  '@capacitor/cli': 3.6.0
+  '@capacitor/cli': 4.0.0-beta.1
   '@iconify/json': 2.1.72
   '@rushstack/eslint-patch': 1.1.4
   '@types/node': 16.11.43
@@ -105,24 +107,24 @@ packages:
       '@babel/helper-validator-identifier': 7.18.6
       to-fast-properties: 2.0.0
 
-  /@capacitor/android/3.6.0_@capacitor+core@3.6.0:
-    resolution: {integrity: sha512-X6n0OLy7BE3c6qfVuL7UYyq/aIwEsqIAqtyDOwMdj5k+P1rLQVsGaWERXUtC0BGeoKBD5YgbWiyKwAwg5Spjdg==}
+  /@capacitor/android/4.0.0-beta.1_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-WBgE/yZLY33NZUehyxMsuSquGX2zrOXYTgLl4t2yJiZlPFwgoCuhuMxof4xkTP9MVRXcIF0qNiDznfdVTXZfdQ==}
     peerDependencies:
-      '@capacitor/core': ^3.6.0
+      '@capacitor/core': next
     dependencies:
-      '@capacitor/core': 3.6.0
+      '@capacitor/core': 4.0.0-beta.1
     dev: false
 
-  /@capacitor/app/1.1.1_@capacitor+core@3.6.0:
-    resolution: {integrity: sha512-8ADkldHnoE1xkWvPUsGlERVGm6/Zvcxy6hCI80AxydIKyaCG7kbDAvUclebbnw/eFRxj2zBoVatGLjmJNvTbYw==}
+  /@capacitor/app/4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-pNEMHexWmVVfTLNeY1I1tuqKEK41y9x/9LP2lYQALYUjzgobrK7hn/8EDJ+ev7xGY2n1Wd/4n9zlUknHkxb9GQ==}
     peerDependencies:
-      '@capacitor/core': ^3.0.0
+      '@capacitor/core': next
     dependencies:
-      '@capacitor/core': 3.6.0
+      '@capacitor/core': 4.0.0-beta.1
     dev: false
 
-  /@capacitor/cli/3.6.0:
-    resolution: {integrity: sha512-YNQNM1wvy3zJkKNWcNL5KzIqgV5J1YzO27MHSxZyVA6+XmWCZi8Qz/Cq/uDrepsuBG67QdIvtOeL+JnXARedfw==}
+  /@capacitor/cli/4.0.0-beta.1:
+    resolution: {integrity: sha512-N86udPyUzSDIqbcZJ14gPdRcg9qdKi9WohXE2EB/Pm9Pqg8yHR1MYKfo5Dj40KLLzZHVYHptF94SoSfrRZKtMQ==}
     engines: {node: '>=12.4.0'}
     hasBin: true
     dependencies:
@@ -130,12 +132,12 @@ packages:
       '@ionic/utils-fs': 3.1.6
       '@ionic/utils-subprocess': 2.1.11
       '@ionic/utils-terminal': 2.3.3
-      commander: 6.2.1
+      commander: 9.3.0
       debug: 4.3.4
       env-paths: 2.2.1
       kleur: 4.1.5
       native-run: 1.6.0
-      open: 7.4.2
+      open: 8.4.0
       plist: 3.0.5
       prompts: 2.4.2
       semver: 7.3.7
@@ -146,50 +148,58 @@ packages:
       - supports-color
     dev: true
 
-  /@capacitor/core/3.6.0:
-    resolution: {integrity: sha512-F94ozABHXxq1xMcNGMnOVP73WZDWYR1PrJEfVfl9Ja0BXGEJURIxmHBc842OX3rrt3+g0ELHyhX9LTH16eeonw==}
+  /@capacitor/core/4.0.0-beta.1:
+    resolution: {integrity: sha512-CrdGTYj3r6fx9ya5KrRISQh9HGzkHw1v2EluD08I0nQhW51+eVOOjP79oo0B3FtbeKNL0ztjjPHRZVLMOW00ag==}
     dependencies:
       tslib: 2.4.0
     dev: false
 
-  /@capacitor/filesystem/1.1.0_@capacitor+core@3.6.0:
-    resolution: {integrity: sha512-8O3UuvL8HNUEJvZnmn8yUmvgB1evtXfcF0oxIo3YbSlylqywJwS3JTiuhKmsvSxCdpbTy8IaTsutVh3gZgWbKg==}
+  /@capacitor/filesystem/4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-Sr3qHjl7fHfvRfsyOm/faw5csf4i8pFn1ShySZuh/AYQKXJDa4D+CmBYgB/WstYCb/V4C2bK91zqNH/oYne6/A==}
     peerDependencies:
-      '@capacitor/core': ^3.0.0
+      '@capacitor/core': next
     dependencies:
-      '@capacitor/core': 3.6.0
+      '@capacitor/core': 4.0.0-beta.1
     dev: false
 
-  /@capacitor/haptics/1.1.4_@capacitor+core@3.6.0:
-    resolution: {integrity: sha512-+pJIb5X7xAcbrWj6rJaV+cwBlv8aFwB1/Ob6EV4atydThuuVSSsAL4hI4ZYlPNOxM6H5s+ZDLj7Pa2os4eFmtg==}
+  /@capacitor/haptics/4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-L4dokSpNg7t5ERk46uB5GYd6RsaJ/5DaPXtwcZgwEeuvzg9o2djbyD4O06PR/zNyu5t07qDNZrG+i9Ld+4RnvA==}
     peerDependencies:
-      '@capacitor/core': ^3.0.0
+      '@capacitor/core': next
     dependencies:
-      '@capacitor/core': 3.6.0
+      '@capacitor/core': 4.0.0-beta.1
     dev: false
 
-  /@capacitor/ios/3.6.0_@capacitor+core@3.6.0:
-    resolution: {integrity: sha512-clauOkPj24COpAi1eIHSgi4OENIwuI8P6WKkfn3HVRX2lUPWyxczHTtg64inwECABy3zJdxnnwBHeok3bpoSCg==}
+  /@capacitor/ios/4.0.0-beta.1_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-YlKeufYAjUVfzIVaQY/39hSeq0BiV5/cBNwrnrLll9hvXQOBX/muCabk8+h7E8/Y1SOe3ju+9q87dibmc64LLQ==}
     peerDependencies:
-      '@capacitor/core': ^3.6.0
+      '@capacitor/core': next
     dependencies:
-      '@capacitor/core': 3.6.0
+      '@capacitor/core': 4.0.0-beta.1
     dev: false
 
-  /@capacitor/keyboard/1.2.3_@capacitor+core@3.6.0:
-    resolution: {integrity: sha512-KTSzJkMa6CrmDIDhWfswNPqS7gvYlL25E1gqXbY7w/EhyBjJhEdF0bc6QUFufS+ZVMlcPafc0/E5P+pTfLnKiA==}
+  /@capacitor/keyboard/4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-/IR68MWy4djhuj31M0WdDlj/O6eZXMxoU89dsyEEYFUoYVmTaibMKZ3jcjQtOrUupeaE5Hd4TVectr0M2VB8AA==}
     peerDependencies:
-      '@capacitor/core': ^3.0.0
+      '@capacitor/core': next
     dependencies:
-      '@capacitor/core': 3.6.0
+      '@capacitor/core': 4.0.0-beta.1
     dev: false
 
-  /@capacitor/status-bar/1.0.8_@capacitor+core@3.6.0:
-    resolution: {integrity: sha512-lhxa70K6vg0QjdddbT9RqFLfQ9a0Fk1OVE54MhUH30DWymv4h2LrC+mJgH6JS46WQbR2UCHRymfmVCq1PS2Qiw==}
+  /@capacitor/splash-screen/4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-rmcst0m9hQrWcHO9mG1t403s9oabqDPwKPuaK+jlh5yZMOWPswVioeFh5HDQgtquDvr0WAu3vyFEQEgOBwwAMQ==}
     peerDependencies:
-      '@capacitor/core': ^3.0.0
+      '@capacitor/core': next
     dependencies:
-      '@capacitor/core': 3.6.0
+      '@capacitor/core': 4.0.0-beta.1
+    dev: false
+
+  /@capacitor/status-bar/4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-P9lOw4QMb20UYl5v11/kjLHgsv4QgJJZoHdhSUHuotcfd0Dm9ibZl0uvik1REoHVGwArwGLgZnc9980YFTsiGQ==}
+    peerDependencies:
+      '@capacitor/core': next
+    dependencies:
+      '@capacitor/core': 4.0.0-beta.1
     dev: false
 
   /@eslint/eslintrc/1.3.0:
@@ -1004,9 +1014,9 @@ packages:
       delayed-stream: 1.0.0
     dev: false
 
-  /commander/6.2.1:
-    resolution: {integrity: sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==}
-    engines: {node: '>= 6'}
+  /commander/9.3.0:
+    resolution: {integrity: sha512-hv95iU5uXPbK83mjrJKuZyFM/LBAoCV/XhVGkS5Je6tl7sxr6A0ITMw5WoRV46/UaJ46Nllm3Xt7IaJhXTIkzw==}
+    engines: {node: ^12.20.0 || >=14}
     dev: true
 
   /concat-map/0.0.1:
@@ -1078,6 +1088,11 @@ packages:
 
   /deep-is/0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
+    dev: true
+
+  /define-lazy-prop/2.0.0:
+    resolution: {integrity: sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==}
+    engines: {node: '>=8'}
     dev: true
 
   /define-properties/1.1.4:
@@ -2433,10 +2448,11 @@ packages:
       mimic-fn: 2.1.0
     dev: true
 
-  /open/7.4.2:
-    resolution: {integrity: sha512-MVHddDVweXZF3awtlAS+6pgKLlm/JgxZ90+/NBurBoQctVOOB/zDdVjcyPzQ+0laDGbsWgrRkflI65sQeOgT9Q==}
-    engines: {node: '>=8'}
+  /open/8.4.0:
+    resolution: {integrity: sha512-XgFPPM+B28FtCCgSb9I+s9szOC1vZRSwgWsRUA5ylIxRTgKozqjOCrVOqGsYABPYK5qnfqClxZTFBa8PKt2v6Q==}
+    engines: {node: '>=12'}
     dependencies:
+      define-lazy-prop: 2.0.0
       is-docker: 2.2.1
       is-wsl: 2.2.0
     dev: true
@@ -3289,8 +3305,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-router/4.1.0_vue@3.2.37:
-    resolution: {integrity: sha512-A+dYO0ZXLJFZ40ebW3XtqehCW0Wv2xNH4lFddOByDja4NtItEdyirrShTlvD3UA4xc5a5mG2RRI30BusYpOb9g==}
+  /vue-router/4.1.1_vue@3.2.37:
+    resolution: {integrity: sha512-Wp1mEf2xCwT0ez7o9JvgpfBp9JGnVb+dPERzXDbugTatzJAJ60VWOhJKifQty85k+jOreoFHER4r5fu062PhPw==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
