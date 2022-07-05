@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
-  appId: 'lol.wezeo.tupir',
+  appId: 'sk.tupir.app',
   appName: 'Tupir',
   webDir: 'dist',
   bundledWebRuntime: false
