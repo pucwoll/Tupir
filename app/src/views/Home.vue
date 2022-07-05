@@ -4,10 +4,10 @@
       <ion-toolbar>
         <ion-buttons class="justify-center">
           <ion-button class="font-semibold header-button">
-            <span class="selected">Following</span>
+            <span>Following</span>
           </ion-button>
           <ion-button class="font-semibold header-button">
-            <span>For you</span>
+            <span class="selected">For You</span>
           </ion-button>
         </ion-buttons>
       </ion-toolbar>

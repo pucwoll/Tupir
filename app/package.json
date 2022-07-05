@@ -11,7 +11,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@capacitor/action-sheet": "^1.0.8",
+    "@capacitor/action-sheet": "4.0.0-beta.0",
     "@capacitor/android": "4.0.0-beta.1",
     "@capacitor/app": "4.0.0-beta.0",
     "@capacitor/core": "4.0.0-beta.1",
@@ -21,6 +21,7 @@
     "@capacitor/keyboard": "4.0.0-beta.0",
     "@capacitor/splash-screen": "4.0.0-beta.0",
     "@capacitor/status-bar": "4.0.0-beta.0",
+    "@ionic/pwa-elements": "^3.1.1",
     "@ionic/vue": "^6.1.12",
     "@ionic/vue-router": "^6.1.12",
     "axios": "^0.27.2",

@@ -13,7 +13,7 @@
             <div class="flex items-center">
               <h1>{{ creator.name }} {{ creator.surname }}</h1>
               <ion-buttons>
-                <ion-button>
+                <ion-button @click="showActions">
                   <ion-icon
                     slot="icon-only"
                     :icon="ellipsisVertical"
@@ -26,10 +26,10 @@
             <h4>{{ creator.username }}</h4>
           </div>
         </div>
-        <div class="h-full flex items-center">
-          <ion-buttons class="h-full">
+        <div class="h-full flex items-center w-full">
+          <ion-buttons class="h-full w-full">
             <ion-button
-              class="h-full"
+              class="h-full grow"
               color="dark"
               @click="playAudio(catchphrase)"
             >
@@ -41,6 +41,7 @@
               <h2 class="whitespace-pre-wrap mx-4">
                 {{ catchphrase.title }}
               </h2>
+              <div class="ml-auto h-full" />
             </ion-button>
           </ion-buttons>
         </div>
@@ -96,6 +97,7 @@
 import type { Catchphrase, CatchphraseCreator } from '@/interfaces/catchphrases'
 import { volumeHigh, heartOutline, chatbubbleEllipsesOutline, bookmarkOutline, ellipsisVertical } from 'ionicons/icons'
 import { useAudioStore } from '@/store/audio'
+import { ActionSheet } from '@capacitor/action-sheet'
 
 const audioStore = useAudioStore()
 
@@ -112,6 +114,20 @@ async function playAudio(catchphrase: Catchphrase) {
   }
   audioStore.currentAudio = new Audio(catchphrase.audio)
   await audioStore.currentAudio.play()
+}
+
+async function showActions() {
+  await ActionSheet.showActions({
+    title: 'test',
+    options: [
+      {
+        title: 'Upload',
+      },
+      {
+        title: 'Share',
+      },
+    ]
+  })
 }
 
 </script>

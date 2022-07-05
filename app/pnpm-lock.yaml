@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@capacitor/action-sheet': ^1.0.8
+  '@capacitor/action-sheet': 4.0.0-beta.0
   '@capacitor/android': 4.0.0-beta.1
   '@capacitor/app': 4.0.0-beta.0
   '@capacitor/cli': 4.0.0-beta.1
@@ -13,6 +13,7 @@ specifiers:
   '@capacitor/splash-screen': 4.0.0-beta.0
   '@capacitor/status-bar': 4.0.0-beta.0
   '@iconify/json': ^2.1.72
+  '@ionic/pwa-elements': ^3.1.1
   '@ionic/vue': ^6.1.12
   '@ionic/vue-router': ^6.1.12
   '@rushstack/eslint-patch': ^1.1.4
@@ -39,7 +40,7 @@ specifiers:
   vue-tsc: ^0.38.2
 
 dependencies:
-  '@capacitor/action-sheet': 1.0.8_qfuzndltgxl2urjhs3dhjxydza
+  '@capacitor/action-sheet': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/android': 4.0.0-beta.1_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/app': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/core': 4.0.0-beta.1
@@ -49,6 +50,7 @@ dependencies:
   '@capacitor/keyboard': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/splash-screen': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/status-bar': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
+  '@ionic/pwa-elements': 3.1.1
   '@ionic/vue': 6.1.12
   '@ionic/vue-router': 6.1.12
   axios: 0.27.2
@@ -109,10 +111,10 @@ packages:
       '@babel/helper-validator-identifier': 7.18.6
       to-fast-properties: 2.0.0
 
-  /@capacitor/action-sheet/1.0.8_qfuzndltgxl2urjhs3dhjxydza:
-    resolution: {integrity: sha512-mC3/LhVMgdeJesB8iN/Kjd0QUDjVj8KKEaPm1baqn3VAZWY4JssdMHVox3l4m6zEmGt4+YyD4g6fijq07RZdbQ==}
+  /@capacitor/action-sheet/4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-l/YAzYo4LiJB86SDjOs+4BwEzS832JnWqmzG6BXcOlHX3TM5uRelqLi+g7cHZkSIRjTm++qPbb2IKVIDUW8eSA==}
     peerDependencies:
-      '@capacitor/core': ^3.0.0
+      '@capacitor/core': next
     dependencies:
       '@capacitor/core': 4.0.0-beta.1
     dev: false
@@ -285,6 +287,10 @@ packages:
       '@stencil/core': 2.17.0
       ionicons: 6.0.2
       tslib: 2.4.0
+    dev: false
+
+  /@ionic/pwa-elements/3.1.1:
+    resolution: {integrity: sha512-BoEX1pSrKn5dP4VQwaf8DweAmT4ynmpW+9f6oj/W1xLe54bmuXcUY07ziuZX1DLu50xHSYcO5qJ/dbYC/w6wgA==}
     dev: false
 
   /@ionic/utils-array/2.1.5:
