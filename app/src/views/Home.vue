@@ -57,6 +57,7 @@ import {useCatchphrasesStore} from '@/store/catchphrases'
 import {mapActions, mapState} from 'pinia'
 import type {Catchphrase} from '@/interfaces/catchphrases'
 import {App} from '@capacitor/app'
+import {Directory, Filesystem} from '@capacitor/filesystem'
 
 export default defineComponent({
 	components: {
@@ -94,12 +95,22 @@ export default defineComponent({
 	},
 	methods: {
 		...mapActions(useCatchphrasesStore, ['fetchCatchphrases']),
-		playAudio(catchphrase: Catchphrase) {
+		async playAudio(catchphrase: Catchphrase) {
+			console.log(catchphrase)
 			if(!this.currentAudio.paused) {
 				this.currentAudio.pause()
 			}
 			this.currentAudio = new Audio(catchphrase.audio)
-			this.currentAudio.play()
+			await this.currentAudio.play()
+
+			console.log(this.currentAudio.srcObject)
+
+			Filesystem.writeFile({
+				path: `${catchphrase.user.id}/${catchphrase.id}.mp3`,
+				data: 'This is a test',
+				directory: Directory.Documents,
+				recursive: true
+			})
 		}
 	}
 })

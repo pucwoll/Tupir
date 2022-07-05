@@ -2,8 +2,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import type {Catchphrase, Creator} from '@/interfaces/catchphrases'
 
-export const useCatchphrasesStore = defineStore({
-	id: 'counter',
+export const useCatchphrasesStore = defineStore('counter',{
 	state: () => ({
 		catchphrases: [] as Catchphrase[],
 		creators: [] as Creator[]
