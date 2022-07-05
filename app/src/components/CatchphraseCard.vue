@@ -1,7 +1,7 @@
 <template>
   <ion-card>
     <ion-card-content class="flex justify-between">
-      <div class="flex flex-col">
+      <div class="flex flex-col grow">
         <div class="mb-4 flex items-center">
           <ion-avatar class="mr-4">
             <img
@@ -9,7 +9,7 @@
               alt="avatar"
             >
           </ion-avatar>
-          <div>
+          <div class="grow">
             <div class="flex items-center">
               <h1>{{ creator.name }} {{ creator.surname }}</h1>
               <ion-buttons>
@@ -95,9 +95,9 @@
 
 <script setup lang="ts">
 import type { Catchphrase, CatchphraseCreator } from '@/interfaces/catchphrases'
-import { volumeHigh, heartOutline, chatbubbleEllipsesOutline, bookmarkOutline, ellipsisVertical } from 'ionicons/icons'
+import { bookmarkOutline, chatbubbleEllipsesOutline, ellipsisVertical, heartOutline, volumeHigh } from 'ionicons/icons'
 import { useAudioStore } from '@/store/audio'
-import { ActionSheet } from '@capacitor/action-sheet'
+import { actionSheetController } from '@ionic/vue'
 
 const audioStore = useAudioStore()
 
@@ -117,17 +117,21 @@ async function playAudio(catchphrase: Catchphrase) {
 }
 
 async function showActions() {
-  await ActionSheet.showActions({
-    title: 'test',
-    options: [
+  const sheet = await actionSheetController.create({
+    header: 'Options',
+    buttons: [
       {
-        title: 'Upload',
+        text: 'Report catchphrase',
+        role: 'destructive',
       },
       {
-        title: 'Share',
+        text: 'Block creator',
+        role: 'destructive',
       },
     ]
   })
+
+  await sheet.present()
 }
 
 </script>
