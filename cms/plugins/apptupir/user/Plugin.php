@@ -2,6 +2,7 @@
 
 use Backend;
 use System\Classes\PluginBase;
+use AppTupir\User\Classes\Extend\UserExtend;
 use AppTupir\User\Classes\Extend\UserExtendCreator;
 use AppTupir\User\Classes\Extend\UserExtendDescription;
 use AppTupir\User\Classes\Extend\UserExtendCatchphrasesCount;
@@ -12,7 +13,7 @@ use AppTupir\User\Classes\Extend\UserExtendCatchphrasesCount;
 class Plugin extends PluginBase
 {
     public $require = [
-        "RainLab.User",
+        'RainLab.User',
     ];
 
     /**
@@ -37,12 +38,13 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        UserExtend::updateFormFields_addSuperUserSwitch();
+        UserExtendCatchphrasesCount::addCatchphrasesCountToColumns();
+        UserExtendCatchphrasesCount::addCatchphrasesCountToResource();
+        UserExtendDescription::addDescriptionToFields();
+        UserExtendDescription::addDescriptionToResource();
         UserExtendCreator::addCreatorToFields();
         UserExtendCreator::addCreatorToColumns();
         UserExtendCreator::addCreatorToResource();
-        UserExtendDescription::addDescriptionToFields();
-        UserExtendDescription::addDescriptionToResource();
-        UserExtendCatchphrasesCount::addCatchphrasesCountToColumns();
-        UserExtendCatchphrasesCount::addCatchphrasesCountToResource();
     }
 }

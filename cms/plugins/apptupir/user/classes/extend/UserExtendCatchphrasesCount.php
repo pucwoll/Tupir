@@ -1,6 +1,5 @@
 <?php namespace AppTupir\User\Classes\Extend;
 
-use Backend\Widgets\Form;
 use Rainlab\User\Models\User;
 use RainLab\User\Controllers\Users;
 use Illuminate\Support\Facades\Event;

@@ -15,8 +15,8 @@ class CreateCatchphrasesTable extends Migration
             $table->string('audio')->nullable();
             $table->text('lyrics')->nullable();
 
-            $table->boolean('is_published')->default(false);
             $table->integer('user_id')->index();
+            $table->boolean('is_published')->default(false);
 
             $table->unsignedInteger('sort_order')->nullable();
             $table->timestamps();

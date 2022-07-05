@@ -8,10 +8,10 @@ class CreatorsCatchphrasesController extends Controller
 {
     public function show($id)
     {
-        $user = User::isCreator()
+        $creator = User::isCreator()
             ->findOrFail($id);
 
-        $catchphrases = $user->catchphrases;
+        $catchphrases = $creator->catchphrases;
 
         return CatchphraseResource::collection($catchphrases);
     }
