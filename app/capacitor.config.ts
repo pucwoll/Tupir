@@ -1,10 +1,10 @@
 import type { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
-	appId: 'lol.wezeo.tupir',
-	appName: 'Tupir',
-	webDir: 'dist',
-	bundledWebRuntime: false
+  appId: 'lol.wezeo.tupir',
+  appName: 'Tupir',
+  webDir: 'dist',
+  bundledWebRuntime: false
 }
 
 export default config

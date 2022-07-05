@@ -39,80 +39,42 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import {
-	IonContent,
-	IonPage,
-	IonTitle,
-	IonToolbar,
-	IonHeader,
-	IonAccordionGroup,
-	IonLabel,
-	IonList,
-	IonItem,
-	IonAccordion,
-	IonListHeader,
-	IonSearchbar
-} from '@ionic/vue'
 import { useCatchphrasesStore } from '@/store/catchphrases'
 import { mapActions, mapState } from 'pinia'
 import type { Catchphrase } from '@/interfaces/catchphrases'
 import { App } from '@capacitor/app'
-import { Directory, Filesystem } from '@capacitor/filesystem'
 
 export default defineComponent({
-	components: {
-		IonPage,
-		IonContent,
-		IonHeader,
-		IonToolbar,
-		IonTitle,
-		IonAccordionGroup,
-		IonAccordion,
-		IonList,
-		IonListHeader,
-		IonItem,
-		IonLabel,
-		IonSearchbar
-	},
-	data() {
-		return {
-			currentAudio: new Audio()
-		}
-	},
-	computed: {
-		...mapState(useCatchphrasesStore, ['getCatchphrasesByCreatorId', 'creators'])
-	},
-	async mounted() {
-		this.fetchCatchphrases()
-		App.addListener('appStateChange', (state) => {
-			if(!state.isActive) {
-				this.currentAudio.pause()
-			}
-		})
-	},
-	beforeUnmount() {
-		App.removeAllListeners()
-	},
-	methods: {
-		...mapActions(useCatchphrasesStore, ['fetchCatchphrases']),
-		async playAudio(catchphrase: Catchphrase) {
-			console.log(catchphrase)
-			if(!this.currentAudio.paused) {
-				this.currentAudio.pause()
-			}
-			this.currentAudio = new Audio(catchphrase.audio)
-			await this.currentAudio.play()
-
-			console.log(this.currentAudio.srcObject)
-
-			Filesystem.writeFile({
-				path: `${catchphrase.user.id}/${catchphrase.id}.mp3`,
-				data: 'This is a test',
-				directory: Directory.Documents,
-				recursive: true
-			})
-		}
-	}
+  data() {
+    return {
+      currentAudio: new Audio()
+    }
+  },
+  computed: {
+    ...mapState(useCatchphrasesStore, ['getCatchphrasesByCreatorId', 'creators'])
+  },
+  async mounted() {
+    this.fetchCatchphrases()
+    App.addListener('appStateChange', (state) => {
+      if(!state.isActive) {
+        this.currentAudio.pause()
+      }
+    })
+  },
+  beforeUnmount() {
+    App.removeAllListeners()
+  },
+  methods: {
+    ...mapActions(useCatchphrasesStore, ['fetchCatchphrases']),
+    async playAudio(catchphrase: Catchphrase) {
+      console.log(catchphrase)
+      if(!this.currentAudio.paused) {
+        this.currentAudio.pause()
+      }
+      this.currentAudio = new Audio(catchphrase.audio)
+      await this.currentAudio.play()
+    }
+  }
 })
 </script>
 
