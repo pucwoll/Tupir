@@ -5,7 +5,7 @@
       <ion-tab-bar slot="bottom">
         <ion-tab-button
           tab="tab1"
-          href="/home"
+          href="/tabs/home"
         >
           <ion-icon :icon="home" />
           <ion-label>Home</ion-label>
@@ -13,7 +13,7 @@
 
         <ion-tab-button
           tab="tab2"
-          href="/browse"
+          href="/tabs/tab2"
         >
           <ion-icon :icon="compass" />
           <ion-label>Browse</ion-label>
@@ -21,7 +21,7 @@
 
         <ion-tab-button
           tab="tab3"
-          href="/profile"
+          href="/tabs/tab3"
         >
           <ion-icon :icon="personCircle" />
           <ion-label>Profile</ion-label>
