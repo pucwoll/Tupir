@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@capacitor/action-sheet': ^1.0.8
   '@capacitor/android': 4.0.0-beta.1
   '@capacitor/app': 4.0.0-beta.0
   '@capacitor/cli': 4.0.0-beta.1
@@ -38,6 +39,7 @@ specifiers:
   vue-tsc: ^0.38.2
 
 dependencies:
+  '@capacitor/action-sheet': 1.0.8_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/android': 4.0.0-beta.1_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/app': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/core': 4.0.0-beta.1
@@ -106,6 +108,14 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.18.6
       to-fast-properties: 2.0.0
+
+  /@capacitor/action-sheet/1.0.8_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-mC3/LhVMgdeJesB8iN/Kjd0QUDjVj8KKEaPm1baqn3VAZWY4JssdMHVox3l4m6zEmGt4+YyD4g6fijq07RZdbQ==}
+    peerDependencies:
+      '@capacitor/core': ^3.0.0
+    dependencies:
+      '@capacitor/core': 4.0.0-beta.1
+    dev: false
 
   /@capacitor/android/4.0.0-beta.1_qfuzndltgxl2urjhs3dhjxydza:
     resolution: {integrity: sha512-WBgE/yZLY33NZUehyxMsuSquGX2zrOXYTgLl4t2yJiZlPFwgoCuhuMxof4xkTP9MVRXcIF0qNiDznfdVTXZfdQ==}

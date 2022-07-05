@@ -1,11 +1,16 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import type { Catchphrase, Creator } from '@/interfaces/catchphrases'
+import type { Catchphrase, CatchphraseCreator } from '@/interfaces/catchphrases'
 
-export const useCatchphrasesStore = defineStore('counter',{
-  state: () => ({
-    catchphrases: [] as Catchphrase[],
-    creators: [] as Creator[]
+interface CatchphrasesStore {
+	catchphrases: Catchphrase[]
+	creators: CatchphraseCreator[]
+}
+
+export const useCatchphrasesStore = defineStore('catchphrases',{
+  state: (): CatchphrasesStore => ({
+    catchphrases: [],
+    creators: []
   }),
   actions: {
     async fetchCatchphrases() {
@@ -18,7 +23,7 @@ export const useCatchphrasesStore = defineStore('counter',{
   },
   getters: {
     getCatchphrasesByCreatorId: (state) => {
-      return (creatorId: number) => state.catchphrases.filter((catchphrase) => creatorId === catchphrase.user.id)
+      return (creatorId: number): Catchphrase[] => state.catchphrases.filter((catchphrase) => creatorId === catchphrase.user.id)
     }
   }
 })

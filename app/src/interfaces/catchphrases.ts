@@ -4,13 +4,13 @@ export interface Catchphrase {
 	title: string
 	audio: string
 	lyrics: string
-	user: Creator
+	user: CatchphraseCreator
 	order: null
 	created_at: Date
 	updated_at: Date
 }
 
-export interface Creator {
+export interface CatchphraseCreator {
 	type: string
 	id: number
 	name: string
