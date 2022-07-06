@@ -2,14 +2,26 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-buttons class="justify-center">
-          <ion-button class="font-semibold header-button">
-            <span>Following</span>
-          </ion-button>
-          <ion-button class="font-semibold header-button">
-            <span class="selected">For You</span>
-          </ion-button>
-        </ion-buttons>
+        <ion-title>
+          <ion-buttons
+            class="justify-center"
+          >
+            <ion-button
+              class="font-semibold header-button"
+              color="light"
+              @click="currentSegment = 'following'"
+            >
+              <span :class="currentSegment === 'following' ? 'selected' : ''">Following</span>
+            </ion-button>
+            <ion-button
+              class="font-semibold header-button"
+              color="light"
+              @click="currentSegment = 'for you'"
+            >
+              <span :class="currentSegment === 'for you' ? 'selected' : ''">For You</span>
+            </ion-button>
+          </ion-buttons>
+        </ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content fullscreen>
@@ -31,12 +43,14 @@
 <script setup lang="ts">
 import { useCatchphrasesStore } from '@/store/catchphrases'
 import { App } from '@capacitor/app'
-import { onBeforeUnmount, onMounted } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import CatchphraseCard from '@/components/CatchphraseCard.vue'
 import { useAudioStore } from '@/store/audio'
 
 const catchphrasesStore = useCatchphrasesStore()
 const audioStore = useAudioStore()
+
+const currentSegment = ref<'following'| 'for you'>('for you')
 
 onMounted(() => {
   catchphrasesStore.fetchCatchphrases()
@@ -65,14 +79,13 @@ ion-content {
 }
 
 .header-button > span {
-	color: white;
 	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .header-button > span.selected {
 	padding-bottom: 4px;
 	padding-top: 4px;
-	border-bottom: 2px solid white;
+	border-bottom: 2px solid var(--ion-color-light);
 	border-top: 2px solid transparent;
 	box-shadow: 0 1px rgba(0, 0, 0, 0.2);
 }
