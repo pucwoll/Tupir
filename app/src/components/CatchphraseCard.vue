@@ -12,16 +12,6 @@
           <div class="grow">
             <div class="flex items-center">
               <h1>{{ creator.name }} {{ creator.surname }}</h1>
-              <ion-buttons>
-                <ion-button @click="showActions">
-                  <ion-icon
-                    slot="icon-only"
-                    :icon="ellipsisVertical"
-                    class="options-icon"
-                    color="medium"
-                  />
-                </ion-button>
-              </ion-buttons>
             </div>
             <h4>{{ creator.username }}</h4>
           </div>
@@ -38,13 +28,25 @@
                 class="icon"
                 color="dark"
               />
-              <h2 class="whitespace-pre-wrap mx-4">
+              <h2 class="whitespace-pre-wrap mx-4 text-start">
                 {{ catchphrase.title }}
               </h2>
               <div class="ml-auto h-full" />
             </ion-button>
           </ion-buttons>
         </div>
+        <ion-buttons>
+          <ion-button
+            @click="showActions"
+          >
+            <ion-icon
+              slot="icon-only"
+              :icon="ellipsisHorizontal"
+              class="icon"
+              color="dark"
+            />
+          </ion-button>
+        </ion-buttons>
       </div>
       <div>
         <ion-buttons class="flex flex-col items-center">
@@ -75,10 +77,10 @@
             </p>
           </div>
           <div class="flex flex-col items-center">
-            <ion-button>
+            <ion-button @click="share">
               <ion-icon
                 slot="icon-only"
-                :icon="bookmarkOutline"
+                :icon="shareSocialOutline"
                 class="icon"
                 color="dark"
               />
@@ -95,9 +97,10 @@
 
 <script setup lang="ts">
 import type { Catchphrase, CatchphraseCreator } from '@/interfaces/catchphrases'
-import { bookmarkOutline, chatbubbleEllipsesOutline, ellipsisVertical, heartOutline, volumeHigh } from 'ionicons/icons'
+import { shareSocialOutline, chatbubbleEllipsesOutline, ellipsisHorizontal, heartOutline, volumeHigh } from 'ionicons/icons'
 import { useAudioStore } from '@/store/audio'
 import { actionSheetController } from '@ionic/vue'
+import { Share } from '@capacitor/share'
 
 const audioStore = useAudioStore()
 
@@ -114,6 +117,14 @@ async function playAudio(catchphrase: Catchphrase) {
   }
   audioStore.currentAudio = new Audio(catchphrase.audio)
   await audioStore.currentAudio.play()
+}
+
+async function share() {
+  await Share.share({
+    title: 'Share',
+    text: 'Share',
+    url: 'https://ionicframework.com/'
+  })
 }
 
 async function showActions() {
@@ -140,10 +151,5 @@ async function showActions() {
 .icon {
 	@apply w-7;
 	min-width: 1.75rem;
-}
-
-.options-icon {
-	@apply w-4 h-4;
-	color: var(--ion-card-color, var(--ion-item-color, var(--ion-color-step-600, #666666)));
 }
 </style>

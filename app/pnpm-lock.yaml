@@ -9,6 +9,7 @@ specifiers:
   '@capacitor/haptics': 4.0.0-beta.0
   '@capacitor/ios': 4.0.0-beta.1
   '@capacitor/keyboard': 4.0.0-beta.0
+  '@capacitor/share': 4.0.0-beta.0
   '@capacitor/splash-screen': 4.0.0-beta.0
   '@capacitor/status-bar': 4.0.0-beta.0
   '@iconify/json': ^2.1.72
@@ -46,6 +47,7 @@ dependencies:
   '@capacitor/haptics': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/ios': 4.0.0-beta.1_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/keyboard': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
+  '@capacitor/share': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/splash-screen': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
   '@capacitor/status-bar': 4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza
   '@ionic/pwa-elements': 3.1.1
@@ -182,6 +184,14 @@ packages:
 
   /@capacitor/keyboard/4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza:
     resolution: {integrity: sha512-/IR68MWy4djhuj31M0WdDlj/O6eZXMxoU89dsyEEYFUoYVmTaibMKZ3jcjQtOrUupeaE5Hd4TVectr0M2VB8AA==}
+    peerDependencies:
+      '@capacitor/core': next
+    dependencies:
+      '@capacitor/core': 4.0.0-beta.1
+    dev: false
+
+  /@capacitor/share/4.0.0-beta.0_qfuzndltgxl2urjhs3dhjxydza:
+    resolution: {integrity: sha512-gKvbfGNMDmgXEAYkxox+SO2/mt1Rj4Xj3wYadUESDjodYnFIVwlN96a3ATju1Hl9SPWoUOiyKx/yaU/+WiRxNQ==}
     peerDependencies:
       '@capacitor/core': next
     dependencies:
