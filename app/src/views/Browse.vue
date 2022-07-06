@@ -14,7 +14,10 @@
       </ion-toolbar>
     </ion-header>
     <ion-content fullscreen>
-      <p v-for="i in 2000">
+      <p
+        v-for="i in 2000"
+        :key="i"
+      >
         {{ i }}
       </p>
     </ion-content>
@@ -35,7 +38,7 @@ ion-content {
 }
 
 .title {
-	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+	text-shadow: 1px 1px rgba(var(--ion-color-dark-rgb), 0.5);
 }
 
 ion-searchbar {

@@ -152,4 +152,12 @@ async function showActions() {
 	@apply w-7;
 	min-width: 1.75rem;
 }
+
+ion-card {
+	max-height: 224px;
+	height: 224px;
+	min-height: 224px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
 </style>

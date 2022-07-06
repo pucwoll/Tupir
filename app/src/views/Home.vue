@@ -24,18 +24,20 @@
         </ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content fullscreen>
-      <div
-        v-for="creator in catchphrasesStore.creators"
-        :key="creator.id"
+    <ion-content
+      fullscreen
+    >
+      <recycle-scroller
+        :items="catchphrasesStore.catchphrases"
+        :item-size="248"
       >
-        <catchphrase-card
-          v-for="catchphrase in catchphrasesStore.getCatchphrasesByCreatorId(creator.id)"
-          :key="catchphrase.id"
-          :creator="creator"
-          :catchphrase="catchphrase"
-        />
-      </div>
+        <template #default="{ item }">
+          <catchphrase-card
+            :creator="item.user"
+            :catchphrase="item"
+          />
+        </template>
+      </recycle-scroller>
     </ion-content>
   </ion-page>
 </template>
@@ -46,6 +48,8 @@ import { App } from '@capacitor/app'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import CatchphraseCard from '@/components/CatchphraseCard.vue'
 import { useAudioStore } from '@/store/audio'
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+import { RecycleScroller } from 'vue-virtual-scroller'
 
 const catchphrasesStore = useCatchphrasesStore()
 const audioStore = useAudioStore()
@@ -79,7 +83,7 @@ ion-content {
 }
 
 .header-button > span {
-	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+	text-shadow: 1px 1px rgba(var(--ion-color-dark-rgb), 0.5);
 }
 
 .header-button > span.selected {
@@ -87,7 +91,7 @@ ion-content {
 	padding-top: 4px;
 	border-bottom: 2px solid var(--ion-color-light);
 	border-top: 2px solid transparent;
-	box-shadow: 0 1px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px rgba(var(--ion-color-dark-rgb), 0.5);
 }
 
 .header-button > span:not(.selected) {

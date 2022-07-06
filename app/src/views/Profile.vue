@@ -38,7 +38,7 @@ ion-content {
 }
 
 .title {
-	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+	text-shadow: 1px 1px rgba(var(--ion-color-dark-rgb), 0.5);
 }
 
 .settings {
