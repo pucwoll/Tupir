@@ -6,7 +6,7 @@ export interface Catchphrase {
 	audio: string
 	lyrics: string
 	user: CatchphraseUser
-	order: null
+	sort_order: null
 	created_at: Date
 	updated_at: Date
 }

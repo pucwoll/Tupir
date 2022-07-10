@@ -25,6 +25,9 @@ class SearchController extends Controller
                 ->where('title', 'like', '%' . $search . '%')
                 ->orWhere('slug', 'like', '%' . $search . '%')
                 ->orWhere('lyrics', 'like', '%' . $search . '%')
+                ->whereHas('user', function ($query) {
+                    return $query->isPublished();
+                })
                 ->get()
         );
 

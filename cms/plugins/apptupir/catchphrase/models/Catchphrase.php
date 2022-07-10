@@ -47,6 +47,7 @@ class Catchphrase extends Model
             'regex:/(?!^\d+$)^[_A-z0-9\-]*$/',
             'unique:apptupir_catchphrases,slug',
         ],
+        'lyrics'       => 'required',
         'user'         => 'required',
         'audio'        => 'required',
         'is_published' => 'boolean',
