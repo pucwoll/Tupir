@@ -19,6 +19,7 @@ export interface CatchphraseUser {
 	bio: string
 	catchphrases_count: number
 	avatar: Avatar
+	user_role: string
 }
 
 export interface Avatar {

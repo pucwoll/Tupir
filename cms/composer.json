@@ -38,15 +38,6 @@
         ],
         "post-update-cmd": [
             "php artisan october:version"
-        ],
-        "test": [
-            "phpunit --stop-on-failure"
-        ],
-        "lint": [
-            "parallel-lint --exclude vendor --exclude storage --exclude tests/fixtures/plugins/testvendor/goto/Plugin.php ."
-        ],
-        "sniff": [
-            "phpcs --colors -nq --report=\"full\" --extensions=\"php\""
         ]
     },
     "config": {
