@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Event;
 use October\Rain\Support\Facades\Config;
 use Illuminate\Http\Resources\Json\Resource;
-use Libuser\Userapi\Http\Resources\SimpleUserResource;
+use AppTupir\User\Http\Resources\SimpleUserResource;
 
 class CatchphraseResource extends Resource
 {
@@ -11,9 +11,10 @@ class CatchphraseResource extends Resource
 
     {
         $response = [
-            'type'        => "catchphrase",
+            'type'        => 'catchphrase',
             'id'          => $this->id,
             'title'       => $this->title,
+            'slug'        => $this->slug,
             'audio'       => url(Config::get('cms.storage.media.path')) . $this->audio,
             'lyrics'      => $this->lyrics,
             'user'        => new SimpleUserResource($this->user),

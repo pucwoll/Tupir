@@ -10,15 +10,16 @@ columns:
         label: Title
         searchable: true
         sortable: true
-    lyrics:
-        label: Lyrics
+    slug:
+        label: Slug
+        type: text
         searchable: true
+        sortable: true
     user[username]:
-        label: Username
+        label: User
         searchable: true
     updated_at:
         label: Updated at
-        type: timesince
     is_published:
         label: Is published
         type: switch

@@ -1,6 +1,8 @@
 <?php namespace AppTupir\Catchphrase\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use LibUser\UserApi\Facades\JWTAuth;
 use AppTupir\Catchphrase\Models\Catchphrase;
 use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
 
@@ -15,10 +17,34 @@ class CatchphrasesController extends Controller
         );
     }
 
-    public function show($id)
+    public function show($key)
     {
         $catchphrase = Catchphrase::isPublished()
-            ->findOrFail($id);
+            ->where('slug', $key)
+            ->orWhere('id', $key)
+            ->whereHas('user', function ($query) {
+                return $query->isPublished();
+            })
+            ->firstOrFail();
+
+        return new CatchphraseResource($catchphrase);
+    }
+
+    public function update(Request $request, Catchphrase $catchphrase)
+    {
+        $user = JWTAuth::getUser();
+
+        $catchphrase->fill($request->all());
+        $catchphrase->user = $user;
+
+        $catchphrase->save();
+
+        return new CatchphraseResource($catchphrase);
+    }
+
+    public function destroy(Catchphrase $catchphrase)
+    {
+        $catchphrase->delete();
 
         return new CatchphraseResource($catchphrase);
     }

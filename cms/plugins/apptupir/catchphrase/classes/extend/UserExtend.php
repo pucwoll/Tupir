@@ -8,17 +8,15 @@ class UserExtend
     public static function addCatchphraseRelationToUser()
     {
         User::extend(function($model) {
-            $model->hasMany['catchphrases'] = Catchphrase::class;
-            $model->hasMany['catchphrases_count'] = [Catchphrase::class, 'count' => true];
-        });
-    }
+            $model->hasMany['catchphrases'] = [
+                Catchphrase::class,
+                'order' => 'created_at desc'
+            ];
 
-    public static function addIsCreatorToUser()
-    {
-        User::extend(function($model) {
-            $model->addDynamicMethod('scopeIsCreator', function ($query) use ($model) {
-                return $query->where('is_creator', true);
-            });
+            $model->hasMany['catchphrases_count'] = [
+                Catchphrase::class,
+                'count' => true
+            ];
         });
     }
 }

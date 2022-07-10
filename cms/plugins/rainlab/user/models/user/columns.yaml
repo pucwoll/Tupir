@@ -20,7 +20,7 @@ columns:
     surname:
         label: rainlab.user::lang.user.surname
         searchable: true
-        invisible: false
+        invisible: true
 
     email:
         label: rainlab.user::lang.user.email

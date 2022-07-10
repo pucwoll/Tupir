@@ -38,7 +38,6 @@ class Plugin extends PluginBase
     public function boot()
     {
         UserExtend::addCatchphraseRelationToUser();
-        UserExtend::addIsCreatorToUser();
     }
 
     /**

@@ -1,4 +1,4 @@
 1.0.1:
-- First version of User
-- 2022_05_18_update_users_add_is_creator.php
-- 2022_05_28_update_users_add_description.php
+    - First version of User
+    - 2022_06_05_update_users_add_is_published.php
+    - 2022_06_05_update_users_add_bio.php

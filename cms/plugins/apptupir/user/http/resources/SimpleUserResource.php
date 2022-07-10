@@ -1,6 +1,5 @@
-<?php namespace Libuser\Userapi\Http\Resources;
+<?php namespace AppTupir\User\Http\Resources;
 
-use Illuminate\Support\Facades\Event;
 use Illuminate\Http\Resources\Json\Resource;
 use AppTupir\Catchphrase\Models\Catchphrase;
 
@@ -10,12 +9,12 @@ class SimpleUserResource extends Resource
 
     {
         $response = [
-            'type'               => "creator",
+            'type'               => 'user',
             'id'                 => $this->id,
             'name'               => $this->name,
-            'surname'            => $this->surname,
             'username'           => $this->username,
-            'description'        => $this->description,
+            'bio'                => $this->bio,
+            'email'              => $this->email,
             'catchphrases_count' => Catchphrase::isPublished()->where('user_id', $this->id)->count(),
             'avatar'             => $this->avatar,
         ];

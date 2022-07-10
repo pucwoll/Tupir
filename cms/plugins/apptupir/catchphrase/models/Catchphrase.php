@@ -22,6 +22,7 @@ class Catchphrase extends Model
      */
     protected $fillable = [
         'title',
+        'slug',
         'lyrics',
         'is_published',
         'user_id',
@@ -41,6 +42,11 @@ class Catchphrase extends Model
      */
     public $rules = [
         'title'        => 'required',
+        'slug'         => [
+            'required',
+            'regex:/(?!^\d+$)^[_A-z0-9\-]*$/',
+            'unique:apptupir_catchphrases,slug',
+        ],
         'user'         => 'required',
         'audio'        => 'required',
         'is_published' => 'boolean',
@@ -52,11 +58,19 @@ class Catchphrase extends Model
     protected $jsonable = [];
 
     /**
+     * @var array Attributes to be removed from the API representation of the model (ex. toArray())
+     */
+    protected $hidden = [
+        'deleted_at'
+    ];
+
+    /**
      * @var array Attributes to be cast to Argon (Carbon) instances
      */
     protected $dates = [
         'created_at',
-        'updated_at'
+        'updated_at',
+        'deleted_at'
     ];
 
     /**

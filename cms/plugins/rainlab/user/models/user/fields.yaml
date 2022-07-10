@@ -11,6 +11,7 @@ fields:
     surname:
         label: rainlab.user::lang.user.surname
         span: auto
+        invisible: true
 
 tabs:
     fields:

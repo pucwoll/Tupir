@@ -1,29 +1,29 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import type { Catchphrase, CatchphraseCreator } from '@/interfaces/catchphrases'
+import type { Catchphrase, CatchphraseUser } from '@/interfaces/catchphrases'
 
 interface CatchphrasesStore {
 	catchphrases: Catchphrase[]
-	creators: CatchphraseCreator[]
+	users: CatchphraseUser[]
 }
 
 export const useCatchphrasesStore = defineStore('catchphrases',{
   state: (): CatchphrasesStore => ({
     catchphrases: [],
-    creators: []
+    users: []
   }),
   actions: {
     async fetchCatchphrases() {
       const { data: catchphrasesData } = await axios.get(`${import.meta.env.VITE_API_URL}/catchphrases`)
       this.catchphrases = catchphrasesData.data
 
-      const { data: creatorsData } = await axios.get(`${import.meta.env.VITE_API_URL}/creators`)
-      this.creators = creatorsData.data
+      const { data: usersData } = await axios.get(`${import.meta.env.VITE_API_URL}/users`)
+      this.users = usersData.data
     }
   },
   getters: {
-    getCatchphrasesByCreatorId: (state) => {
-      return (creatorId: number): Catchphrase[] => state.catchphrases.filter((catchphrase) => creatorId === catchphrase.user.id)
+    getCatchphrasesByUserId: (state) => {
+      return (userId: number): Catchphrase[] => state.catchphrases.filter((catchphrase) => userId === catchphrase.user.id)
     }
   }
 })

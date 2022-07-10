@@ -4,7 +4,7 @@ use RainLab\User\Models\User;
 use Illuminate\Routing\Controller;
 use October\Rain\Support\Facades\Input;
 use AppTupir\Catchphrase\Models\Catchphrase;
-use Libuser\Userapi\Http\Resources\SimpleUserResource;
+use AppTupir\User\Http\Resources\SimpleUserResource;
 use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
 
 class SearchController extends Controller
@@ -13,10 +13,9 @@ class SearchController extends Controller
     {
         $search = Input::get('q');
 
-        $creator = SimpleUserResource::collection(
-            User::isCreator()
+        $user = SimpleUserResource::collection(
+            User::isPublished()
                 ->where('name', 'like', '%' . $search . '%')
-                ->orWhere('surname', 'like', '%' . $search . '%')
                 ->orWhere('username', 'like', '%' . $search . '%')
                 ->get()
         );
@@ -24,18 +23,19 @@ class SearchController extends Controller
         $catchphrase = CatchphraseResource::collection(
             Catchphrase::isPublished()
                 ->where('title', 'like', '%' . $search . '%')
+                ->orWhere('slug', 'like', '%' . $search . '%')
                 ->orWhere('lyrics', 'like', '%' . $search . '%')
                 ->get()
         );
 
-        if (count($creator) || count($catchphrase)) {
+        if (count($user) || count($catchphrase)) {
             return response()->json([
-                'data' => $creator->concat($catchphrase)
+                'data' => $user->concat($catchphrase)
             ]);
         }
         else {
             return response()->json([
-                'error'      => 'No creators or catchphrases found',
+                'error'      => 'No users or catchphrases found',
                 'statusCode' => 404
             ], 404);
         }

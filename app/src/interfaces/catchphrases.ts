@@ -2,21 +2,21 @@ export interface Catchphrase {
 	type: string
 	id: number
 	title: string
+	slug: string
 	audio: string
 	lyrics: string
-	user: CatchphraseCreator
+	user: CatchphraseUser
 	order: null
 	created_at: Date
 	updated_at: Date
 }
 
-export interface CatchphraseCreator {
+export interface CatchphraseUser {
 	type: string
 	id: number
 	name: string
-	surname: string
 	username: string
-	description: string
+	bio: string
 	catchphrases_count: number
 	avatar: Avatar
 }

@@ -7,10 +7,15 @@ fields:
         label: Title
         type: text
         span: left
+    slug:
+        label: Slug
+        type: text
+        preset: title
+        span: right
     audio:
         label: Audio file
         type: mediafinder
-        span: right
+        span: full
         fileTypes: mp3,wav
         useCaption: true
     lyrics:
@@ -18,10 +23,11 @@ fields:
         type: richeditor
         span: full
     user:
-        label: Creator
+        label: User
         type: recordfinder
-        list: ~/plugins/rainlab/user/models/user/columns.yaml
+        title: Find user
         nameFrom: username
+        list: ~/plugins/rainlab/user/models/user/columns.yaml
         recordsPerPage: 10
     is_published:
         label: Published

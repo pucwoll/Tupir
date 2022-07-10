@@ -5,15 +5,15 @@
         <div class="mb-4 flex items-center">
           <ion-avatar class="mr-4">
             <img
-              :src="creator.avatar.path"
+              :src="user.avatar.path"
               alt="avatar"
             >
           </ion-avatar>
           <div class="grow">
             <div class="flex items-center">
-              <h1>{{ creator.name }} {{ creator.surname }}</h1>
+              <h1>{{ user.name }}</h1>
             </div>
-            <h4>{{ creator.username }}</h4>
+            <h4>{{ user.username }}</h4>
           </div>
         </div>
         <div class="h-full flex items-center w-full">
@@ -29,7 +29,9 @@
                 color="dark"
               />
               <h2 class="whitespace-pre-wrap mx-4 text-start">
-                {{ catchphrase.title }}
+                <q>
+                  {{ catchphrase.lyrics }}
+                </q>
               </h2>
               <div class="ml-auto h-full" />
             </ion-button>
@@ -80,7 +82,7 @@
             <ion-button @click="share">
               <ion-icon
                 slot="icon-only"
-                :icon="shareSocialOutline"
+                :icon="arrowRedoOutline"
                 class="icon"
                 color="dark"
               />
@@ -96,8 +98,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Catchphrase, CatchphraseCreator } from '@/interfaces/catchphrases'
-import { shareSocialOutline, chatbubbleEllipsesOutline, ellipsisHorizontal, heartOutline, volumeHigh } from 'ionicons/icons'
+import type { Catchphrase, CatchphraseUser } from '@/interfaces/catchphrases'
+import { arrowRedoOutline, chatbubbleEllipsesOutline, ellipsisHorizontal, heartOutline, volumeHigh } from 'ionicons/icons'
 import { useAudioStore } from '@/store/audio'
 import { actionSheetController } from '@ionic/vue'
 import { Share } from '@capacitor/share'
@@ -105,7 +107,7 @@ import { Share } from '@capacitor/share'
 const audioStore = useAudioStore()
 
 defineProps<{
-  creator: CatchphraseCreator
+  user: CatchphraseUser
   catchphrase: Catchphrase
 }>()
 
@@ -136,7 +138,7 @@ async function showActions() {
         role: 'destructive',
       },
       {
-        text: 'Block creator',
+        text: 'Block user',
         role: 'destructive',
       },
     ]

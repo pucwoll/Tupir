@@ -3,8 +3,7 @@
 use Backend;
 use System\Classes\PluginBase;
 use AppTupir\User\Classes\Extend\UserExtend;
-use AppTupir\User\Classes\Extend\UserExtendCreator;
-use AppTupir\User\Classes\Extend\UserExtendDescription;
+use AppTupir\User\Classes\Extend\UserExtendDefaultAssets;
 use AppTupir\User\Classes\Extend\UserExtendCatchphrasesCount;
 
 /**
@@ -38,13 +37,21 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        UserExtend::extendUserResource();
+        UserExtend::updateFormFields_addUsernameField();
+        UserExtend::updateFormFields_addBioField();
         UserExtend::updateFormFields_addSuperUserSwitch();
+        UserExtend::addBioAsFillableToUser();
+
         UserExtendCatchphrasesCount::addCatchphrasesCountToColumns();
         UserExtendCatchphrasesCount::addCatchphrasesCountToResource();
-        UserExtendDescription::addDescriptionToFields();
-        UserExtendDescription::addDescriptionToResource();
-        UserExtendCreator::addCreatorToFields();
-        UserExtendCreator::addCreatorToColumns();
-        UserExtendCreator::addCreatorToResource();
+
+        UserExtend::onScopeCanSee_filterPublished();
+        UserExtend::addIsPublishedScope();
+        UserExtend::addIsPublishedAsFillable();
+        UserExtend::updateListColumns_addIsPublishedSwitch();
+        UserExtend::updateFormFields_addIsPublishedSwitch();
+
+        UserExtendDefaultAssets::beforeSave_setDefaultAvatar();
     }
 }

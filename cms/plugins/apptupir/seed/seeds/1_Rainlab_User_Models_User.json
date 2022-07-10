@@ -1,32 +1,30 @@
 [
     {
         "id": 1,
-        "name": "Roman",
-        "surname": "Sekerka",
+        "name": "Roman Sekerka",
         "username": "psycho",
-        "description": "TikTok influencer",
-        "email": "psycho@wezeo.lol",
+        "bio": "TikTok influencer",
+        "email": "psycho@wezeo.com",
         "password": "12345678",
         "password_confirmation": "12345678",
         "is_activated": true,
         "activated_at": "2022-05-19 23:07:52",
-        "is_creator": true,
+        "is_published": true,
         "avatar": {
             "url": "https://tupir.s3.eu-central-1.amazonaws.com/uploads/user/avatar/1/psycho.jpg"
         }
     },
     {
         "id": 2,
-        "name": "Robert",
-        "surname": "Geiss",
+        "name": "Robert Geiss",
         "username": "robertogeissini",
-        "description": "Roooobert!",
-        "email": "roberto@wezeo.lol",
+        "bio": "Roooobert!",
+        "email": "roberto@wezeo.com",
         "password": "12345678",
         "password_confirmation": "12345678",
         "is_activated": true,
         "activated_at": "2022-05-19 23:07:52",
-        "is_creator": true,
+        "is_published": true,
         "avatar": {
             "url": "https://tupir.s3.eu-central-1.amazonaws.com/uploads/user/avatar/2/robertogeissini.jpg"
         }

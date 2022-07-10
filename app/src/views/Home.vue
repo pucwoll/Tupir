@@ -33,7 +33,7 @@
       >
         <template #default="{ item }">
           <catchphrase-card
-            :creator="item.user"
+            :user="item.user"
             :catchphrase="item"
           />
         </template>
