@@ -121,7 +121,8 @@ class UserExtend
             $form->addFields([
                 'bio' => [
                     'label' => 'Bio',
-                    'type'  => 'richeditor',
+                    'type'  => 'textarea',
+                    'size'  => 'large',
                     'span'  => 'full'
                 ],
             ]);

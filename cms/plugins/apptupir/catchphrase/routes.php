@@ -13,6 +13,8 @@ use AppTupir\Catchphrase\Http\Controllers\UsersCatchphrasesController;
 
 use AppTupir\Catchphrase\Http\Controllers\SearchController;
 
+use AppTupir\Catchphrase\Http\Controllers\DiscoverController;
+
 Route::group([
     'prefix'      => 'api/v1',
     'middleware' => [
@@ -39,4 +41,9 @@ Route::group([
     $router
         ->get('search', [SearchController::class, 'show'])
         ->name('q');
+
+    $router
+        ->get('discover/catchphrases', [DiscoverController::class, 'discoverCatchphrases']);
+    $router
+        ->get('discover/users', [DiscoverController::class, 'discoverUsers']);
 });

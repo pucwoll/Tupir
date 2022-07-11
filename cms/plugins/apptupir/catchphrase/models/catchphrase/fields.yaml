@@ -20,7 +20,8 @@ fields:
         useCaption: true
     lyrics:
         label: Lyrics
-        type: richeditor
+        type: textarea
+        size: large
         span: full
     user:
         label: User
