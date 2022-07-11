@@ -19,7 +19,10 @@ declare module '@vue/runtime-core' {
     IonFabButton: typeof import('@ionic/vue')['IonFabButton']
     IonHeader: typeof import('@ionic/vue')['IonHeader']
     IonIcon: typeof import('@ionic/vue')['IonIcon']
+    IonItem: typeof import('@ionic/vue')['IonItem']
     IonLabel: typeof import('@ionic/vue')['IonLabel']
+    IonList: typeof import('@ionic/vue')['IonList']
+    IonModal: typeof import('@ionic/vue')['IonModal']
     IonPage: typeof import('@ionic/vue')['IonPage']
     IonRouterOutlet: typeof import('@ionic/vue')['IonRouterOutlet']
     IonSearchbar: typeof import('@ionic/vue')['IonSearchbar']
@@ -31,5 +34,4 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
-
 }

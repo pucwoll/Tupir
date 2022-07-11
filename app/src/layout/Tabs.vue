@@ -1,9 +1,10 @@
 <template>
-  <ion-page ref="page">
+  <ion-page>
     <ion-tabs>
       <ion-router-outlet />
       <ion-tab-bar slot="bottom">
         <ion-tab-button
+          id="tab1"
           tab="tab1"
           href="/tabs/home"
         >
@@ -12,6 +13,7 @@
         </ion-tab-button>
 
         <ion-tab-button
+          id="tab2"
           tab="tab2"
           href="/tabs/browse"
         >
@@ -20,14 +22,17 @@
         </ion-tab-button>
 
         <ion-tab-button
+          id="tab3"
           tab="tab3"
           class="pointer-events-none"
+          :class="isModalActive ? 'modal-active' : ''"
         >
           <ion-icon />
           <ion-label>Create</ion-label>
         </ion-tab-button>
 
         <ion-tab-button
+          id="tab4"
           tab="tab4"
           href="/tabs/inbox"
         >
@@ -36,6 +41,7 @@
         </ion-tab-button>
 
         <ion-tab-button
+          id="tab5"
           tab="tab5"
           href="/tabs/profile"
         >
@@ -48,10 +54,11 @@
         vertical="bottom"
         horizontal="center"
       >
-        <ion-fab-button @click="openCreateCatchphraseModal">
+        <ion-fab-button :class="{'modal-active': isModalActive}">
           <ion-icon
             :icon="addCircle"
             color="medium"
+            @click="createModal()"
           />
         </ion-fab-button>
       </ion-fab>
@@ -65,17 +72,20 @@ import { modalController } from '@ionic/vue'
 import CreateCatchphrase from '@/views/CreateCatchphrase.vue'
 import { ref } from 'vue'
 
-const page = ref(null)
+const isModalActive = ref(false)
 
-async function openCreateCatchphraseModal() {
+async function createModal() {
   const modal = await modalController.create({
     component: CreateCatchphrase,
     initialBreakpoint: 0.95,
-    breakpoints: [0, 0.25, 0.95],
-    swipeToClose: true
+    breakpoints: [0, 0.25, 0.95]
   })
   await modal.present()
+  isModalActive.value = true
+  await modal.onDidDismiss()
+  isModalActive.value = false
 }
+
 </script>
 
 <style scoped>
@@ -91,15 +101,77 @@ ion-tab-button {
 ion-tab-button.tab-selected {
 	border-top: 3px var(--color-selected) solid;
 }
-ion-tab-button.tab-selected ion-label {
-	font-weight: bold;
+
+
+ion-tab-button:nth-child(1).tab-selected {
+  border-top: 3px solid var(--ion-color-first);
 }
+ion-tab-button:nth-child(2).tab-selected {
+  border-top: 3px solid var(--ion-color-second);
+}
+ion-tab-button:nth-child(3).tab-selected {
+  border-top: 3px solid var(--ion-color-third);
+}
+ion-tab-button:nth-child(4).tab-selected {
+  border-top: 3px solid var(--ion-color-fourth);
+}
+ion-tab-button:nth-child(5).tab-selected {
+  border-top: 3px solid var(--ion-color-fifth);
+}
+
+
+ion-tab-button:nth-child(1).tab-selected ion-icon {
+  color: var(--ion-color-first);
+}
+
+ion-tab-button:nth-child(2).tab-selected ion-icon {
+  color: var(--ion-color-second);
+}
+
+ion-tab-button:nth-child(3).tab-selected ion-icon {
+  color: var(--ion-color-third);
+}
+
+ion-tab-button:nth-child(4).tab-selected ion-icon {
+  color: var(--ion-color-fourth);
+}
+
+ion-tab-button:nth-child(5).tab-selected ion-icon {
+  color: var(--ion-color-fifth);
+}
+
+
+ion-tab-button:nth-child(1).tab-selected ion-label {
+	font-weight: bold;
+  color: var(--ion-color-first);
+}
+
+ion-tab-button:nth-child(2).tab-selected ion-label {
+	font-weight: bold;
+  color: var(--ion-color-second);
+}
+
+ion-tab-button:nth-child(3).tab-selected ion-label {
+	font-weight: bold;
+  color: var(--ion-color-third);
+}
+
+ion-tab-button:nth-child(4).tab-selected ion-label {
+	font-weight: bold;
+  color: var(--ion-color-fourth);
+}
+
+ion-tab-button:nth-child(5).tab-selected ion-label {
+	font-weight: bold;
+  color: var(--ion-color-fifth);
+}
+
 
 ion-fab-button {
 	margin-bottom: 9px;
 	--box-shadow: none;
 	--background: var(--ion-background-color);
-	--background-activated: var(--ion-background-color);
+	--background-activated: var(--ion-kokot-color);
 	--background-focused: var(--ion-background-color);
 	--background-hover: var(--ion-background-color);
 	border-radius: 50%;
@@ -115,5 +187,12 @@ ion-fab-button > ion-icon {
 ion-fab-button ion-icon {
 	height: 50px;
 	width: 50px;
+}
+
+.modal-active {
+  border-top: 3px solid var(--ion-color-third);
+}
+ion-fab-button.modal-active {
+	border-left: 3px solid var(--ion-color-third);
 }
 </style>
