@@ -86,6 +86,7 @@ ion-fab-button {
 	--background: var(--ion-background-color);
 	--background-activated: var(--ion-background-color);
 	--background-focused: var(--ion-background-color);
+	--background-hover: var(--ion-background-color);
 	border-radius: 50%;
 	border: 3px solid transparent;
 	border-top: 3px solid var(--ion-color-light);
