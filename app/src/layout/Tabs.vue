@@ -65,7 +65,7 @@ import { home, compass, personCircle, fileTray, addCircle } from 'ionicons/icons
 
 <style scoped>
 ion-tab-bar {
-	--background: white;
+	--background: var(--ion-background-color);
 }
 
 ion-tab-button {
@@ -83,9 +83,9 @@ ion-tab-button.tab-selected ion-label {
 ion-fab-button {
 	margin-bottom: 8px;
 	--box-shadow: none;
-	--background: white;
-	--background-activated: white;
-	--background-focused: white;
+	--background: var(--ion-background-color);
+	--background-activated: var(--ion-background-color);
+	--background-focused: var(--ion-background-color);
 	--border-color: var(--ion-color-light);
 	--border-width: 3px;
 	--border-style: solid;
