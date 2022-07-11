@@ -1,5 +1,5 @@
 <template>
-  <ion-page>
+  <ion-page ref="page">
     <ion-tabs>
       <ion-router-outlet />
       <ion-tab-bar slot="bottom">
@@ -48,7 +48,7 @@
         vertical="bottom"
         horizontal="center"
       >
-        <ion-fab-button>
+        <ion-fab-button @click="openCreateCatchphraseModal">
           <ion-icon
             :icon="addCircle"
             color="medium"
@@ -61,6 +61,21 @@
 
 <script setup lang="ts">
 import { home, compass, personCircle, fileTray, addCircle } from 'ionicons/icons'
+import { modalController } from '@ionic/vue'
+import CreateCatchphrase from '@/views/CreateCatchphrase.vue'
+import { ref } from 'vue'
+
+const page = ref(null)
+
+async function openCreateCatchphraseModal() {
+  const modal = await modalController.create({
+    component: CreateCatchphrase,
+    initialBreakpoint: 0.95,
+    breakpoints: [0, 0.25, 0.95],
+    swipeToClose: true
+  })
+  await modal.present()
+}
 </script>
 
 <style scoped>
