@@ -50,7 +50,10 @@
         horizontal="center"
       >
         <ion-fab-button>
-          <ion-icon :icon="addCircle" />
+          <ion-icon
+            :icon="addCircle"
+            color="medium"
+          />
         </ion-fab-button>
       </ion-fab>
     </ion-tabs>
@@ -63,34 +66,34 @@ import { home, compass, personCircle, fileTray, addCircle } from 'ionicons/icons
 
 <style scoped>
 ion-tab-bar {
-	--background: linear-gradient(92.17deg, #DEE4F7 0%, #FFD3E3 100%);;
+	--background: white;
 }
 
 ion-tab-button {
 	box-sizing: border-box;
 	border-bottom: 3px solid transparent;
-	border-top: 3px solid transparent;
-	--background: transparent;
-	--color: white;
-	--color-selected: white;
+	border-top: 3px solid var(--ion-color-light);
 }
 ion-tab-button.tab-selected {
 	border-top: 3px var(--color-selected) solid;
 }
 ion-tab-button.tab-selected ion-label {
-	font-weight: 900;
+	font-weight: bold;
 }
 
 ion-fab-button {
 	margin-bottom: 8px;
 	--box-shadow: none;
-	--background: linear-gradient(281.32deg, #FFD3E3 -287.12%, #DEE4F7 366.27%);
-	--background-activated: linear-gradient(281.32deg, #FFD3E3 -287.12%, #DEE4F7 366.27%);
-	--background-focused: linear-gradient(281.32deg, #FFD3E3 -287.12%, #DEE4F7 366.27%);
+	--background: white;
+	--background-activated: white;
+	--background-focused: white;
+	--border-color: var(--ion-color-light);
+	--border-width: 3px;
+	--border-style: solid;
 }
 
 ion-fab-button ion-icon {
-	height: 64px;
-	width: 64px;
+	height: 50px;
+	width: 50px;
 }
 </style>
