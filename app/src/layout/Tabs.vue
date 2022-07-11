@@ -19,13 +19,17 @@
           <ion-label>Browse</ion-label>
         </ion-tab-button>
 
-        <div style="position: absolute">
-          <ion-icon size="large" :icon="addCircle" />
-          <ion-label>Create</ion-label>
-        </div>
-
         <ion-tab-button
           tab="tab3"
+          href="/tabs/inbox"
+          class="tab3"
+        >
+          <ion-icon :icon="addCircle" />
+          <ion-label>Create</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button
+          tab="tab4"
           href="/tabs/inbox"
         >
           <ion-icon :icon="fileTray" />
@@ -33,7 +37,7 @@
         </ion-tab-button>
 
         <ion-tab-button
-          tab="tab4"
+          tab="tab5"
           href="/tabs/profile"
         >
           <ion-icon :icon="personCircle" />
