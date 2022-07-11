@@ -21,7 +21,7 @@
 
         <ion-tab-button
           tab="tab3"
-          class="tab3"
+          class="pointer-events-none"
         >
           <ion-icon :icon="addCircle" />
           <ion-label>Create</ion-label>
@@ -43,6 +43,18 @@
           <ion-label>Profile</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
+      <ion-fab
+        slot="fixed"
+        vertical="bottom"
+        horizontal="center"
+      >
+        <ion-fab-button>
+          <ion-icon
+            :icon="addCircle"
+            color="medium"
+          />
+        </ion-fab-button>
+      </ion-fab>
     </ion-tabs>
   </ion-page>
 </template>
@@ -52,22 +64,35 @@ import { home, compass, personCircle, fileTray, addCircle } from 'ionicons/icons
 </script>
 
 <style scoped>
+ion-tab-bar {
+	--background: white;
+}
+
 ion-tab-button {
 	box-sizing: border-box;
 	border-bottom: 3px solid transparent;
-	border-top: 3px solid transparent;
+	border-top: 3px solid var(--ion-color-light);
 }
 ion-tab-button.tab-selected {
 	border-top: 3px var(--color-selected) solid;
 }
-.tab3 {
-  height: 100px;
-  background-color: red;
+ion-tab-button.tab-selected ion-label {
+	font-weight: bold;
 }
-.tab3 ion-icon {
-  overflow: visible;
-  position: absolute;
-  z-index: 2000;
-  top: 0;
+
+ion-fab-button {
+	margin-bottom: 8px;
+	--box-shadow: none;
+	--background: white;
+	--background-activated: white;
+	--background-focused: white;
+	--border-color: var(--ion-color-light);
+	--border-width: 3px;
+	--border-style: solid;
+}
+
+ion-fab-button ion-icon {
+	height: 50px;
+	width: 50px;
 }
 </style>
