@@ -23,7 +23,7 @@
           tab="tab3"
           class="pointer-events-none"
         >
-          <ion-icon :icon="addCircle" />
+          <ion-icon />
           <ion-label>Create</ion-label>
         </ion-tab-button>
 
