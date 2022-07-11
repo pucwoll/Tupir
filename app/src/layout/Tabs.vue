@@ -81,14 +81,19 @@ ion-tab-button.tab-selected ion-label {
 }
 
 ion-fab-button {
-	margin-bottom: 8px;
+	margin-bottom: 9px;
 	--box-shadow: none;
 	--background: var(--ion-background-color);
 	--background-activated: var(--ion-background-color);
 	--background-focused: var(--ion-background-color);
-	--border-color: var(--ion-color-light);
-	--border-width: 3px;
-	--border-style: solid;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top: 3px solid var(--ion-color-light);
+	border-left: 3px solid var(--ion-color-light);
+	transform: rotate(45deg);
+}
+ion-fab-button > ion-icon {
+	transform: rotate(45deg);
 }
 
 ion-fab-button ion-icon {
