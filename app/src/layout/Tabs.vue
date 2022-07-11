@@ -19,8 +19,21 @@
           <ion-label>Browse</ion-label>
         </ion-tab-button>
 
+        <div style="position: absolute">
+          <ion-icon size="large" :icon="addCircle" />
+          <ion-label>Create</ion-label>
+        </div>
+
         <ion-tab-button
           tab="tab3"
+          href="/tabs/inbox"
+        >
+          <ion-icon :icon="fileTray" />
+          <ion-label>Inbox</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button
+          tab="tab4"
           href="/tabs/profile"
         >
           <ion-icon :icon="personCircle" />
@@ -32,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { home, compass, personCircle } from 'ionicons/icons'
+import { home, compass, personCircle, fileTray, addCircle } from 'ionicons/icons'
 </script>
 
 <style scoped>
