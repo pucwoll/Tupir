@@ -21,7 +21,6 @@
 
         <ion-tab-button
           tab="tab3"
-          href="/tabs/inbox"
           class="tab3"
         >
           <ion-icon :icon="addCircle" />
@@ -55,12 +54,20 @@ import { home, compass, personCircle, fileTray, addCircle } from 'ionicons/icons
 <style scoped>
 ion-tab-button {
 	box-sizing: border-box;
-	margin-left: 25px;
-	margin-right: 25px;
 	border-bottom: 3px solid transparent;
 	border-top: 3px solid transparent;
 }
 ion-tab-button.tab-selected {
 	border-top: 3px var(--color-selected) solid;
+}
+.tab3 {
+  height: 100px;
+  background-color: red;
+}
+.tab3 ion-icon {
+  overflow: visible;
+  position: absolute;
+  z-index: 2000;
+  top: 0;
 }
 </style>
