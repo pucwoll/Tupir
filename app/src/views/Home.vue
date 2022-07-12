@@ -15,7 +15,6 @@
             </ion-button>
             <ion-button
               class="font-semibold header-button"
-              color="light"
               @click="currentSegment = 'for you'"
             >
               <span :class="currentSegment === 'for you' ? 'selected' : ''">For You</span>
@@ -73,32 +72,19 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-ion-toolbar {
-	--background: transparent;
-	--border-width: 0 !important;
-}
-
-ion-content {
-	--background: linear-gradient(163.53deg, rgba(189, 224, 254, 0.5) 26.71%, rgba(251, 214, 210, 0) 88.59%), linear-gradient(137.84deg, rgba(255, 175, 204, 0.3) 0%, rgba(241, 144, 183, 0) 81.9%), linear-gradient(338.12deg, rgba(255, 200, 221, 0.8) 14.29%, rgba(206, 73, 191, 0) 90.05%), linear-gradient(106.23deg, rgba(205, 180, 219, 0.7) -1.99%, rgba(166, 62, 197, 0) -1.99%);
-}
-
-.header-button > span {
-	text-shadow: 0px 1px 2px rgba(var(--ion-color-dark-rgb), 0.2);
-}
-
 .header-button {
-  overflow: hidden;
-}
-
-.header-button > span.selected {
-	padding-bottom: 4px;
-	padding-top: 4px;
-	border-bottom: 2px solid var(--ion-color-light);
-	border-top: 2px solid transparent;
-	text-shadow: 0px 2px 5px rgba(var(--ion-color-dark-rgb), 0.2);
-}
-
-.header-button > span:not(.selected) {
-	@apply opacity-80
+  span {
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    &.selected {
+      padding-bottom: 4px;
+      padding-top: 4px;
+      border-bottom: 2px solid #ffffff;
+      border-top: 2px solid transparent;
+    }
+    &:not(.selected) {
+      opacity: 0.5;
+    }
+  }
 }
 </style>

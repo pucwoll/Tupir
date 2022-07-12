@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './theme/index.css'
+import './theme/index.pcss'
 import { IonicVue } from '@ionic/vue'
 import router from './router'
 import { createPinia } from 'pinia'
