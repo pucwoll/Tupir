@@ -79,27 +79,30 @@ import { createAnimation, modalController } from '@ionic/vue'
 import CreateCatchphrase from '@/views/CreateCatchphrase.vue'
 import { ref } from 'vue'
 import loader from '@/plugins/loader'
+
 const modal = ref<HTMLIonModalElement|null>(null)
+const isModalOpened = ref(false)
 
 async function createModal() {
-  loader.startLoading()
-  if(modal.value) {
-    modal.value.dismiss()
-    modal.value = null
-    loader.clearLoading()
+  if(isModalOpened.value) {
+    if (modal.value) {
+      await modal.value.dismiss()
+      modal.value = null
+    }
     return
   }
+  isModalOpened.value = true
   modal.value = await modalController.create({
     component: CreateCatchphrase,
     initialBreakpoint: 0.95,
     breakpoints: [0, 0.95],
   })
   document.querySelector('ion-tabs')?.appendChild(modal.value)
-  loader.clearLoading()
   modal.value.present()
 
+
   await modal.value.onDidDismiss()
-  loader.clearLoading()
+  isModalOpened.value = false
   modal.value = null
 }
 
@@ -183,7 +186,7 @@ ion-fab-button {
 	margin-bottom: 9px;
 	--box-shadow: none;
 	--background: var(--ion-background-color);
-	--background-activated: var(--ion-kokot-color);
+	--background-activated: var(--ion-background-color);
 	--background-focused: var(--ion-background-color);
 	--background-hover: var(--ion-background-color);
 	border-radius: 50%;
