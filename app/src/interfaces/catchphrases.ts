@@ -5,8 +5,10 @@ export interface Catchphrase {
 	slug: string
 	audio: string
 	lyrics: string
+	tags_string: null | string
+	tags: null | Array<string>
 	user: CatchphraseUser
-	sort_order: null
+	order: null | number
 	created_at: Date
 	updated_at: Date
 }

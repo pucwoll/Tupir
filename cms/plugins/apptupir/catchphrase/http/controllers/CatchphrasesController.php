@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use LibUser\UserApi\Facades\JWTAuth;
+use October\Rain\Support\Facades\Event;
 use AppTupir\Catchphrase\Models\Catchphrase;
 use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
 
@@ -29,6 +30,21 @@ class CatchphrasesController extends Controller
                 return $query->isPublished();
             })
             ->firstOrFail();
+
+        Event::fire('apptupir.catchphrase.action.show', [$catchphrase]);
+
+        return new CatchphraseResource($catchphrase);
+    }
+
+    public function store()
+    {
+        $catchphrase = new Catchphrase();
+
+        $catchphrase->fill(post());
+
+        $catchphrase->user = JWTAuth::getUser();
+
+        $catchphrase->save();
 
         return new CatchphraseResource($catchphrase);
     }

@@ -3,6 +3,8 @@
 use Backend;
 use System\Classes\PluginBase;
 use AppTupir\User\Classes\Extend\UserExtend;
+use AppTupir\User\Classes\Extend\UserFlagExtend;
+use LibUser\UserFlag\Classes\Services\UserFlagService;
 use AppTupir\User\Classes\Extend\UserExtendDefaultAssets;
 use AppTupir\User\Classes\Extend\UserExtendCatchphrasesCount;
 
@@ -43,6 +45,13 @@ class Plugin extends PluginBase
         UserExtend::updateFormFields_addSuperUserSwitch();
         UserExtend::addBioAsFillableToUser();
 
+        UserExtend::addFollowingRelationToUser();
+        UserExtend::addFollowersRelationToUser();
+        UserExtend::addLikesRelationToUser();
+        UserExtend::addBookmarksRelationToUser();
+        UserExtend::addSharesRelationToUser();
+        UserExtend::addCatchphraseRelationToUser();
+
         UserExtendCatchphrasesCount::addCatchphrasesCountToColumns();
         UserExtendCatchphrasesCount::addCatchphrasesCountToResource();
 
@@ -51,7 +60,13 @@ class Plugin extends PluginBase
         UserExtend::addIsPublishedAsFillable();
         UserExtend::updateListColumns_addIsPublishedSwitch();
         UserExtend::updateFormFields_addIsPublishedSwitch();
+        UserExtend::deleteUserFlags_onUserDelete();
+        UserExtend::beforeShowCatchphrase_checkPublished();
 
         UserExtendDefaultAssets::beforeSave_setDefaultAvatar();
+
+        UserFlagExtend::addUserToAliasesConfig();
+        UserFlagExtend::softDeleteUserFlagsOnUserDeleteAndRestore();
+        UserFlagService::addTypeStatusToResource('libuser.profile.profile.beforeReturnResource', 'like', 'is_followed_by_active_user');
     }
 }

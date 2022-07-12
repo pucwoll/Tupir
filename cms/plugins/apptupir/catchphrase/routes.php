@@ -23,7 +23,7 @@ Route::group([
     ]
 ], function (Router $router) {
     $router
-        ->get('catchphrases', [CatchphrasesController::class, 'index']);
+        ->resource('catchphrases', CatchphrasesController::class)->only(['index', 'store']);
     $router
         ->apiResource('catchphrases', CatchphrasesController::class)
         ->middleware(CatchphrasePolicy::class)
@@ -36,7 +36,8 @@ Route::group([
     $router
         ->get('users/{key}', [UsersController::class, 'show']);
     $router
-        ->get('users/{key}/catchphrases', [UsersCatchphrasesController::class, 'show']);
+        ->get('users/{key}/catchphrases', [UsersCatchphrasesController::class, 'show'])
+        ->name('sort_type');
 
     $router
         ->get('search', [SearchController::class, 'show'])
