@@ -51,7 +51,18 @@ class CatchphraseExtend
         });
     }
 
-    public static function beforeDelete_deleteVisitsLikesBookmarksShares()
+    public static function addCommentsRelationToCatchphrase()
+    {
+        Catchphrase::extend(function (Catchphrase $catchphrase) {
+            $catchphrase->morphMany['comments'] = [
+                UserFlag::class,
+                'name' => 'flaggable',
+                'conditions' => 'type = "comment"'
+            ];
+        });
+    }
+
+    public static function beforeDelete_deleteVisitsLikesBookmarksSharesComments()
     {
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->bindEvent('model.beforeDelete', function () use ($catchphrase) {
@@ -59,11 +70,12 @@ class CatchphraseExtend
                 $catchphrase->likes()->delete();
                 $catchphrase->bookmarks()->delete();
                 $catchphrase->shares()->delete();
+                $catchphrase->comments()->delete();
             });
         });
     }
 
-    public static function afterRestore_restoreVisitsLikesBookmarksShares()
+    public static function afterRestore_restoreVisitsLikesBookmarksSharesComments()
     {
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->bindEvent('model.afterRestore', function () use ($catchphrase) {
@@ -71,11 +83,12 @@ class CatchphraseExtend
                 $catchphrase->likes()->restore();
                 $catchphrase->bookmarks()->restore();
                 $catchphrase->shares()->restore();
+                $catchphrase->comments()->restore();
             });
         });
     }
 
-    public static function updateResource_addLikesBookmarksSharesVisitsCount()
+    public static function updateResource_addVisitsLikesBookmarksSharesCommentsCount()
     {
         Event::listen('apptupir.catchphrase.catchphrase.beforeReturnResource', function(&$response, Catchphrase $catchphrase) {
             $response['likes'] = UserFlag::where([
@@ -96,6 +109,12 @@ class CatchphraseExtend
                 'flaggable_id'   => $catchphrase->id,
                 'flaggable_type' => Catchphrase::class,
                 'type'          => 'share'
+            ])->count();
+
+            $response['comments'] = UserFlag::where([
+                'flaggable_id'   => $catchphrase->id,
+                'flaggable_type' => Catchphrase::class,
+                'type'          => 'comment'
             ])->count();
 
             $response['visits'] = UserFlag::where([

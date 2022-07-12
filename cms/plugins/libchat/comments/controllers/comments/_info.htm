@@ -1,0 +1,23 @@
+<div class="scoreboard">
+    <div data-control="toolbar">
+        <?php if ($formModel->commentable): ?>
+        <div class="scoreboard-item title-value">
+            <h4>Commentable</h4>
+            <p class=""><?= e(class_basename($formModel->commentable_type)) ?></p>
+            <p class="description">id: <?= e($formModel->commentable_id) ?> </p>
+        </div>
+        <?php endif ?>
+        <?php if ($formModel->parent): ?>
+        <div class="scoreboard-item title-value">
+            <h4>Parent</h4>
+            <p class=""><a href="<?= e(Backend::url('libchat/comments/comments/update/' . $formModel->parent->id)) ?>" >Comment</a></p>
+            <p class="description">id: <?= e($formModel->parent->id) ?> </p>
+        </div>
+        <?php endif ?>
+        <div class="scoreboard-item title-value">
+            <h4>Creatable</h4>
+            <p class=""><?= e($formModel->creatable_type) ?></p>
+            <p class="description">id: <?= e($formModel->creatable_id) ?> </p>
+        </div>
+    </div>
+</div>

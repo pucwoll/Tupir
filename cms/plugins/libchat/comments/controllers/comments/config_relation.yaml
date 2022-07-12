@@ -1,0 +1,13 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+answers:
+    label: Comments
+    manage:
+        form: $/libchat/comments/models/comment/fields.yaml
+        list: $/libchat/comments/models/comment/columns.yaml
+    view:
+        list: $/libchat/comments/models/comment/columns.yaml
+        toolbarButtons: create|delete
+        recordUrl: libchat/comments/comments/update/:id

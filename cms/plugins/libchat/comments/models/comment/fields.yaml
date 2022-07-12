@@ -1,0 +1,21 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    _info:
+        type: partial
+        path: $/libchat/comments/controllers/comments/_info.htm
+        context: [ update, preview ]
+tabs:
+    fields:
+        content:
+            label: Content
+            type: textarea
+            tab: General
+        children:
+            type: partial
+            path: $/libchat/comments/controllers/comments/_children.htm
+            tab: Comments
+            context: [ update, preview ]
+

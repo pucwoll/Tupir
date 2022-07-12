@@ -46,17 +46,19 @@ class Plugin extends PluginBase
         CatchphraseExtend::addLikesRelationToCatchphrase();
         CatchphraseExtend::addVisitsRelationToCatchphrase();
         CatchphraseExtend::addSharesRelationToCatchphrase();
+        CatchphraseExtend::addCommentsRelationToCatchphrase();
         CatchphraseExtend::addBookmarksRelationToCatchphrase();
 
-        CatchphraseExtend::beforeDelete_deleteVisitsLikesBookmarksShares();
-        CatchphraseExtend::afterRestore_restoreVisitsLikesBookmarksShares();
+        CatchphraseExtend::beforeDelete_deleteVisitsLikesBookmarksSharesComments();
+        CatchphraseExtend::afterRestore_restoreVisitsLikesBookmarksSharesComments();
 
-        CatchphraseExtend::updateResource_addLikesBookmarksSharesVisitsCount();
+        CatchphraseExtend::updateResource_addVisitsLikesBookmarksSharesCommentsCount();
         CatchphraseExtend::bindEvent_creatVisitFlagWhenSpecificCatchphraseIsRequested();
 
         UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'like', 'like_by_active_user');
         UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'bookmark', 'bookmark_by_active_user');
         UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'share', 'share_by_active_user');
+        UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'comment', 'comment_by_active_user');
         UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'visit', 'visit_by_active_user');
     }
 
