@@ -124,6 +124,17 @@ class UserExtend
         });
     }
 
+    public static function addCommentsRelationToUser()
+    {
+        User::extend(function (User $user) {
+            $user->hasMany['comments'] = [
+                UserFlag::class,
+                'conditions' => "type = 'comment' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
+                'order' => 'updated_at desc'
+            ];
+        });
+    }
+
     public static function addSharesRelationToUser()
     {
         User::extend(function (User $user) {
@@ -161,6 +172,7 @@ class UserExtend
             $data['followers'] = SimpleUserResource::collection($user->followers->filter()->pluck('user')->filter());
 
             $data['likes'] = CatchphraseResource::collection($user->likes->pluck('flaggable'));
+            $data['comments'] = CatchphraseResource::collection($user->comments->pluck('flaggable'));
             $data['bookmarks'] = CatchphraseResource::collection($user->bookmarks->pluck('flaggable'));
             $data['catchphrases'] = CatchphraseResource::collection($user->posts()->where('is_published', true)->orderByDesc('created_at')->get());
         });
