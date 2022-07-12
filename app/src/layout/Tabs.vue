@@ -4,54 +4,16 @@
       <ion-router-outlet />
       <ion-tab-bar slot="bottom">
         <ion-tab-button
-          id="tab1"
-          tab="tab1"
-          href="/tabs/home"
+          v-for="tab in tabs"
+          :id="`tab${tab.id}`"
+          :key="tab.id"
+          :tab="`tab${tab.tab}`"
+          :href="tab?.href"
+          :class="modal && tab?.type == 'fab' ? 'modal-active' : ''"
           @click="closeModal"
         >
-          <ion-icon :icon="home" />
-          <ion-label>Home</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button
-          id="tab2"
-          tab="tab2"
-          href="/tabs/browse"
-          @click="closeModal"
-        >
-          <ion-icon :icon="compass" />
-          <ion-label>Browse</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button
-          id="tab3"
-          tab="tab3"
-          class="pointer-events-none"
-          :class="modal ? 'modal-active' : ''"
-          @click="closeModal"
-        >
-          <ion-icon />
-          <ion-label>Create</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button
-          id="tab4"
-          tab="tab4"
-          href="/tabs/inbox"
-          @click="closeModal"
-        >
-          <ion-icon :icon="fileTray" />
-          <ion-label>Inbox</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button
-          id="tab5"
-          tab="tab5"
-          href="/tabs/profile"
-          @click="closeModal"
-        >
-          <ion-icon :icon="personCircle" />
-          <ion-label>Profile</ion-label>
+          <ion-icon :icon="getImageUrl(tab?.icon)" />
+          <ion-label>{{ tab.label }}</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
       <ion-fab
@@ -74,12 +36,14 @@
 </template>
 
 <script setup lang="ts">
-import { home, compass, personCircle, fileTray, addCircle } from 'ionicons/icons'
-import { createAnimation, modalController } from '@ionic/vue'
+// import * as icons from 'ionicons/icons'
+import { addCircle } from 'ionicons/icons'
+import { modalController } from '@ionic/vue'
 import CreateCatchphrase from '@/views/CreateCatchphrase.vue'
+import tabs from './config/tabs.json'
 import { ref } from 'vue'
-import loader from '@/plugins/loader'
 
+// eslint-disable-next-line no-undef
 const modal = ref<HTMLIonModalElement|null>(null)
 const isModalOpened = ref(false)
 
@@ -112,7 +76,9 @@ function closeModal() {
     modal.value = null
   }
 }
-
+function getImageUrl(name: any) {
+  return new URL(`../assets/icons/${name}.svg`, import.meta.url).href || null
+}
 </script>
 
 <style scoped>
