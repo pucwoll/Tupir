@@ -65,7 +65,7 @@
         >
           <ion-icon
             :icon="addCircle"
-            color="medium"
+            :color="modal ? 'third' :'medium'"
           />
         </ion-fab-button>
       </ion-fab>
@@ -78,13 +78,15 @@ import { home, compass, personCircle, fileTray, addCircle } from 'ionicons/icons
 import { createAnimation, modalController } from '@ionic/vue'
 import CreateCatchphrase from '@/views/CreateCatchphrase.vue'
 import { ref } from 'vue'
-
+import loader from '@/plugins/loader'
 const modal = ref<HTMLIonModalElement|null>(null)
 
 async function createModal() {
+  loader.startLoading()
   if(modal.value) {
     modal.value.dismiss()
     modal.value = null
+    loader.clearLoading()
     return
   }
   modal.value = await modalController.create({
@@ -93,8 +95,11 @@ async function createModal() {
     breakpoints: [0, 0.95],
   })
   document.querySelector('ion-tabs')?.appendChild(modal.value)
+  loader.clearLoading()
   modal.value.present()
+
   await modal.value.onDidDismiss()
+  loader.clearLoading()
   modal.value = null
 }
 
