@@ -1,6 +1,12 @@
 import { loadingController } from '@ionic/vue'
 
-export default {
+const loader: {
+  _isLoading: boolean
+  loader: HTMLIonLoadingElement|null
+  isLoading: () => boolean
+  startLoading: (text?: string) => void
+  clearLoading: () => void
+} = {
   _isLoading: false,
   loader: null,
 
@@ -21,6 +27,8 @@ export default {
 
   async clearLoading() {
     this._isLoading = false
-    await this.loader.dismiss()
+    await this.loader?.dismiss()
   }
 }
+
+export default loader
