@@ -2,7 +2,7 @@
   <ion-content class="ion-padding">
       <p class="title">New catchphrase</p>
       <p>"Žiaden človek nedokáže dať toľko lásky človeku, ako dokáže dať len človek človeku. Ale žiaden iný človek</p>
-      <img src="../assets/kokot.svg" alt="">
+      <img src="../assets/soundwave.svg" alt="">
 
       <div class="flex justify-between interface">
         <ion-icon :icon="cloudDownload" />
@@ -31,7 +31,7 @@ console.log('modal shown')
   ion-icon {
     border-radius: 50%;
     padding: 8px;
-    
+
     &:nth-child(odd) {
       background: var(--ion-color-fifth);
       font-size: 42px;
