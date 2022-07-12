@@ -7,6 +7,7 @@
           id="tab1"
           tab="tab1"
           href="/tabs/home"
+          @click="closeModal"
         >
           <ion-icon :icon="home" />
           <ion-label>Home</ion-label>
@@ -16,6 +17,7 @@
           id="tab2"
           tab="tab2"
           href="/tabs/browse"
+          @click="closeModal"
         >
           <ion-icon :icon="compass" />
           <ion-label>Browse</ion-label>
@@ -25,7 +27,8 @@
           id="tab3"
           tab="tab3"
           class="pointer-events-none"
-          :class="isModalActive ? 'modal-active' : ''"
+          :class="modal ? 'modal-active' : ''"
+          @click="closeModal"
         >
           <ion-icon />
           <ion-label>Create</ion-label>
@@ -35,6 +38,7 @@
           id="tab4"
           tab="tab4"
           href="/tabs/inbox"
+          @click="closeModal"
         >
           <ion-icon :icon="fileTray" />
           <ion-label>Inbox</ion-label>
@@ -44,6 +48,7 @@
           id="tab5"
           tab="tab5"
           href="/tabs/profile"
+          @click="closeModal"
         >
           <ion-icon :icon="personCircle" />
           <ion-label>Profile</ion-label>
@@ -54,11 +59,13 @@
         vertical="bottom"
         horizontal="center"
       >
-        <ion-fab-button :class="{'modal-active': isModalActive}">
+        <ion-fab-button
+          :class="{'modal-active': modal}"
+          @click="createModal()"
+        >
           <ion-icon
             :icon="addCircle"
             color="medium"
-            @click="createModal()"
           />
         </ion-fab-button>
       </ion-fab>
@@ -68,22 +75,34 @@
 
 <script setup lang="ts">
 import { home, compass, personCircle, fileTray, addCircle } from 'ionicons/icons'
-import { modalController } from '@ionic/vue'
+import { createAnimation, modalController } from '@ionic/vue'
 import CreateCatchphrase from '@/views/CreateCatchphrase.vue'
 import { ref } from 'vue'
 
-const isModalActive = ref(false)
+const modal = ref<HTMLIonModalElement|null>(null)
 
 async function createModal() {
-  const modal = await modalController.create({
+  if(modal.value) {
+    modal.value.dismiss()
+    modal.value = null
+    return
+  }
+  modal.value = await modalController.create({
     component: CreateCatchphrase,
     initialBreakpoint: 0.95,
-    breakpoints: [0, 0.25, 0.95]
+    breakpoints: [0, 0.95],
   })
-  await modal.present()
-  isModalActive.value = true
-  await modal.onDidDismiss()
-  isModalActive.value = false
+  document.querySelector('ion-tabs')?.appendChild(modal.value)
+  modal.value.present()
+  await modal.value.onDidDismiss()
+  modal.value = null
+}
+
+function closeModal() {
+  if(modal.value) {
+    modal.value.dismiss()
+    modal.value = null
+  }
 }
 
 </script>
@@ -175,5 +194,12 @@ ion-fab-button {
 	&.modal-active {
 		border-left: 3px solid var(--ion-color-third);
 	}
+}
+
+ion-tab-bar {
+  z-index: 25000;
+}
+ion-fab {
+  z-index: 25001;
 }
 </style>
