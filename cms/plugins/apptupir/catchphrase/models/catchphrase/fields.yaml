@@ -23,6 +23,12 @@ fields:
         type: textarea
         size: large
         span: full
+    tags_string:
+        label: Tags
+        type: taglist
+        span: full
+        comment: Separate tags with enter
+        separator: space
     user:
         label: User
         type: recordfinder

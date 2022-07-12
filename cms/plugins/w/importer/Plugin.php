@@ -28,6 +28,7 @@ class Plugin extends PluginBase
                 'label' => 'Import',
                 'url' => Backend::url('w/importer/import'),
                 'icon' => 'icon-list',
+                'order' => 600
             ],
         ];
     }

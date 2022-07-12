@@ -24,6 +24,8 @@ class Catchphrase extends Model
         'title',
         'slug',
         'lyrics',
+        'tags_string',
+        'tags',
         'is_published',
         'user_id',
         'audio',
@@ -90,6 +92,18 @@ class Catchphrase extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function getTagsAttribute()
+    {
+        return !is_null($this->tags_string) ? explode(' ', $this->tags_string) : $this->tags_string;
+    }
+
+    public function setTagsAttribute($value)
+    {
+        if ($value){
+            $this->attributes['tags'] = implode(' ', array_unique($value));
+        }
+    }
 
     public function scopeIsPublished($query)
     {

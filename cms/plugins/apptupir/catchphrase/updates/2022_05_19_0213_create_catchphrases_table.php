@@ -16,6 +16,8 @@ class CreateCatchphrasesTable extends Migration
             $table->string('audio')->nullable();
             $table->text('lyrics')->nullable();
 
+            $table->text('tags_string')->nullable();
+
             $table->integer('user_id')->index();
 
             $table->unsignedInteger('sort_order')->nullable()->index();

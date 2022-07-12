@@ -3,8 +3,13 @@
 use Backend\Widgets\Form;
 use Rainlab\User\Models\User;
 use October\Rain\Database\Model;
+use Illuminate\Support\Facades\DB;
 use RainLab\User\Controllers\Users;
 use Illuminate\Support\Facades\Event;
+use LibUser\UserFlag\Models\UserFlag;
+use AppTupir\Catchphrase\Models\Catchphrase;
+use AppTupir\User\Http\Resources\SimpleUserResource;
+use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
 
 class UserExtend
 {
@@ -74,10 +79,90 @@ class UserExtend
         });
     }
 
+    public static function addFollowingRelationToUser()
+    {
+        User::extend(function ($user) {
+            $user->hasMany['following'] = [
+                UserFlag::class,
+                'key' => 'user_id',
+                'conditions' => "type = 'like' AND value = 1 AND flaggable_type = 'RainLab\\\User\\\Models\\\User'"
+            ];
+        });
+    }
+
+    public static function addFollowersRelationToUser()
+    {
+        User::extend(function ($user) {
+            $user->morphMany['followers'] = [
+                UserFlag::class,
+                'name' => 'flaggable',
+                'conditions' => "type = 'like' AND value = 1 AND flaggable_type = 'RainLab\\\User\\\Models\\\User'"
+            ];
+        });
+    }
+
+    public static function addLikesRelationToUser()
+    {
+        User::extend(function (User $user) {
+            $user->hasMany['likes'] = [
+                UserFlag::class,
+                'name' => 'flaggable',
+                'conditions' => "type = 'like' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
+                'order' => 'updated_at desc'
+            ];
+        });
+    }
+
+    public static function addBookmarksRelationToUser()
+    {
+        User::extend(function (User $user) {
+            $user->hasMany['bookmarks'] = [
+                UserFlag::class,
+                'conditions' => "type = 'bookmark' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
+                'order' => 'updated_at desc'
+            ];
+        });
+    }
+
+    public static function addSharesRelationToUser()
+    {
+        User::extend(function (User $user) {
+            $user->hasMany['shares'] = [
+                UserFlag::class,
+                'conditions' => "type = 'share' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
+                'order' => 'updated_at desc'
+            ];
+        });
+    }
+
+    public static function addCatchphraseRelationToUser()
+    {
+        User::extend(function ($user) {
+            $user->hasMany['catchphrases'] = [
+                Catchphrase::class,
+                'order' => 'created_at desc',
+                'softDelete' => true,
+                'delete' => true
+            ];
+
+            $user->hasMany['catchphrases_count'] = [
+                Catchphrase::class,
+                'count' => true
+            ];
+        });
+    }
+
     public static function extendUserResource()
     {
         Event::listen('libuser.userapi.user.beforeReturnResource', function (&$data, User $user) {
             $data['bio'] = $user->bio;
+
+            $data['following'] = SimpleUserResource::collection($user->following->pluck('flaggable')->filter());
+            $data['followers'] = SimpleUserResource::collection($user->followers->filter()->pluck('user')->filter());
+
+            $data['likes'] = CatchphraseResource::collection($user->likes->pluck('flaggable'));
+            $data['bookmarks'] = CatchphraseResource::collection($user->bookmarks->pluck('flaggable'));
+            $data['catchphrases'] = CatchphraseResource::collection($user->posts()->where('is_published', true)->orderByDesc('created_at')->get());
         });
     }
 
@@ -141,13 +226,34 @@ class UserExtend
 
             $form->addFields([
                 'is_superuser' => [
-                    'label'   => 'Superuser',
-                    'type'    => 'switch',
-                    'default' => 'false',
-                    'span'    => 'left',
+                    'label'    => 'Superuser',
+                    'type'     => 'switch',
+                    'default'  => 'false',
+                    'span'     => 'left',
                     'disabled' => $form->context === 'preview'
                 ],
             ]);
+        });
+    }
+
+    public static function deleteUserFlags_onUserDelete()
+    {
+        User::extend(function (User $user) {
+            $user->bindEvent('model.beforeDelete', function () use ($user) {
+                DB::table('libuser_userflag_user_flags')
+                    ->where('user_id', $user->id)
+                    ->where('type', '<>', 'visit')
+                    ->delete();
+            });
+        });
+    }
+
+    public static function beforeShowCatchphrase_checkPublished()
+    {
+        Event::listen('apptupir.catchphrase.action.show', function ($catchphrase) {
+            if (!$catchphrase->user->is_published) {
+                throw new \Exception('Catchphrase not found', 404);
+            }
         });
     }
 }

@@ -17,6 +17,8 @@ class CatchphraseResource extends Resource
             'slug'        => $this->slug,
             'audio'       => url(Config::get('cms.storage.media.path')) . $this->audio,
             'lyrics'      => $this->lyrics,
+            'tags_string' => $this->tags_string,
+            'tags'        => $this->tags,
             'user'        => new SimpleUserResource($this->user),
             'order'       => $this->sort_order,
             'created_at'  => $this->created_at->toDateTimeString(),

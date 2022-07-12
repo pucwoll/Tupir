@@ -4,7 +4,9 @@ use Backend;
 use System\Classes\PluginBase;
 use Illuminate\Contracts\Http\Kernel;
 use LibUser\UserApi\Http\Middlewares\Check;
-use AppTupir\Catchphrase\Classes\Extend\UserExtend;
+use LibUser\UserFlag\Classes\Services\UserFlagService;
+use AppTupir\Catchphrase\Classes\Extend\UserFlagExtend;
+use AppTupir\Catchphrase\Classes\Extend\CatchphraseExtend;
 
 /**
  * Project Plugin Information File
@@ -12,7 +14,9 @@ use AppTupir\Catchphrase\Classes\Extend\UserExtend;
 class Plugin extends PluginBase
 {
     public $require = [
-        'RainLab.User'
+        'RainLab.User',
+        'LibUser.UserApi',
+        'LibUser.UserFlag'
     ];
 
     /**
@@ -37,7 +41,23 @@ class Plugin extends PluginBase
 
     public function boot()
     {
-        UserExtend::addCatchphraseRelationToUser();
+        UserFlagExtend::addPostToAliasesConfig();
+
+        CatchphraseExtend::addLikesRelationToCatchphrase();
+        CatchphraseExtend::addVisitsRelationToCatchphrase();
+        CatchphraseExtend::addSharesRelationToCatchphrase();
+        CatchphraseExtend::addBookmarksRelationToCatchphrase();
+
+        CatchphraseExtend::beforeDelete_deleteVisitsLikesBookmarksShares();
+        CatchphraseExtend::afterRestore_restoreVisitsLikesBookmarksShares();
+
+        CatchphraseExtend::updateResource_addLikesBookmarksSharesVisitsCount();
+        CatchphraseExtend::bindEvent_creatVisitFlagWhenSpecificCatchphraseIsRequested();
+
+        UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'like', 'like_by_active_user');
+        UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'bookmark', 'bookmark_by_active_user');
+        UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'share', 'share_by_active_user');
+        UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'visit', 'visit_by_active_user');
     }
 
     /**

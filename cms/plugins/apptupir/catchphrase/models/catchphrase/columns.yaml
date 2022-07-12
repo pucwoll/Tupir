@@ -15,6 +15,10 @@ columns:
         type: text
         searchable: true
         sortable: true
+    tags_string:
+        label: Tags
+        searchable: true
+        sortable: true
     user[username]:
         label: User
         searchable: true
