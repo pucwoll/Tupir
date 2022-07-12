@@ -83,7 +83,7 @@ ion-content {
 }
 
 .header-button > span {
-	text-shadow: 1px 1px rgba(var(--ion-color-dark-rgb), 0.5);
+	text-shadow: 0px 1px 2px rgba(var(--ion-color-dark-rgb), 0.2);
 }
 
 .header-button {
@@ -95,7 +95,7 @@ ion-content {
 	padding-top: 4px;
 	border-bottom: 2px solid var(--ion-color-light);
 	border-top: 2px solid transparent;
-	box-shadow: 0 1px rgba(var(--ion-color-dark-rgb), 0.5);
+	text-shadow: 0px 2px 5px rgba(var(--ion-color-dark-rgb), 0.2);
 }
 
 .header-button > span:not(.selected) {
