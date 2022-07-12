@@ -91,81 +91,69 @@ async function createModal() {
 <style scoped>
 ion-tab-bar {
 	--background: var(--ion-background-color);
+	ion-tab-button {
+		box-sizing: border-box;
+		border-bottom: 3px solid transparent;
+		border-top: 3px solid var(--ion-color-light);
+		&.tab-selected {
+			&:nth-child(1) {
+				border-top: 3px solid var(--ion-color-first);
+				ion-icon {
+					color: var(--ion-color-first);
+				}
+				ion-label {
+					font-weight: bold;
+					color: var(--ion-color-first);
+				}
+			}
+			&:nth-child(2) {
+				border-top: 3px solid var(--ion-color-second);
+				ion-icon {
+					color: var(--ion-color-second);
+				}
+				ion-label {
+					font-weight: bold;
+					color: var(--ion-color-second);
+				}
+			}
+			&:nth-child(3) {
+				border-top: 3px solid var(--ion-color-third);
+				ion-icon {
+					color: var(--ion-color-third);
+				}
+				ion-label {
+					font-weight: bold;
+					color: var(--ion-color-third);
+				}
+			}
+			&:nth-child(4) {
+				border-top: 3px solid var(--ion-color-fourth);
+				ion-icon {
+					color: var(--ion-color-fourth);
+				}
+				ion-label {
+					font-weight: bold;
+					color: var(--ion-color-fourth);
+				}
+			}
+			&:nth-child(5) {
+				border-top: 3px solid var(--ion-color-fifth);
+				ion-icon {
+					color: var(--ion-color-fifth);
+				}
+				ion-label {
+					font-weight: bold;
+					color: var(--ion-color-fifth);
+				}
+			}
+		}
+	}
 }
 
-ion-tab-button {
-	box-sizing: border-box;
-	border-bottom: 3px solid transparent;
-	border-top: 3px solid var(--ion-color-light);
-}
-ion-tab-button.tab-selected {
-	border-top: 3px var(--color-selected) solid;
-}
 
-
-ion-tab-button:nth-child(1).tab-selected {
-  border-top: 3px solid var(--ion-color-first);
+.modal-active {
+	border-top: 3px solid var(--ion-color-third);
 }
-ion-tab-button:nth-child(2).tab-selected {
-  border-top: 3px solid var(--ion-color-second);
-}
-ion-tab-button:nth-child(3).tab-selected {
-  border-top: 3px solid var(--ion-color-third);
-}
-ion-tab-button:nth-child(4).tab-selected {
-  border-top: 3px solid var(--ion-color-fourth);
-}
-ion-tab-button:nth-child(5).tab-selected {
-  border-top: 3px solid var(--ion-color-fifth);
-}
-
-
-ion-tab-button:nth-child(1).tab-selected ion-icon {
-  color: var(--ion-color-first);
-}
-
-ion-tab-button:nth-child(2).tab-selected ion-icon {
-  color: var(--ion-color-second);
-}
-
-ion-tab-button:nth-child(3).tab-selected ion-icon {
-  color: var(--ion-color-third);
-}
-
-ion-tab-button:nth-child(4).tab-selected ion-icon {
-  color: var(--ion-color-fourth);
-}
-
-ion-tab-button:nth-child(5).tab-selected ion-icon {
-  color: var(--ion-color-fifth);
-}
-
-
-ion-tab-button:nth-child(1).tab-selected ion-label {
-	font-weight: bold;
-  color: var(--ion-color-first);
-}
-
-ion-tab-button:nth-child(2).tab-selected ion-label {
-	font-weight: bold;
-  color: var(--ion-color-second);
-}
-
-ion-tab-button:nth-child(3).tab-selected ion-label {
-	font-weight: bold;
-  color: var(--ion-color-third);
-}
-
-ion-tab-button:nth-child(4).tab-selected ion-label {
-	font-weight: bold;
-  color: var(--ion-color-fourth);
-}
-
-ion-tab-button:nth-child(5).tab-selected ion-label {
-	font-weight: bold;
-  color: var(--ion-color-fifth);
-}
-
 
 ion-fab-button {
 	margin-bottom: 9px;
@@ -179,20 +167,13 @@ ion-fab-button {
 	border-top: 3px solid var(--ion-color-light);
 	border-left: 3px solid var(--ion-color-light);
 	transform: rotate(45deg);
-}
-ion-fab-button > ion-icon {
-	transform: rotate(45deg);
-}
-
-ion-fab-button ion-icon {
-	height: 50px;
-	width: 50px;
-}
-
-.modal-active {
-  border-top: 3px solid var(--ion-color-third);
-}
-ion-fab-button.modal-active {
-	border-left: 3px solid var(--ion-color-third);
+	ion-icon {
+		height: 50px;
+		width: 50px;
+		transform: rotate(45deg);
+	}
+	&.modal-active {
+		border-left: 3px solid var(--ion-color-third);
+	}
 }
 </style>
