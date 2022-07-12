@@ -86,6 +86,10 @@ ion-content {
 	text-shadow: 1px 1px rgba(var(--ion-color-dark-rgb), 0.5);
 }
 
+.header-button {
+  overflow: hidden;
+}
+
 .header-button > span.selected {
 	padding-bottom: 4px;
 	padding-top: 4px;
