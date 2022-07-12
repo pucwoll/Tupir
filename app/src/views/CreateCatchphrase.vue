@@ -5,8 +5,8 @@
     </p>
     <p>"Žiaden človek nedokáže dať toľko lásky človeku, ako dokáže dať len človek človeku. Ale žiaden iný človek</p>
     <img
-      src="../assets/soundwave.svg"
-      alt=""
+      src="@/assets/soundwave.svg"
+      alt="soundWave"
     >
 
     <div class="flex justify-between interface">

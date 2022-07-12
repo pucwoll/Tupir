@@ -9,10 +9,10 @@
           :key="tab.id"
           :tab="`tab${tab.tab}`"
           :href="tab?.href"
-          :class="modal && tab?.type == 'fab' ? 'modal-active' : ''"
+          :class="modal && tab?.type === 'fab' ? 'modal-active' : ''"
           @click="closeModal"
         >
-          <ion-icon :icon="getImageUrl(tab?.icon)" />
+          <ion-icon :icon="icons[tab?.icon]" />
           <ion-label>{{ tab.label }}</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
@@ -26,7 +26,7 @@
           @click="createModal()"
         >
           <ion-icon
-            :icon="addCircle"
+            :icon="icons.addCircle"
             :color="modal ? 'third' :'medium'"
           />
         </ion-fab-button>
@@ -36,8 +36,7 @@
 </template>
 
 <script setup lang="ts">
-// import * as icons from 'ionicons/icons'
-import { addCircle } from 'ionicons/icons'
+import * as icons from 'ionicons/icons'
 import { modalController } from '@ionic/vue'
 import CreateCatchphrase from '@/views/CreateCatchphrase.vue'
 import tabs from './config/tabs.json'
@@ -75,9 +74,6 @@ function closeModal() {
     modal.value.dismiss()
     modal.value = null
   }
-}
-function getImageUrl(name: any) {
-  return new URL(`../assets/icons/${name}.svg`, import.meta.url).href || null
 }
 </script>
 
