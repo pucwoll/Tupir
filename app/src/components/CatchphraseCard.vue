@@ -29,9 +29,7 @@
                 color="dark"
               />
               <h2 class="whitespace-pre-wrap mx-4 text-start">
-                <q>
-                  {{ catchphrase.lyrics }}
-                </q>
+                {{ catchphrase.title }}
               </h2>
               <div class="ml-auto h-full" />
             </ion-button>
@@ -39,7 +37,7 @@
         </div>
         <ion-buttons>
           <ion-button
-            @click="showActions"
+            @click="showActions(catchphrase)"
           >
             <ion-icon
               slot="icon-only"
@@ -129,17 +127,28 @@ async function share() {
   })
 }
 
-async function showActions() {
+async function showActions(catchphrase: Catchphrase) {
   const sheet = await actionSheetController.create({
-    header: 'Options',
+    header: catchphrase.title,
     buttons: [
       {
-        text: 'Report catchphrase',
+        text: 'Block',
         role: 'destructive',
       },
       {
-        text: 'Block user',
+        text: 'Report',
         role: 'destructive',
+      },
+      {
+        text: 'Follow',
+        role: undefined,
+      },
+      {
+        text: 'Save',
+        role: undefined,
+      },{
+        text: 'Cancel',
+        role: 'cancel',
       },
     ]
   })

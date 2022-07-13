@@ -2,7 +2,11 @@ ion-toolbar {
   --background: transparent;
   --border-width: 0 !important;
   ion-title {
-    color: #ffffff;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    @apply white-text-with-shadow
   }
+}
+
+.white-text-with-shadow {
+  color: #ffffff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
