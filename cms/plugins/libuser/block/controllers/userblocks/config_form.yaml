@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: User Block
+
+# Model Form Field configuration
+form: $/libuser/block/models/userblock/fields.yaml
+
+# Model Class name
+modelClass: LibUser\Block\Models\UserBlock
+
+# Default redirect location
+defaultRedirect: libuser/block/userblocks
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: libuser/block/userblocks/update/:id
+    redirectClose: libuser/block/userblocks
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: libuser/block/userblocks
+    redirectClose: libuser/block/userblocks
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

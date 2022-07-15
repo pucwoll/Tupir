@@ -1,0 +1,20 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+
+    user_id:
+        label: User ID
+        searchable: true
+
+    reportable_type:
+        label: Reportable type
+        searchable: true
+
+    reportable_id:
+        label: Reportable ID
+        searchable: true

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: User Report
+
+# Model Form Field configuration
+form: $/libuser/report/models/userreport/fields.yaml
+
+# Model Class name
+modelClass: LibUser\Report\Models\UserReport
+
+# Default redirect location
+defaultRedirect: libuser/report/userreports
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: libuser/report/userreports/update/:id
+    redirectClose: libuser/report/userreports
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: libuser/report/userreports
+    redirectClose: libuser/report/userreports
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

@@ -1,0 +1,6 @@
+1.0.1:
+    - First version of Device
+    - 20210825_create_devices_table.php
+1.0.2:
+    - Add column expire_at to devices table
+    - 20210909_update_devices_table.php

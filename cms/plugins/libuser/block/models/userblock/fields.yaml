@@ -1,0 +1,16 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    user:
+        label: User
+        nameFrom: username
+        span: auto
+        type: relation
+
+    blockedUser:
+        label: Blocked user
+        nameFrom: username
+        span: auto
+        type: relation
