@@ -1,5 +1,6 @@
 <?php namespace AppTupir\User\Classes\Extend;
 
+use Exception;
 use Backend\Widgets\Form;
 use Rainlab\User\Models\User;
 use October\Rain\Database\Model;
@@ -48,10 +49,10 @@ class UserExtend
 
             $form->addFields([
                 'is_published' => [
-                    'label'   => 'Published',
-                    'type'    => 'switch',
-                    'default' => 'true',
-                    'span'    => 'right',
+                    'label'    => 'Published',
+                    'type'     => 'switch',
+                    'default'  => 'true',
+                    'span'     => 'right',
                     'disabled' => $form->context === 'preview'
                 ],
             ]);
@@ -72,8 +73,8 @@ class UserExtend
 
             $column->addColumns([
                 'is_published' => [
-                    'label'  => 'Is published',
-                    'type'   => 'switch',
+                    'label' => 'Is published',
+                    'type'  => 'switch',
                 ],
             ]);
         });
@@ -84,8 +85,8 @@ class UserExtend
         User::extend(function ($user) {
             $user->hasMany['following'] = [
                 UserFlag::class,
-                'key' => 'user_id',
-                'conditions' => "type = 'like' AND value = 1 AND flaggable_type = 'RainLab\\\User\\\Models\\\User'"
+                'key'        => 'user_id',
+                'conditions' => "type = 'follow' AND value = 1 AND flaggable_type = 'RainLab\\\User\\\Models\\\User'"
             ];
         });
     }
@@ -95,8 +96,8 @@ class UserExtend
         User::extend(function ($user) {
             $user->morphMany['followers'] = [
                 UserFlag::class,
-                'name' => 'flaggable',
-                'conditions' => "type = 'like' AND value = 1 AND flaggable_type = 'RainLab\\\User\\\Models\\\User'"
+                'name'       => 'flaggable',
+                'conditions' => "type = 'follow' AND value = 1 AND flaggable_type = 'RainLab\\\User\\\Models\\\User'"
             ];
         });
     }
@@ -108,7 +109,7 @@ class UserExtend
                 UserFlag::class,
                 'name' => 'flaggable',
                 'conditions' => "type = 'like' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
-                'order' => 'updated_at desc'
+                'order'      => 'updated_at desc'
             ];
         });
     }
@@ -119,7 +120,7 @@ class UserExtend
             $user->hasMany['bookmarks'] = [
                 UserFlag::class,
                 'conditions' => "type = 'bookmark' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
-                'order' => 'updated_at desc'
+                'order'      => 'updated_at desc'
             ];
         });
     }
@@ -130,7 +131,7 @@ class UserExtend
             $user->hasMany['comments'] = [
                 UserFlag::class,
                 'conditions' => "type = 'comment' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
-                'order' => 'updated_at desc'
+                'order'      => 'updated_at desc'
             ];
         });
     }
@@ -141,7 +142,18 @@ class UserExtend
             $user->hasMany['shares'] = [
                 UserFlag::class,
                 'conditions' => "type = 'share' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
-                'order' => 'updated_at desc'
+                'order'      => 'updated_at desc'
+            ];
+        });
+    }
+
+    public static function addPlaysRelationToUser()
+    {
+        User::extend(function (User $user) {
+            $user->hasMany['plays'] = [
+                UserFlag::class,
+                'conditions' => "type = 'play' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
+                'order'      => 'updated_at desc'
             ];
         });
     }
@@ -151,9 +163,9 @@ class UserExtend
         User::extend(function ($user) {
             $user->hasMany['catchphrases'] = [
                 Catchphrase::class,
-                'order' => 'created_at desc',
+                'order'      => 'created_at desc',
                 'softDelete' => true,
-                'delete' => true
+                'delete'     => true
             ];
 
             $user->hasMany['catchphrases_count'] = [
@@ -254,7 +266,7 @@ class UserExtend
             $user->bindEvent('model.beforeDelete', function () use ($user) {
                 DB::table('libuser_userflag_user_flags')
                     ->where('user_id', $user->id)
-                    ->where('type', '<>', 'visit')
+                    ->where('type', '<>', 'play')
                     ->delete();
             });
         });
@@ -264,8 +276,33 @@ class UserExtend
     {
         Event::listen('apptupir.catchphrase.action.show', function ($catchphrase) {
             if (!$catchphrase->user->is_published) {
-                throw new \Exception('Catchphrase not found', 404);
+                throw new Exception('Catchphrase not found', 404);
             }
+        });
+    }
+
+    public static function addCatchphrasesCountToColumns(){
+        Users::extendListColumns(function($column, $model) {
+
+            if (!$model instanceof User) {
+                return;
+            }
+
+            $column->addColumns([
+                'catchphrases_count' => [
+                    'label'            => 'Catchphrases count',
+                    'type'             => 'number',
+                    'relation'         => 'catchphrases_count',
+                    'useRelationCount' => 'true',
+                ],
+            ]);
+        });
+    }
+
+    public static function addCatchphrasesCountToResource()
+    {
+        Event::listen('libuser.userapi.user.beforeReturnResource', function(&$data, User $user){
+            $data['catchphrases_count'] = $user->catchphrases_count;
         });
     }
 }

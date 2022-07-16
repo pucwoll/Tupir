@@ -1,6 +1,5 @@
 <?php namespace AppTupir\Catchphrase\Classes\Extend;
 
-use LibUser\UserApi\Facades\JWTAuth;
 use LibUser\UserFlag\Models\UserFlag;
 use Illuminate\Support\Facades\Event;
 use AppTupir\Catchphrase\Models\Catchphrase;
@@ -12,19 +11,19 @@ class CatchphraseExtend
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->morphMany['likes'] = [
                 UserFlag::class,
-                'name' => 'flaggable',
+                'name'       => 'flaggable',
                 'conditions' => 'type = "like"'
             ];
         });
     }
 
-    public static function addVisitsRelationToCatchphrase()
+    public static function addPlaysRelationToCatchphrase()
     {
         Catchphrase::extend(function (Catchphrase $catchphrase) {
-            $catchphrase->morphMany['visits'] = [
+            $catchphrase->morphMany['plays'] = [
                 UserFlag::class,
-                'name' => 'flaggable',
-                'conditions' => 'type = "visit"'
+                'name'       => 'flaggable',
+                'conditions' => 'type = "play"'
             ];
         });
     }
@@ -34,7 +33,7 @@ class CatchphraseExtend
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->morphMany['bookmarks'] = [
                 UserFlag::class,
-                'name' => 'flaggable',
+                'name'       => 'flaggable',
                 'conditions' => 'type = "bookmark"'
             ];
         });
@@ -45,7 +44,7 @@ class CatchphraseExtend
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->morphMany['shares'] = [
                 UserFlag::class,
-                'name' => 'flaggable',
+                'name'       => 'flaggable',
                 'conditions' => 'type = "share"'
             ];
         });
@@ -56,17 +55,17 @@ class CatchphraseExtend
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->morphMany['comments'] = [
                 UserFlag::class,
-                'name' => 'flaggable',
+                'name'       => 'flaggable',
                 'conditions' => 'type = "comment"'
             ];
         });
     }
 
-    public static function beforeDelete_deleteVisitsLikesBookmarksSharesComments()
+    public static function beforeDelete_deletePlaysLikesBookmarksSharesComments()
     {
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->bindEvent('model.beforeDelete', function () use ($catchphrase) {
-                $catchphrase->visits()->delete();
+                $catchphrase->plays()->delete();
                 $catchphrase->likes()->delete();
                 $catchphrase->bookmarks()->delete();
                 $catchphrase->shares()->delete();
@@ -75,11 +74,11 @@ class CatchphraseExtend
         });
     }
 
-    public static function afterRestore_restoreVisitsLikesBookmarksSharesComments()
+    public static function afterRestore_restorePlaysLikesBookmarksSharesComments()
     {
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->bindEvent('model.afterRestore', function () use ($catchphrase) {
-                $catchphrase->visits()->restore();
+                $catchphrase->plays()->restore();
                 $catchphrase->likes()->restore();
                 $catchphrase->bookmarks()->restore();
                 $catchphrase->shares()->restore();
@@ -88,7 +87,7 @@ class CatchphraseExtend
         });
     }
 
-    public static function updateResource_addVisitsLikesBookmarksSharesCommentsCount()
+    public static function updateResource_addPlaysLikesBookmarksSharesCommentsCount()
     {
         Event::listen('apptupir.catchphrase.catchphrase.beforeReturnResource', function(&$response, Catchphrase $catchphrase) {
             $response['likes'] = UserFlag::where([
@@ -117,31 +116,11 @@ class CatchphraseExtend
                 'type'          => 'comment'
             ])->count();
 
-            $response['visits'] = UserFlag::where([
+            $response['plays'] = UserFlag::where([
                 'flaggable_id'   => $catchphrase->id,
                 'flaggable_type' => Catchphrase::class,
-                'type'          => 'visit'
+                'type'          => 'play'
             ])->count();
-        });
-    }
-
-    public static function bindEvent_creatVisitFlagWhenSpecificCatchphraseIsRequested()
-    {
-        Event::listen('apptupir.catchphrase.action.show', function(Catchphrase $catchphrase) {
-
-            $user = JWTAuth::getUser();
-
-            if (!$user || !$catchphrase->is_published) {
-                return;
-            }
-
-            UserFlag::create([
-                'type'          => 'visit',
-                'value'         => 1,
-                'user_id'       => $user->id,
-                'flaggable_id'   => $catchphrase->id,
-                'flaggable_type' => Catchphrase::class,
-            ]);
         });
     }
 }

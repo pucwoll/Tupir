@@ -1,6 +1,5 @@
 [
     {
-        "id": 8,
         "title": "Ako palma",
         "slug": "ako-palma",
         "audio": "/robert-geiss/ako-palma.mp3",
@@ -11,7 +10,6 @@
         "is_published": true
     },
     {
-        "id": 9,
         "title": "Asistentka",
         "slug": "asistentka",
         "audio": "/robert-geiss/asistentka.mp3",
@@ -22,7 +20,6 @@
         "is_published": true
     },
     {
-        "id": 10,
         "title": "Boze, ten je teply ako fen",
         "slug": "boze-ten-je-teply-ako-fen",
         "audio": "/robert-geiss/boze-ten-je-teply-ako-fen.mp3",
@@ -33,7 +30,6 @@
         "is_published": true
     },
     {
-        "id": 11,
         "title": "Chudak iPhone",
         "slug": "chudak-iphone",
         "audio": "/robert-geiss/chudak-iphone.mp3",
@@ -44,7 +40,6 @@
         "is_published": true
     },
     {
-        "id": 12,
         "title": "Doparoma, niekto nas musi viest!",
         "slug": "doparoma-niekto-nas-musi-viest",
         "audio": "/robert-geiss/doparoma-niekto-nas-musi-viest.mp3",
@@ -55,7 +50,6 @@
         "is_published": true
     },
     {
-        "id": 13,
         "title": "Ide s nami aj homos, boze, ten je teply ako fen",
         "slug": "ide-s-nami-aj-homos-boze-ten-je-teply-ako-fen",
         "audio": "/robert-geiss/ide-s-nami-aj-homos-boze-ten-je-teply-ako-fen.mp3",
@@ -66,7 +60,6 @@
         "is_published": true
     },
     {
-        "id": 14,
         "title": "Ide s nami aj homos",
         "slug": "ide-s-nami-aj-homos",
         "audio": "/robert-geiss/ide-s-nami-aj-homos.mp3",
@@ -77,7 +70,6 @@
         "is_published": true
     },
     {
-        "id": 15,
         "title": "Ked ju robil jej foter mohol si dat viac zalezat",
         "slug": "ked-ju-robil-jej-foter-mohol-si-dat-viac-zalezat",
         "audio": "/robert-geiss/ked-ju-robil-jej-foter-mohol-si-dat-viac-zalezat.mp3",
@@ -88,7 +80,6 @@
         "is_published": true
     },
     {
-        "id": 16,
         "title": "Kriste ten je teply",
         "slug": "kriste-ten-je-teply",
         "audio": "/robert-geiss/kriste-ten-je-teply.mp3",
@@ -99,7 +90,6 @@
         "is_published": true
     },
     {
-        "id": 17,
         "title": "Ma stisk ako zdochlina",
         "slug": "ma-stisk-ako-zdochlina",
         "audio": "/robert-geiss/ma-stisk-ako-zdochlina.mp3",
@@ -110,7 +100,6 @@
         "is_published": true
     },
     {
-        "id": 18,
         "title": "Masaz ucha cez telefon",
         "slug": "masaz-ucha-cez-telefon",
         "audio": "/robert-geiss/masaz-ucha-cez-telefon.mp3",
@@ -121,7 +110,6 @@
         "is_published": true
     },
     {
-        "id": 19,
         "title": "Nech ide bud Kim alebo ten radiator",
         "slug": "nech-ide-bud-kim-alebo-ten-radiator",
         "audio": "/robert-geiss/nech-ide-bud-kim-alebo-ten-radiator.mp3",
@@ -132,7 +120,6 @@
         "is_published": true
     },
     {
-        "id": 20,
         "title": "Podala si mu ruku?",
         "slug": "podala-si-mu-ruku",
         "audio": "/robert-geiss/podala-si-mu-ruku.mp3",
@@ -143,7 +130,6 @@
         "is_published": true
     },
     {
-        "id": 21,
         "title": "Pripomina mi to vesmirnu lod Enterprise",
         "slug": "pripomina-mi-to-vesmirnu-lod-enterprise",
         "audio": "/robert-geiss/pripomina-mi-to-vesmirnu-lod-enterprise.mp3",
@@ -154,7 +140,6 @@
         "is_published": true
     },
     {
-        "id": 22,
         "title": "Radiator",
         "slug": "radiator",
         "audio": "/robert-geiss/radiator.mp3",
@@ -165,7 +150,6 @@
         "is_published": true
     },
     {
-        "id": 23,
         "title": "Robert!",
         "slug": "robert",
         "audio": "/robert-geiss/robert.mp3",
@@ -176,7 +160,6 @@
         "is_published": true
     },
     {
-        "id": 24,
         "title": "S nim este bude veselo",
         "slug": "s-nim-este-bude-veselo",
         "audio": "/robert-geiss/s-nim-este-bude-veselo.mp3",
@@ -187,7 +170,6 @@
         "is_published": true
     },
     {
-        "id": 25,
         "title": "Sam sa lici ako zena",
         "slug": "sam-sa-lici-ako-zena",
         "audio": "/robert-geiss/sam-sa-lici-ako-zena.mp3",
@@ -198,7 +180,6 @@
         "is_published": true
     },
     {
-        "id": 26,
         "title": "Take kreslo mam aj doma",
         "slug": "take-kreslo-mam-aj-doma",
         "audio": "/robert-geiss/take-kreslo-mam-aj-doma.mp3",
@@ -209,7 +190,6 @@
         "is_published": true
     },
     {
-        "id": 27,
         "title": "Taky je teply",
         "slug": "taky-je-teply",
         "audio": "/robert-geiss/taky-je-teply.mp3",
@@ -220,7 +200,6 @@
         "is_published": true
     },
     {
-        "id": 28,
         "title": "Ten chlapec ma stisk ako zena",
         "slug": "ten-chlapec-ma-stisk-ako-zena",
         "audio": "/robert-geiss/ten-chlapec-ma-stisk-ako-zena.mp3",
@@ -231,7 +210,6 @@
         "is_published": true
     },
     {
-        "id": 29,
         "title": "Tupir",
         "slug": "tupir",
         "audio": "/robert-geiss/tupir.mp3",
@@ -242,7 +220,6 @@
         "is_published": true
     },
     {
-        "id": 30,
         "title": "Vlasy ma nutupirovane, kazdy jeden zvlast",
         "slug": "vlasy-ma-natupirovane-kazdy-jeden-zvlast",
         "audio": "/robert-geiss/vlasy-ma-nutupirovane-kazdy-jeden-zvlast.mp3",

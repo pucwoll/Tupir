@@ -9,7 +9,7 @@ class UserFlagExtend
     {
         config([
             'libuser.userflag::aliases.user' => [
-                'model' => 'RainLab\User\Models\User',
+                'model'    => 'RainLab\User\Models\User',
                 'resource' => 'LibUser\UserApi\Http\Resources\UserResource'
             ],
         ]);
@@ -23,7 +23,7 @@ class UserFlagExtend
                     ->orWhere(function ($query) use ($user) {
                         $query->where([
                             'flaggable_type' => 'RainLab\User\Models\User',
-                            'flaggable_id' => $user->id
+                            'flaggable_id'   => $user->id
                         ]);
                     })
                     ->delete();
@@ -35,7 +35,7 @@ class UserFlagExtend
                     ->orWhere(function ($query) use ($user) {
                         $query->where([
                             'flaggable_type' => 'RainLab\User\Models\User',
-                            'flaggable_id' => $user->id
+                            'flaggable_id'   => $user->id
                         ]);
                     })
                     ->restore();

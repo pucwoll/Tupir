@@ -6,7 +6,6 @@ use AppTupir\User\Classes\Extend\UserExtend;
 use AppTupir\User\Classes\Extend\UserFlagExtend;
 use LibUser\UserFlag\Classes\Services\UserFlagService;
 use AppTupir\User\Classes\Extend\UserExtendDefaultAssets;
-use AppTupir\User\Classes\Extend\UserExtendCatchphrasesCount;
 
 /**
  * User Plugin Information File
@@ -14,7 +13,7 @@ use AppTupir\User\Classes\Extend\UserExtendCatchphrasesCount;
 class Plugin extends PluginBase
 {
     public $require = [
-        'RainLab.User',
+        'RainLab.User'
     ];
 
     /**
@@ -51,10 +50,8 @@ class Plugin extends PluginBase
         UserExtend::addBookmarksRelationToUser();
         UserExtend::addCommentsRelationToUser();
         UserExtend::addSharesRelationToUser();
+        UserExtend::addPlaysRelationToUser();
         UserExtend::addCatchphraseRelationToUser();
-
-        UserExtendCatchphrasesCount::addCatchphrasesCountToColumns();
-        UserExtendCatchphrasesCount::addCatchphrasesCountToResource();
 
         UserExtend::onScopeCanSee_filterPublished();
         UserExtend::addIsPublishedScope();
@@ -63,11 +60,13 @@ class Plugin extends PluginBase
         UserExtend::updateFormFields_addIsPublishedSwitch();
         UserExtend::deleteUserFlags_onUserDelete();
         UserExtend::beforeShowCatchphrase_checkPublished();
+        UserExtend::addCatchphrasesCountToColumns();
+        UserExtend::addCatchphrasesCountToResource();
 
         UserExtendDefaultAssets::beforeSave_setDefaultAvatar();
 
         UserFlagExtend::addUserToAliasesConfig();
         UserFlagExtend::softDeleteUserFlagsOnUserDeleteAndRestore();
-        UserFlagService::addTypeStatusToResource('libuser.profile.profile.beforeReturnResource', 'like', 'is_followed_by_active_user');
+        UserFlagService::addTypeStatusToResource('libuser.profile.profile.beforeReturnResource', 'follow', 'is_followed_by_active_user');
     }
 }
