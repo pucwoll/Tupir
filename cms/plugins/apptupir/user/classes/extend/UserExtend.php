@@ -158,6 +158,17 @@ class UserExtend
         });
     }
 
+    public static function addVisitsRelationToUser()
+    {
+        User::extend(function (User $user) {
+            $user->hasMany['visits'] = [
+                UserFlag::class,
+                'conditions' => "type = 'visit' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
+                'order'      => 'updated_at desc'
+            ];
+        });
+    }
+
     public static function addCatchphraseRelationToUser()
     {
         User::extend(function ($user) {

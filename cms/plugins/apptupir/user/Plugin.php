@@ -51,6 +51,7 @@ class Plugin extends PluginBase
         UserExtend::addCommentsRelationToUser();
         UserExtend::addSharesRelationToUser();
         UserExtend::addPlaysRelationToUser();
+        UserExtend::addVisitsRelationToUser();
         UserExtend::addCatchphraseRelationToUser();
 
         UserExtend::onScopeCanSee_filterPublished();
