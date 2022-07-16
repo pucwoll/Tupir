@@ -77,34 +77,26 @@
           <div>
             <ion-tab-bar>
               <ion-tab-button
-                @click="test"
+                v-for="tab in profileTabs"
+                :key="tab.title"
+                :selected="selectedTab === tab.title"
+                @click="selectedTab = tab.title"
               >
                 <ion-icon
-                  :icon="heart"
+                  :icon="tab.icon"
                 />
-                <ion-label>Liked</ion-label>
-              </ion-tab-button>
-              <ion-tab-button
-                @click="test"
-              >
-                <ion-icon :icon="bookmark" />
-                <ion-label>Saved</ion-label>
-              </ion-tab-button>
-              <ion-tab-button
-                @click="test"
-              >
-                <ion-icon :icon="chatbubbleEllipses" />
-                <ion-label>Commented</ion-label>
-              </ion-tab-button>
-              <ion-tab-button
-                @click="test"
-              >
-                <ion-icon :icon="person" />
-                <ion-label>Created</ion-label>
+                <ion-label>{{ tab.title }}</ion-label>
               </ion-tab-button>
             </ion-tab-bar>
           </div>
         </div>
+      </div>
+      <div>
+        <CatchphraseCard
+          v-for="catchphrase in catchphrasesStore.catchphrases"
+          :user="catchphrase.user"
+          :catchphrase="catchphrase"
+        />
       </div>
     </ion-content>
   </ion-page>
@@ -112,10 +104,31 @@
 
 <script setup lang="ts">
 import { cog , heart, bookmark, chatbubbleEllipses, person } from 'ionicons/icons'
+import { ref } from 'vue'
+import { useCatchphrasesStore } from '@/store/catchphrases'
 
-function test() {
-  console.log('test')
-}
+const profileTabs: { title: 'Liked'|'Saved'|'Commented'|'Created', icon: string }[] = [
+  {
+    title: 'Liked',
+    icon: heart,
+  },
+  {
+    title: 'Saved',
+    icon: bookmark,
+  },
+  {
+    title: 'Commented',
+    icon: chatbubbleEllipses,
+  },
+  {
+    title: 'Created',
+    icon: person,
+  },
+]
+const selectedTab = ref<'Liked'|'Saved'|'Commented'|'Created'>('Liked')
+
+const catchphrasesStore = useCatchphrasesStore()
+
 </script>
 
 <style scoped>
