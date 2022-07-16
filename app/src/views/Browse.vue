@@ -22,6 +22,7 @@
       <div>
         <CatchphraseCard
           v-for="catchphrase in catchphrasesStore.catchphrases"
+          :key="catchphrase.id"
           :catchphrase="catchphrase"
           :user="catchphrase.user"
         />

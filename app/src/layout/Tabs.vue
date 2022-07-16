@@ -12,7 +12,10 @@
           :class="modal && tab?.type === 'fab' ? 'modal-active' : ''"
           @click="closeModal"
         >
-          <ion-icon :icon="icons[tab?.icon]" />
+          <ion-icon
+            :icon="tab.icon ? /* @ts-expect-error test */
+              icons[tab.icon] : ''"
+          />
           <ion-label>{{ tab.label }}</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
@@ -39,13 +42,13 @@
 import * as icons from 'ionicons/icons'
 import { modalController } from '@ionic/vue'
 import CreateCatchphrase from '@/views/CreateCatchphrase.vue'
-import tabs from './config/tabs.json'
+import tabsJson from './config/tabs.json'
 import { ref } from 'vue'
 
 // eslint-disable-next-line no-undef
 const modal = ref<HTMLIonModalElement|null>(null)
 const isModalOpened = ref(false)
-
+const tabs: {id: string, tab: string, label: string, href?: string, icon?: string, type?: string}[] = tabsJson
 async function createModal() {
   if(isModalOpened.value) {
     if (modal.value) {
