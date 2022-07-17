@@ -9,7 +9,7 @@
           :key="tab.id"
           :tab="`tab${tab.id}`"
           :href="tab?.href"
-          :class="modal && tab.href ? 'modal-active' : ''"
+          :class="modal && !tab.href ? 'modal-active' : ''"
           @click="closeModal"
         >
           <ion-icon
