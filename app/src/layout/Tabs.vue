@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-tabs>
+    <ion-tabs id="main-tabs">
       <ion-router-outlet />
       <ion-tab-bar slot="bottom">
         <ion-tab-button
@@ -64,7 +64,7 @@ async function createModal() {
     initialBreakpoint: 0.95,
     breakpoints: [0, 0.95],
   })
-  document.querySelector('ion-tabs')?.appendChild(modal.value)
+  document.querySelector('#main-tabs')?.appendChild(modal.value)
   modal.value.present()
 
 
