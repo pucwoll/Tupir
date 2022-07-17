@@ -50,7 +50,7 @@ import * as icons from 'ionicons/icons'
 import { modalController } from '@ionic/vue'
 import CreateCatchphrase from '@/views/CreateCatchphrase.vue'
 import tabs from './config/tabs.json'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 const modal = ref<HTMLIonModalElement|null>(null)
 const isModalOpened = ref(false)
