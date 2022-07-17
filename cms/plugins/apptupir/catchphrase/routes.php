@@ -36,14 +36,11 @@ Route::group([
     $router
         ->get('users/{key}', [UsersController::class, 'show']);
     $router
-        ->get('users/{key}/catchphrases', [UsersCatchphrasesController::class, 'show'])
-        ->name('sort_type');
+        ->get('users/{key}/catchphrases', [UsersCatchphrasesController::class, 'show']);
 
     $router
-        ->get('search', [SearchController::class, 'show'])
-        ->name('q');
+        ->get('search', [SearchController::class, 'show']);
 
     $router
-        ->get('discovers', DiscoversController::class)
-        ->name('discovers.index');
+        ->get('discovers', [DiscoversController::class, 'index']);
 });

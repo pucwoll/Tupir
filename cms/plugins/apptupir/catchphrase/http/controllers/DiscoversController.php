@@ -1,6 +1,5 @@
 <?php namespace AppTupir\Catchphrase\Http\Controllers;
 
-use Illuminate\Http\Request;
 use RainLab\User\Models\User;
 use Illuminate\Routing\Controller;
 use LibUser\UserFlag\Models\UserFlag;
@@ -9,7 +8,7 @@ use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
 
 class DiscoversController extends Controller
 {
-    public function __invoke(Request $request)
+    public function index()
     {
         $users = UserFlag::whereHas('user')
             ->where([
@@ -28,8 +27,8 @@ class DiscoversController extends Controller
 
         $catchphrases = UserFlag::whereHas('user')
             ->where([
-                'flaggable_type' => 'LibLesson\Lesson\Models\Lesson',
-                'type' => 'like'
+                'flaggable_type' => 'AppTupir\Catchphrase\Models\Catchphrase',
+                'type'          => 'like'
             ])
             ->select(['flaggable_type', 'flaggable_id'])
             ->groupBy(['flaggable_type', 'flaggable_id'])
