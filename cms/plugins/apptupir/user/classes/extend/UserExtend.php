@@ -86,7 +86,8 @@ class UserExtend
             $user->hasMany['following'] = [
                 UserFlag::class,
                 'key'        => 'user_id',
-                'conditions' => "type = 'follow' AND value = 1 AND flaggable_type = 'RainLab\\\User\\\Models\\\User'"
+                'conditions' => "type = 'follow' AND value = 1 AND flaggable_type = 'RainLab\\\User\\\Models\\\User'",
+                'order'      => 'updated_at desc'
             ];
         });
     }
@@ -97,7 +98,8 @@ class UserExtend
             $user->morphMany['followers'] = [
                 UserFlag::class,
                 'name'       => 'flaggable',
-                'conditions' => "type = 'follow' AND value = 1 AND flaggable_type = 'RainLab\\\User\\\Models\\\User'"
+                'conditions' => "type = 'follow' AND value = 1 AND flaggable_type = 'RainLab\\\User\\\Models\\\User'",
+                'order'      => 'updated_at desc'
             ];
         });
     }
@@ -171,17 +173,12 @@ class UserExtend
 
     public static function addCatchphraseRelationToUser()
     {
-        User::extend(function ($user) {
+        User::extend(function (User $user) {
             $user->hasMany['catchphrases'] = [
                 Catchphrase::class,
                 'order'      => 'created_at desc',
                 'softDelete' => true,
                 'delete'     => true
-            ];
-
-            $user->hasMany['catchphrases_count'] = [
-                Catchphrase::class,
-                'count' => true
             ];
         });
     }
@@ -192,7 +189,7 @@ class UserExtend
             $data['bio'] = $user->bio;
 
             $data['following'] = SimpleUserResource::collection($user->following->pluck('flaggable')->filter());
-            $data['followers'] = SimpleUserResource::collection($user->followers->filter()->pluck('user')->filter());
+            $data['followers'] = SimpleUserResource::collection($user->followers->pluck('user')->filter());
 
             $data['likes'] = CatchphraseResource::collection($user->likes->pluck('flaggable'));
             $data['comments'] = CatchphraseResource::collection($user->comments->pluck('flaggable'));
@@ -303,7 +300,7 @@ class UserExtend
                 'catchphrases_count' => [
                     'label'            => 'Catchphrases count',
                     'type'             => 'number',
-                    'relation'         => 'catchphrases_count',
+                    'relation'         => 'catchphrases',
                     'useRelationCount' => 'true',
                 ],
             ]);
@@ -313,7 +310,7 @@ class UserExtend
     public static function addCatchphrasesCountToResource()
     {
         Event::listen('libuser.userapi.user.beforeReturnResource', function(&$data, User $user){
-            $data['catchphrases_count'] = $user->catchphrases_count;
+            $data['catchphrases_count'] = Catchphrase::isPublished()->where('user_id', $user->id)->count();
         });
     }
 }

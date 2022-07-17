@@ -9,7 +9,7 @@ use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
 
 class SearchController extends Controller
 {
-    public function show()
+    public function __invoke()
     {
         $search = Input::get('q');
 

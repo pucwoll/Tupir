@@ -3,6 +3,7 @@
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
+use LibUser\UserApi\Http\Middlewares\Check;
 use WApi\ApiException\Http\Middlewares\ApiExceptionMiddleware;
 use AppTupir\Catchphrase\Http\Middlewares\CatchphrasePolicy;
 
@@ -20,6 +21,7 @@ Route::group([
     'middleware' => [
         ApiExceptionMiddleware::class,
         'api',
+        Check::class
     ]
 ], function (Router $router) {
     $router
@@ -36,11 +38,11 @@ Route::group([
     $router
         ->get('users/{key}', [UsersController::class, 'show']);
     $router
-        ->get('users/{key}/catchphrases', [UsersCatchphrasesController::class, 'show']);
+        ->get('users/{key}/catchphrases', UsersCatchphrasesController::class);
 
     $router
-        ->get('search', [SearchController::class, 'show']);
+        ->get('search', SearchController::class);
 
     $router
-        ->get('discovers', [DiscoversController::class, 'index']);
+        ->get('discovers', DiscoversController::class);
 });

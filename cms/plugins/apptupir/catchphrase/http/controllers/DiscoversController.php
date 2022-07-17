@@ -2,40 +2,28 @@
 
 use RainLab\User\Models\User;
 use Illuminate\Routing\Controller;
-use LibUser\UserFlag\Models\UserFlag;
+use AppTupir\Catchphrase\Models\Catchphrase;
 use AppTupir\User\Http\Resources\SimpleUserResource;
 use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
 
 class DiscoversController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
-        $users = UserFlag::whereHas('user')
-            ->where([
-                'flaggable_type' => 'RainLab\User\Models\User',
-                'type'          => 'follow'
-            ])
-            ->whereHasMorph('flaggable', [User::class], function ($query) {
-                $query->canSee();
-            })
-            ->select(['flaggable_type', 'flaggable_id'])
-            ->groupBy(['flaggable_type', 'flaggable_id'])
-            ->orderByRaw('sum(value) desc')
-            ->orderByRaw('flaggable_id desc')
-            ->get()
-            ->pluck('flaggable');
+        $users = User::isPublished()
+            ->withCount('followers')
+            ->orderByDesc('followers_count')
+            ->orderByDesc('created_at')
+            ->get();
 
-        $catchphrases = UserFlag::whereHas('user')
-            ->where([
-                'flaggable_type' => 'AppTupir\Catchphrase\Models\Catchphrase',
-                'type'          => 'like'
-            ])
-            ->select(['flaggable_type', 'flaggable_id'])
-            ->groupBy(['flaggable_type', 'flaggable_id'])
-            ->orderByRaw('sum(value) desc')
-            ->orderByRaw('flaggable_id desc')
-            ->get()
-            ->pluck('flaggable');
+        $catchphrases = Catchphrase::isPublished()
+            ->whereHas('user', function ($query) {
+                return $query->isPublished();
+            })
+            ->withCount('likes')
+            ->orderByDesc('likes_count')
+            ->orderByDesc('created_at')
+            ->get();
 
         return response()->json([
             'data' => [

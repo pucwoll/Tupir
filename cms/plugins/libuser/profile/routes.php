@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use LibUser\UserApi\Http\Middlewares\Check;
-use LibUser\UserApi\Http\Middlewares\Authenticate;
 use LibUser\Profile\Http\Controllers\ProfilesController;
 use WApi\ApiException\Http\Middlewares\ApiExceptionMiddleware;
 
@@ -12,8 +11,7 @@ Route::group([
     'middleware' => [
         ApiExceptionMiddleware::class,
         'api',
-        Check::class,
-        Authenticate::class
+        Check::class
     ]
 ], function (Router $router) {
 

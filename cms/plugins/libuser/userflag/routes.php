@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Routing\Router;
-use LibUser\UserApi\Http\Middlewares\Check as AuthCheck;
+use Illuminate\Support\Facades\Route;
+use LibUser\UserApi\Http\Middlewares\Check;
 use LibUser\UserFlag\Http\Middlewares\Bindings\UserBind;
-use LibUser\UserApi\Http\Middlewares\Authenticate as Auth;
+use LibUser\UserApi\Http\Middlewares\Authenticate;
 use WApi\ApiException\Http\Middlewares\ApiExceptionMiddleware;
 
 Route::group([
@@ -11,7 +12,8 @@ Route::group([
     'namespace'  => 'LibUser\UserFlag\Http\Controllers',
     'middleware' => [
         ApiExceptionMiddleware::class,
-        AuthCheck::class,
+        'api',
+        Check::class,
         UserBind::class,
     ],
 ], function(Router $router) {
@@ -19,7 +21,7 @@ Route::group([
         ->post('userflag/{model}/{id}', 'UserFlagController@storeOrUpdate');
 
     $router
-        ->middleware(Auth::class)
+        ->middleware(Authenticate::class)
         ->group(function(Router $router) {
             $router
                 ->get('userflag/flags/{model}/{id}', 'UserFlagController@getFlags_modelAndId');
