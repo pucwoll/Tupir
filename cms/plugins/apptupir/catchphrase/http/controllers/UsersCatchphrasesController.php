@@ -18,6 +18,29 @@ class UsersCatchphrasesController extends Controller
 
         $catchphrases = $user->catchphrases;
 
-        return CatchphraseResource::collection($catchphrases);
+        if ($sortType === 'newest') {
+            return CatchphraseResource::collection(
+                $catchphrases->sortByDesc('created_at')
+            );
+        }
+        else if ($sortType === 'most_liked') {
+            return CatchphraseResource::collection(
+                $catchphrases->sortByDesc('likes_count')
+            );
+        }
+        else if ($sortType === 'most_discussed') {
+            return CatchphraseResource::collection(
+                $catchphrases->sortByDesc('comments_count')
+            );
+        }
+        else if ($sortType === 'most_played') {
+            return CatchphraseResource::collection(
+                $catchphrases->sortByDesc('plays_count')
+            );
+        }
+
+        return CatchphraseResource::collection(
+            $catchphrases->sortByDesc('created_at')
+        );
     }
 }
