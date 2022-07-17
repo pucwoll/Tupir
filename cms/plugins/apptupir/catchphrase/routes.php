@@ -13,7 +13,7 @@ use AppTupir\Catchphrase\Http\Controllers\UsersCatchphrasesController;
 
 use AppTupir\Catchphrase\Http\Controllers\SearchController;
 
-use AppTupir\Catchphrase\Http\Controllers\DiscoverController;
+use AppTupir\Catchphrase\Http\Controllers\DiscoversController;
 
 Route::group([
     'prefix'      => 'api/v1',
@@ -36,15 +36,11 @@ Route::group([
     $router
         ->get('users/{key}', [UsersController::class, 'show']);
     $router
-        ->get('users/{key}/catchphrases', [UsersCatchphrasesController::class, 'show'])
-        ->name('sort_type');
+        ->get('users/{key}/catchphrases', [UsersCatchphrasesController::class, 'show']);
 
     $router
-        ->get('search', [SearchController::class, 'show'])
-        ->name('q');
+        ->get('search', [SearchController::class, 'show']);
 
     $router
-        ->get('discover/catchphrases', [DiscoverController::class, 'discoverCatchphrases']);
-    $router
-        ->get('discover/users', [DiscoverController::class, 'discoverUsers']);
+        ->get('discovers', [DiscoversController::class, 'index']);
 });

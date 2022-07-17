@@ -107,7 +107,7 @@ class UserExtend
         User::extend(function (User $user) {
             $user->hasMany['likes'] = [
                 UserFlag::class,
-                'name' => 'flaggable',
+                'name'       => 'flaggable',
                 'conditions' => "type = 'like' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
                 'order'      => 'updated_at desc'
             ];
@@ -158,6 +158,17 @@ class UserExtend
         });
     }
 
+    public static function addVisitsRelationToUser()
+    {
+        User::extend(function (User $user) {
+            $user->hasMany['visits'] = [
+                UserFlag::class,
+                'conditions' => "type = 'visit' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
+                'order'      => 'updated_at desc'
+            ];
+        });
+    }
+
     public static function addCatchphraseRelationToUser()
     {
         User::extend(function ($user) {
@@ -186,7 +197,7 @@ class UserExtend
             $data['likes'] = CatchphraseResource::collection($user->likes->pluck('flaggable'));
             $data['comments'] = CatchphraseResource::collection($user->comments->pluck('flaggable'));
             $data['bookmarks'] = CatchphraseResource::collection($user->bookmarks->pluck('flaggable'));
-            $data['catchphrases'] = CatchphraseResource::collection($user->posts()->where('is_published', true)->orderByDesc('created_at')->get());
+            $data['catchphrases'] = CatchphraseResource::collection($user->catchphrases()->where('is_published', true)->orderByDesc('created_at')->get());
         });
     }
 

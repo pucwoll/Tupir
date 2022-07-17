@@ -13,27 +13,31 @@ class SearchController extends Controller
     {
         $search = Input::get('q');
 
-        $user = SimpleUserResource::collection(
-            User::isPublished()
+        $users = User::isPublished()
                 ->where('name', 'like', '%' . $search . '%')
                 ->orWhere('username', 'like', '%' . $search . '%')
-                ->get()
-        );
+                ->get();
 
-        $catchphrase = CatchphraseResource::collection(
-            Catchphrase::isPublished()
+        $catchphrases = Catchphrase::isPublished()
                 ->where('title', 'like', '%' . $search . '%')
                 ->orWhere('slug', 'like', '%' . $search . '%')
                 ->orWhere('lyrics', 'like', '%' . $search . '%')
+                ->orWhere('tags_string', 'like', '%' . $search . '%')
                 ->whereHas('user', function ($query) {
                     return $query->isPublished();
                 })
-                ->get()
-        );
+                ->get();
 
-        if (count($user) || count($catchphrase)) {
+        if (count($users) || count($catchphrases)) {
             return response()->json([
-                'data' => $user->concat($catchphrase)
+                'data' => [
+                    'users' => SimpleUserResource::collection(
+                        $users
+                    ),
+                    'catchphrases' => CatchphraseResource::collection(
+                        $catchphrases
+                    )
+                ]
             ]);
         }
         else {
