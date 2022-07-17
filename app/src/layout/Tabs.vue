@@ -7,14 +7,13 @@
           v-for="tab in tabs"
           :id="`tab${tab.id}`"
           :key="tab.id"
-          :tab="`tab${tab.tab}`"
+          :tab="`tab${tab.id}`"
           :href="tab?.href"
-          :class="modal && tab?.type === 'fab' ? 'modal-active' : ''"
+          :class="modal && tab.href ? 'modal-active' : ''"
           @click="closeModal"
         >
           <ion-icon
-            :icon="tab.icon ? /* @ts-expect-error test */
-              icons[tab.icon] : ''"
+            :icon="icons[tab.icon]"
           />
           <ion-label>{{ tab.label }}</ion-label>
         </ion-tab-button>

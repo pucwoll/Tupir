@@ -1,34 +1,30 @@
 [
   {
     "id": "1",
-    "tab": "1",
     "label": "Home",
     "href": "/tabs/home",
     "icon": "home"
   },
   {
     "id": "2",
-    "tab": "2",
     "label": "Browse",
     "href": "/tabs/browse",
     "icon": "compass"
   },
   {
     "id": "3",
-    "tab": "3",
     "label": "Create",
-    "type": "fab"
+    "href": null,
+    "icon": ""
   },
   {
     "id": "4",
-    "tab": "4",
     "label": "Inbox",
     "href": "/tabs/inbox",
     "icon": "fileTray"
   },
   {
     "id": "5",
-    "tab": "5",
     "label": "Profile",
     "href": "/tabs/profile",
     "icon": "personCircle"
