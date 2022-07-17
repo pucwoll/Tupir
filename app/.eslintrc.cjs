@@ -20,5 +20,13 @@ module.exports = {
     'indent': ['error', 2],
     'vue/no-deprecated-slot-attribute': 'off',
     'object-curly-spacing': ['error', 'always'],
-  }
+  },
+  'overrides': [
+    {
+      files: ['*.ts', '*.vue'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ]
 }

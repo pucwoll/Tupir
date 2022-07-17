@@ -2,14 +2,19 @@
   <ion-page>
     <ion-tabs id="main-tabs">
       <ion-router-outlet />
-      <ion-tab-bar slot="bottom">
+      <ion-tab-bar
+        slot="bottom"
+        ref="mainTabBar"
+      >
         <ion-tab-button
           v-for="tab in tabs"
           :id="`tab${tab.id}`"
           :key="tab.id"
           :tab="`tab${tab.id}`"
           :href="tab?.href"
-          :class="modal && !tab.href ? 'modal-active' : ''"
+          :class="{
+            'modal-active tab-selected': modal && !tab.href,
+          }"
           @click="closeModal"
         >
           <ion-icon
@@ -45,38 +50,44 @@ import * as icons from 'ionicons/icons'
 import { modalController } from '@ionic/vue'
 import CreateCatchphrase from '@/views/CreateCatchphrase.vue'
 import tabs from './config/tabs.json'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
-// eslint-disable-next-line no-undef
 const modal = ref<HTMLIonModalElement|null>(null)
 const isModalOpened = ref(false)
+const mainTabBar = ref<HTMLIonTabBarElement|null>(null)
+
 async function createModal() {
   if(isModalOpened.value) {
     if (modal.value) {
-      await modal.value.dismiss()
-      modal.value = null
+      closeModal()
     }
     return
   }
   isModalOpened.value = true
+
   modal.value = await modalController.create({
     component: CreateCatchphrase,
     initialBreakpoint: 0.95,
     breakpoints: [0, 0.95],
   })
+  // @ts-expect-error wrong types
+  document.querySelector(`#tab-button-${mainTabBar.value?.tabState.activeTab}`)?.classList.remove('tab-selected')
+
   document.querySelector('#main-tabs')?.appendChild(modal.value)
   modal.value.present()
 
-
-  await modal.value.onDidDismiss()
-  isModalOpened.value = false
-  modal.value = null
+  modal.value.onDidDismiss().then(() => {
+    closeModal()
+  })
 }
 
 function closeModal() {
   if(modal.value) {
     modal.value.dismiss()
     modal.value = null
+    isModalOpened.value = false
+    // @ts-expect-error wrong types
+    document.querySelector(`#tab-button-${mainTabBar.value?.tabState.activeTab}`)?.classList.add('tab-selected')
   }
 }
 </script>
