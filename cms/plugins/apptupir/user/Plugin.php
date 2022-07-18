@@ -64,6 +64,8 @@ class Plugin extends PluginBase
         UserExtend::addCatchphrasesCountToColumns();
         UserExtend::addCatchphrasesCountToResource();
 
+        UserExtend::setMailTemplateForForgottenPassword();
+
         UserExtendDefaultAssets::beforeSave_setDefaultAvatar();
 
         UserFlagExtend::addUserToAliasesConfig();

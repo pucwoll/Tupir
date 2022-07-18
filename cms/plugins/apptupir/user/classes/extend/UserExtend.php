@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use RainLab\User\Controllers\Users;
 use Illuminate\Support\Facades\Event;
 use LibUser\UserFlag\Models\UserFlag;
+use October\Rain\Support\Facades\Mail;
 use AppTupir\Catchphrase\Models\Catchphrase;
 use AppTupir\User\Http\Resources\SimpleUserResource;
 use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
@@ -274,7 +275,7 @@ class UserExtend
             $user->bindEvent('model.beforeDelete', function () use ($user) {
                 DB::table('libuser_userflag_user_flags')
                     ->where('user_id', $user->id)
-                    ->where('type', '<>', 'play')
+                    ->where('type', '<>', 'visit')
                     ->delete();
             });
         });
@@ -313,4 +314,18 @@ class UserExtend
             $data['catchphrases_count'] = Catchphrase::isPublished()->where('user_id', $user->id)->count();
         });
     }
+
+    public static function setMailTemplateForForgottenPassword()
+    {
+        Event::listen('libuser.userapi.sendResetPasswordCode', function ($user, $code) {
+            $vars = [
+                'code' => $code
+            ];
+
+            Mail::send('apptupir.user::mail.reset-password', $vars, function ($message) use ($user) {
+                $message->to($user->email);
+            });
+        });
+    }
+
 }

@@ -47,7 +47,6 @@ class Plugin extends PluginBase
         CatchphraseExtend::addPlaysRelationToCatchphrase();
         CatchphraseExtend::addVisitsRelationToCatchphrase();
         CatchphraseExtend::addSharesRelationToCatchphrase();
-        CatchphraseExtend::addCommentsRelationToCatchphrase();
         CatchphraseExtend::addBookmarksRelationToCatchphrase();
 
         CatchphraseExtend::beforeDelete_deletePlaysLikesBookmarksSharesComments();
