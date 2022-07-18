@@ -39,15 +39,17 @@
           modifier: 1,
           slideShadows: false,
         }"
+        slide-to-clicked-slide
+        centered-slides
       >
         <swiper-slide
           v-for="catchphrase in catchphrasesStore.catchphrases"
           :key="catchphrase.id"
-          class=""
         >
           <catchphrase-card
             :user="catchphrase.user"
             :catchphrase="catchphrase"
+            class="w-full"
           />
         </swiper-slide>
       </swiper>
@@ -90,6 +92,9 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+ion-header {
+  position: fixed;
+}
 .header-button {
   span {
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

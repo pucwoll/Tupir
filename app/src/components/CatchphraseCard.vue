@@ -170,6 +170,5 @@ ion-card {
 	min-height: 224px;
 	margin-top: 12px;
 	margin-bottom: 12px;
-  width: 100%;
 }
 </style>
