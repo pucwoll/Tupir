@@ -26,17 +26,31 @@
     <ion-content
       fullscreen
     >
-      <recycle-scroller
-        :items="catchphrasesStore.catchphrases"
-        :item-size="248"
+      <swiper
+        :modules="[EffectCoverflow, IonicSlides]"
+        :direction="'vertical'"
+        class="h-full"
+        :slides-per-view="3"
+        :effect="'coverflow'"
+        :coverflow-effect="{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: false,
+        }"
       >
-        <template #default="{ item }">
+        <swiper-slide
+          v-for="catchphrase in catchphrasesStore.catchphrases"
+          :key="catchphrase.id"
+          class=""
+        >
           <catchphrase-card
-            :user="item.user"
-            :catchphrase="item"
+            :user="catchphrase.user"
+            :catchphrase="catchphrase"
           />
-        </template>
-      </recycle-scroller>
+        </swiper-slide>
+      </swiper>
     </ion-content>
   </ion-page>
 </template>
@@ -47,8 +61,12 @@ import { App } from '@capacitor/app'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import CatchphraseCard from '@/components/CatchphraseCard.vue'
 import { useAudioStore } from '@/store/audio'
-import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
-import { RecycleScroller } from 'vue-virtual-scroller'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { EffectCoverflow } from 'swiper'
+import { IonicSlides } from '@ionic/vue'
+
+import 'swiper/css'
+import '@ionic/vue/css/ionic-swiper.css'
 
 const catchphrasesStore = useCatchphrasesStore()
 const audioStore = useAudioStore()
