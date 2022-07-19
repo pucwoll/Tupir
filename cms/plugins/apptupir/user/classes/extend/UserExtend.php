@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use RainLab\User\Controllers\Users;
 use Illuminate\Support\Facades\Event;
 use LibUser\UserFlag\Models\UserFlag;
+use October\Rain\Support\Facades\Mail;
 use AppTupir\Catchphrase\Models\Catchphrase;
 use AppTupir\User\Http\Resources\SimpleUserResource;
 use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
@@ -127,17 +128,6 @@ class UserExtend
         });
     }
 
-    public static function addCommentsRelationToUser()
-    {
-        User::extend(function (User $user) {
-            $user->hasMany['comments'] = [
-                UserFlag::class,
-                'conditions' => "type = 'comment' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
-                'order'      => 'updated_at desc'
-            ];
-        });
-    }
-
     public static function addSharesRelationToUser()
     {
         User::extend(function (User $user) {
@@ -188,12 +178,12 @@ class UserExtend
         Event::listen('libuser.userapi.user.beforeReturnResource', function (&$data, User $user) {
             $data['bio'] = $user->bio;
 
-            $data['following'] = SimpleUserResource::collection($user->following->pluck('flaggable')->filter());
-            $data['followers'] = SimpleUserResource::collection($user->followers->pluck('user')->filter());
+            $data['following'] = SimpleUserResource::collection($user->following->pluck('flaggable')->filter()->sortByDesc('created_at'));
+            $data['followers'] = SimpleUserResource::collection($user->followers->pluck('user')->filter()->sortByDesc('created_at'));
 
-            $data['likes'] = CatchphraseResource::collection($user->likes->pluck('flaggable'));
-            $data['comments'] = CatchphraseResource::collection($user->comments->pluck('flaggable'));
-            $data['bookmarks'] = CatchphraseResource::collection($user->bookmarks->pluck('flaggable'));
+            $data['likes'] = CatchphraseResource::collection($user->likes->pluck('flaggable')->sortByDesc('created_at'));
+            $data['comments'] = CatchphraseResource::collection(Catchphrase::find($user->comments->pluck('commentable_id'))->where('is_published', true)->sortByDesc('created_at'));
+            $data['bookmarks'] = CatchphraseResource::collection($user->bookmarks->pluck('flaggable')->sortByDesc('created_at'));
             $data['catchphrases'] = CatchphraseResource::collection($user->catchphrases()->where('is_published', true)->orderByDesc('created_at')->get());
         });
     }
@@ -274,7 +264,7 @@ class UserExtend
             $user->bindEvent('model.beforeDelete', function () use ($user) {
                 DB::table('libuser_userflag_user_flags')
                     ->where('user_id', $user->id)
-                    ->where('type', '<>', 'play')
+                    ->where('type', '<>', 'visit')
                     ->delete();
             });
         });
@@ -313,4 +303,18 @@ class UserExtend
             $data['catchphrases_count'] = Catchphrase::isPublished()->where('user_id', $user->id)->count();
         });
     }
+
+    public static function setMailTemplateForForgottenPassword()
+    {
+        Event::listen('libuser.userapi.sendResetPasswordCode', function ($user, $code) {
+            $vars = [
+                'code' => $code
+            ];
+
+            Mail::send('apptupir.user::mail.reset-password', $vars, function ($message) use ($user) {
+                $message->to($user->email);
+            });
+        });
+    }
+
 }

@@ -35,6 +35,8 @@ class UserExtend
                 'conditions' => 'libuser_block_user_blocks.deleted_at IS NULL',
                 'key' => 'user_id',
                 'otherKey' => 'blocked_user_id',
+                'softDelete' => true,
+                'delete' => true,
             ];
         });
     }

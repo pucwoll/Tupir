@@ -6,9 +6,12 @@ columns:
     id:
         label: ID
         searchable: true
+    commentable_id:
+        label: Catchphrase ID
+        searchable: true
+    creatable_id:
+        label: User ID
+        searchable: true
     content:
         label: Content
-        searchable: true
-    creatable_name:
-        label: Creatable
         searchable: true

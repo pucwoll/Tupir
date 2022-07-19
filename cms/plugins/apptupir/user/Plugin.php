@@ -48,7 +48,6 @@ class Plugin extends PluginBase
         UserExtend::addFollowersRelationToUser();
         UserExtend::addLikesRelationToUser();
         UserExtend::addBookmarksRelationToUser();
-        UserExtend::addCommentsRelationToUser();
         UserExtend::addSharesRelationToUser();
         UserExtend::addPlaysRelationToUser();
         UserExtend::addVisitsRelationToUser();
@@ -63,6 +62,8 @@ class Plugin extends PluginBase
         UserExtend::beforeShowCatchphrase_checkPublished();
         UserExtend::addCatchphrasesCountToColumns();
         UserExtend::addCatchphrasesCountToResource();
+
+        UserExtend::setMailTemplateForForgottenPassword();
 
         UserExtendDefaultAssets::beforeSave_setDefaultAvatar();
 

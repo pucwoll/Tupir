@@ -10,7 +10,7 @@ class UserFlagExtend
         config([
            'libuser.userflag::aliases.post' => [
                'model'    => Catchphrase::class,
-               'resource' => CatchphraseResource::class,
+               'resource' => CatchphraseResource::class
            ]
         ]);
     }

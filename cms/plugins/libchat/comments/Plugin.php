@@ -2,6 +2,7 @@
 
 use Backend\Facades\Backend;
 use System\Classes\PluginBase;
+use LibChat\Comments\Classes\Extend\UserExtend;
 
 /**
  * WallPostComment Plugin Information File
@@ -26,6 +27,11 @@ class Plugin extends PluginBase
             'author'      => 'LibChat',
             'icon'        => 'icon-comments',
         ];
+    }
+
+    public function boot()
+    {
+        UserExtend::addCommentRelationToUser();
     }
 
     /**

@@ -8,7 +8,11 @@ class UserExtend {
     public static function init()
     {
         User::extend(function($model){
-            $model->hasMany['devices'] = Device::class;
+            $model->hasMany['devices'] = [
+                Device::class,
+                'softDelete' => true,
+                'delete' => true,
+            ];
         });
     }
 }

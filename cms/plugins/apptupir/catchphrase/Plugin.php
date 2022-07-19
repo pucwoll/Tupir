@@ -47,11 +47,10 @@ class Plugin extends PluginBase
         CatchphraseExtend::addPlaysRelationToCatchphrase();
         CatchphraseExtend::addVisitsRelationToCatchphrase();
         CatchphraseExtend::addSharesRelationToCatchphrase();
-        CatchphraseExtend::addCommentsRelationToCatchphrase();
         CatchphraseExtend::addBookmarksRelationToCatchphrase();
 
-        CatchphraseExtend::beforeDelete_deletePlaysLikesBookmarksSharesComments();
-        CatchphraseExtend::afterRestore_restorePlaysVisitsLikesBookmarksSharesComments();
+        CatchphraseExtend::beforeDelete_deletePlaysLikesBookmarksShares();
+        CatchphraseExtend::afterRestore_restorePlaysVisitsLikesBookmarksShares();
 
         CatchphraseExtend::updateResource_addPlaysVisitsLikesBookmarksSharesCommentsCount();
         CatchphraseExtend::bindEvent_createVisitFlagWhenSpecificCatchphraseIsRequested();

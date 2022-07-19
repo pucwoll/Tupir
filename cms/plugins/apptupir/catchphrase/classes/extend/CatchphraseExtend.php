@@ -1,5 +1,6 @@
 <?php namespace AppTupir\Catchphrase\Classes\Extend;
 
+use LibChat\Comments\Models\Comment;
 use LibUser\UserApi\Facades\JWTAuth;
 use LibUser\UserFlag\Models\UserFlag;
 use Illuminate\Support\Facades\Event;
@@ -62,41 +63,36 @@ class CatchphraseExtend
         });
     }
 
-    public static function addCommentsRelationToCatchphrase()
-    {
-        Catchphrase::extend(function (Catchphrase $catchphrase) {
-            $catchphrase->morphMany['comments'] = [
-                UserFlag::class,
-                'name'       => 'flaggable',
-                'conditions' => 'type = "comment"'
-            ];
-        });
-    }
-
-    public static function beforeDelete_deletePlaysLikesBookmarksSharesComments()
+    public static function beforeDelete_deletePlaysLikesBookmarksShares()
     {
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->bindEvent('model.beforeDelete', function () use ($catchphrase) {
-                $catchphrase->plays()->delete();
-                $catchphrase->visits()->delete();
-                $catchphrase->likes()->delete();
-                $catchphrase->bookmarks()->delete();
-                $catchphrase->shares()->delete();
-                $catchphrase->comments()->delete();
+                if ($catchphrase->forceDeleting) {
+                    $catchphrase->plays()->forceDelete();
+                    $catchphrase->visits()->forceDelete();
+                    $catchphrase->likes()->forceDelete();
+                    $catchphrase->bookmarks()->forceDelete();
+                    $catchphrase->shares()->forceDelete();
+                } else {
+                    $catchphrase->plays()->delete();
+                    $catchphrase->visits()->delete();
+                    $catchphrase->likes()->delete();
+                    $catchphrase->bookmarks()->delete();
+                    $catchphrase->shares()->delete();
+                }
             });
         });
     }
 
-    public static function afterRestore_restorePlaysVisitsLikesBookmarksSharesComments()
+    public static function afterRestore_restorePlaysVisitsLikesBookmarksShares()
     {
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->bindEvent('model.afterRestore', function () use ($catchphrase) {
                 $catchphrase->plays()->restore();
-                $catchphrase->visits()->delete();
+                $catchphrase->visits()->restore();
                 $catchphrase->likes()->restore();
                 $catchphrase->bookmarks()->restore();
                 $catchphrase->shares()->restore();
-                $catchphrase->comments()->restore();
             });
         });
     }
@@ -124,10 +120,8 @@ class CatchphraseExtend
                 'type'          => 'share'
             ])->count();
 
-            $response['comments'] = UserFlag::where([
-                'flaggable_id'   => $catchphrase->id,
-                'flaggable_type' => Catchphrase::class,
-                'type'          => 'comment'
+            $response['comments'] = Comment::where([
+                'commentable_id' => $catchphrase->id
             ])->count();
 
             $response['plays'] = UserFlag::where([
@@ -159,7 +153,7 @@ class CatchphraseExtend
                 'value'         => 1,
                 'user_id'       => $user->id,
                 'flaggable_id'   => $catchphrase->id,
-                'flaggable_type' => Catchphrase::class,
+                'flaggable_type' => Catchphrase::class
             ]);
         });
     }

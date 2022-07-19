@@ -1,6 +1,7 @@
 <?php namespace LibUser\Profile\Http\Resources;
 
 use RainLab\User\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use October\Rain\Support\Facades\Input;
 use Illuminate\Http\Resources\Json\Resource;
@@ -77,9 +78,15 @@ class ProfileResource extends Resource
             $response['catchphrases'] = CatchphraseResource::collection(
                 Catchphrase::isPublished()
                     ->where('user_id', $this->id)
-                    ->withCount('comments')
+                    ->select([
+                        'apptupir_catchphrases.*',
+                        DB::raw('(SELECT count(*)
+                        FROM libchat_comments_comments
+                        WHERE libchat_comments_comments.commentable_id = apptupir_catchphrases.id
+                        ) as comments_count')
+                    ])
+                    ->from('apptupir_catchphrases')
                     ->orderByDesc('comments_count')
-                    ->orderByDesc('created_at')
                     ->get()
             );
         }
