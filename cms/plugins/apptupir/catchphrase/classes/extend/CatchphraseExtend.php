@@ -63,7 +63,7 @@ class CatchphraseExtend
         });
     }
 
-    public static function beforeDelete_deletePlaysLikesBookmarksSharesComments()
+    public static function beforeDelete_deletePlaysLikesBookmarksShares()
     {
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->bindEvent('model.beforeDelete', function () use ($catchphrase) {
@@ -73,20 +73,18 @@ class CatchphraseExtend
                     $catchphrase->likes()->forceDelete();
                     $catchphrase->bookmarks()->forceDelete();
                     $catchphrase->shares()->forceDelete();
-                    $catchphrase->comments()->forceDelete();
                 } else {
                     $catchphrase->plays()->delete();
                     $catchphrase->visits()->delete();
                     $catchphrase->likes()->delete();
                     $catchphrase->bookmarks()->delete();
                     $catchphrase->shares()->delete();
-                    $catchphrase->comments()->delete();
                 }
             });
         });
     }
 
-    public static function afterRestore_restorePlaysVisitsLikesBookmarksSharesComments()
+    public static function afterRestore_restorePlaysVisitsLikesBookmarksShares()
     {
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->bindEvent('model.afterRestore', function () use ($catchphrase) {
@@ -95,7 +93,6 @@ class CatchphraseExtend
                 $catchphrase->likes()->restore();
                 $catchphrase->bookmarks()->restore();
                 $catchphrase->shares()->restore();
-                $catchphrase->comments()->restore();
             });
         });
     }
@@ -156,7 +153,7 @@ class CatchphraseExtend
                 'value'         => 1,
                 'user_id'       => $user->id,
                 'flaggable_id'   => $catchphrase->id,
-                'flaggable_type' => Catchphrase::class,
+                'flaggable_type' => Catchphrase::class
             ]);
         });
     }

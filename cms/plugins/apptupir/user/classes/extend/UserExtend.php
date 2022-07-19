@@ -128,17 +128,6 @@ class UserExtend
         });
     }
 
-    public static function addCommentsRelationToUser()
-    {
-        User::extend(function (User $user) {
-            $user->hasMany['comments'] = [
-                UserFlag::class,
-                'conditions' => "type = 'comment' AND value = 1 AND flaggable_type = 'AppTupir\\\Catchphrase\\\Models\\\Catchphrase'",
-                'order'      => 'updated_at desc'
-            ];
-        });
-    }
-
     public static function addSharesRelationToUser()
     {
         User::extend(function (User $user) {
@@ -189,12 +178,12 @@ class UserExtend
         Event::listen('libuser.userapi.user.beforeReturnResource', function (&$data, User $user) {
             $data['bio'] = $user->bio;
 
-            $data['following'] = SimpleUserResource::collection($user->following->pluck('flaggable')->filter());
-            $data['followers'] = SimpleUserResource::collection($user->followers->pluck('user')->filter());
+            $data['following'] = SimpleUserResource::collection($user->following->pluck('flaggable')->filter()->sortByDesc('created_at'));
+            $data['followers'] = SimpleUserResource::collection($user->followers->pluck('user')->filter()->sortByDesc('created_at'));
 
-            $data['likes'] = CatchphraseResource::collection($user->likes->pluck('flaggable'));
-            $data['comments'] = CatchphraseResource::collection($user->comments->pluck('flaggable'));
-            $data['bookmarks'] = CatchphraseResource::collection($user->bookmarks->pluck('flaggable'));
+            $data['likes'] = CatchphraseResource::collection($user->likes->pluck('flaggable')->sortByDesc('created_at'));
+            $data['comments'] = CatchphraseResource::collection(Catchphrase::find($user->comments->pluck('commentable_id'))->sortByDesc('created_at'));
+            $data['bookmarks'] = CatchphraseResource::collection($user->bookmarks->pluck('flaggable')->sortByDesc('created_at'));
             $data['catchphrases'] = CatchphraseResource::collection($user->catchphrases()->where('is_published', true)->orderByDesc('created_at')->get());
         });
     }

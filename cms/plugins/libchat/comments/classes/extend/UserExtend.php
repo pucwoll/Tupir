@@ -7,7 +7,7 @@ class UserExtend
 {
     public static function addCommentRelationToUser()
     {
-        User::extend(function ($user) {
+        User::extend(function (User $user) {
             $user->morphMany['comments'] = [
                 Comment::class,
                 'name'       => 'creatable',

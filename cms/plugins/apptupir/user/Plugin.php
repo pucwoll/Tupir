@@ -48,7 +48,6 @@ class Plugin extends PluginBase
         UserExtend::addFollowersRelationToUser();
         UserExtend::addLikesRelationToUser();
         UserExtend::addBookmarksRelationToUser();
-        UserExtend::addCommentsRelationToUser();
         UserExtend::addSharesRelationToUser();
         UserExtend::addPlaysRelationToUser();
         UserExtend::addVisitsRelationToUser();
