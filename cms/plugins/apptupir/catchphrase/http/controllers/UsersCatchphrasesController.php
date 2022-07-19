@@ -1,6 +1,7 @@
 <?php namespace AppTupir\Catchphrase\Http\Controllers;
 
 use RainLab\User\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller;
 use October\Rain\Support\Facades\Input;
 use AppTupir\Catchphrase\Models\Catchphrase;
@@ -39,9 +40,15 @@ class UsersCatchphrasesController extends Controller
             return CatchphraseResource::collection(
                 Catchphrase::isPublished()
                     ->where('user_id', $user)
-                    ->withCount('comments')
+                    ->select([
+                    'apptupir_catchphrases.*',
+                    DB::raw('(SELECT count(*)
+                    FROM libchat_comments_comments
+                    WHERE libchat_comments_comments.commentable_id = apptupir_catchphrases.id
+                    ) as comments_count')
+                ])
+                    ->from('apptupir_catchphrases')
                     ->orderByDesc('comments_count')
-                    ->orderByDesc('created_at')
                     ->get()
             );
         }

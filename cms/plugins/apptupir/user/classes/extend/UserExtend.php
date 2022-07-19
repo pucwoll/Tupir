@@ -182,7 +182,7 @@ class UserExtend
             $data['followers'] = SimpleUserResource::collection($user->followers->pluck('user')->filter()->sortByDesc('created_at'));
 
             $data['likes'] = CatchphraseResource::collection($user->likes->pluck('flaggable')->sortByDesc('created_at'));
-            $data['comments'] = CatchphraseResource::collection(Catchphrase::find($user->comments->pluck('commentable_id'))->sortByDesc('created_at'));
+            $data['comments'] = CatchphraseResource::collection(Catchphrase::find($user->comments->pluck('commentable_id'))->where('is_published', true)->sortByDesc('created_at'));
             $data['bookmarks'] = CatchphraseResource::collection($user->bookmarks->pluck('flaggable')->sortByDesc('created_at'));
             $data['catchphrases'] = CatchphraseResource::collection($user->catchphrases()->where('is_published', true)->orderByDesc('created_at')->get());
         });
