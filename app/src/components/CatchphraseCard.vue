@@ -13,7 +13,11 @@
             <div class="flex items-center">
               <h1>{{ user.name }}</h1>
             </div>
-            <h4>{{ user.username }}</h4>
+            <div class="flex">
+              <h4>
+                {{ user.username }}
+              </h4>
+            </div>
           </div>
         </div>
         <div class="h-full flex items-center w-full">

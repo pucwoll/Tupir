@@ -25,13 +25,12 @@
     </ion-header>
     <ion-content
       fullscreen
-      :scroll-y="false"
     >
       <swiper
         :modules="[EffectCoverflow, IonicSlides]"
         :direction="'vertical'"
-        class="testtest"
-        :slides-per-view="4.5"
+        class="h-full"
+        :slides-per-view="3"
         :effect="'coverflow'"
         :coverflow-effect="{
           rotate: 0,
@@ -96,13 +95,7 @@ onBeforeUnmount(() => {
 ion-header {
   position: fixed;
 }
-ion-content {
-  overflow: hidden;
-}
-.testtest {
-  height: 150vh;
-  margin-top: -50vh;
-}
+
 .header-button {
   span {
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
