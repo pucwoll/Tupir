@@ -49,6 +49,7 @@ class UsersCatchphrasesController extends Controller
                 ])
                     ->from('apptupir_catchphrases')
                     ->orderByDesc('comments_count')
+                    ->orderByDesc('created_at')
                     ->get()
             );
         }
