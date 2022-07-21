@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: User Flag
+
+# Model Form Field configuration
+form: $/libuser/userflag/models/userflag/fields.yaml
+
+# Model Class name
+modelClass: LibUser\UserFlag\Models\UserFlag
+
+# Default redirect location
+defaultRedirect: libuser/userflag/userflags
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: libuser/userflag/userflags/update/:id
+    redirectClose: libuser/userflag/userflags
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: libuser/userflag/userflags
+    redirectClose: libuser/userflag/userflags
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title
