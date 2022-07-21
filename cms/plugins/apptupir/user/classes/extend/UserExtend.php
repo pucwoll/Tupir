@@ -195,26 +195,6 @@ class UserExtend
         });
     }
 
-    public static function updateFormFields_addUsernameField()
-    {
-        Users::extendFormFields(function(Form $form, Model $model) {
-            if (!$model instanceof User) {
-                return;
-            }
-            if ($form->alias !== 'form') {
-                return;
-            }
-
-            $form->addFields([
-                'username' => [
-                    'label' => 'Username',
-                    'type'  => 'text',
-                    'span'  => 'full'
-                ],
-            ]);
-        });
-    }
-
     public static function updateFormFields_addBioField()
     {
         Users::extendFormFields(function(Form $form, Model $model) {

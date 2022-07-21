@@ -1,0 +1,20 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        type: number
+    flaggable_type:
+        label: Flaggable type
+        type: text
+    flaggable_id:
+        label: Flaggable ID
+        type: number
+    user_id:
+        label: User ID
+        type: number
+    type:
+        label: Type
+        type: text

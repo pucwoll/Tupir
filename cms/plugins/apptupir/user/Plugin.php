@@ -39,7 +39,6 @@ class Plugin extends PluginBase
     public function boot()
     {
         UserExtend::extendUserResource();
-        UserExtend::updateFormFields_addUsernameField();
         UserExtend::updateFormFields_addBioField();
         UserExtend::updateFormFields_addSuperUserSwitch();
         UserExtend::addBioAsFillableToUser();

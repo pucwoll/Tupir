@@ -1,5 +1,6 @@
 <?php namespace AppTupir\Catchphrase\Classes\Extend;
 
+use RainLab\User\Models\User;
 use LibChat\Comments\Models\Comment;
 use LibUser\UserApi\Facades\JWTAuth;
 use LibUser\UserFlag\Models\UserFlag;
@@ -121,7 +122,8 @@ class CatchphraseExtend
             ])->count();
 
             $response['comments'] = Comment::where([
-                'commentable_id' => $catchphrase->id
+                'commentable_id' => $catchphrase->id,
+                'creatable_type' => User::class
             ])->count();
 
             $response['plays'] = UserFlag::where([
@@ -135,6 +137,39 @@ class CatchphraseExtend
                 'flaggable_type' => Catchphrase::class,
                 'type'          => 'visit'
             ])->count();
+        });
+    }
+
+    public static function updateResource_addScore()
+    {
+        Event::listen('apptupir.catchphrase.catchphrase.beforeReturnResource', function (&$response, $resource) {
+            $response['score'] = $resource->score;
+        });
+    }
+
+    public static function addUserHasAccessScope()
+    {
+        Catchphrase::extend(function (Catchphrase $catchphrase) {
+            $catchphrase->addDynamicMethod('scopeUserHasAccess', function ($query) use ($catchphrase) {
+                $user = JWTAuth::getUser();
+                $user = User::find(1);
+
+                $query->whereHas('user', function ($query) {
+                    return $query->isPublished();
+                });
+
+                if ($user->is_superuser) {
+                    return $query;
+                }
+
+                $blockedUsersIds = $user->blockedUsers()->get()->pluck('id');
+
+                $query->whereHas('user', function ($query) use ($blockedUsersIds) {
+                    return $query->whereNotIn('id', $blockedUsersIds);
+                });
+
+                return $query;
+            });
         });
     }
 

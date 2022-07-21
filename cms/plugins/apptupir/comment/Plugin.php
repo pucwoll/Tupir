@@ -3,6 +3,7 @@
 use Backend;
 use System\Classes\PluginBase;
 use AppTupir\Comment\Classes\Extend\CommentExtend;
+use LibUser\UserFlag\Classes\Services\UserFlagService;
 
 /**
  * Comment Plugin Information File
@@ -31,6 +32,17 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        CommentExtend::extendCommentResource();
+        CommentExtend::extendAuthorResource_addAvatar();
+
+        CommentExtend::addLikesRelationToComment();
+
+        CommentExtend::beforeDelete_deleteLikes();
+        CommentExtend::afterRestore_restoreLikes();
+
+        CommentExtend::extendCommentResource_addLikesCount();
+        CommentExtend::extendAnswerResource_addLikesCount();
+
+        UserFlagService::addTypeStatusToResource('libchat.comments.comment.beforeReturnResource', 'like', 'like_by_active_user');
+        UserFlagService::addTypeStatusToResource('libchat.comments.answer.beforeReturnResource', 'like', 'like_by_active_user');
     }
 }

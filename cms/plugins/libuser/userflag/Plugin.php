@@ -1,5 +1,6 @@
 <?php namespace LibUser\UserFlag;
 
+use Backend;
 use System\Classes\PluginBase;
 use LibUser\UserFlag\Classes\Extend\UserExtend;
 
@@ -27,12 +28,30 @@ class Plugin extends PluginBase
             'icon'        => 'icon-leaf'
         ];
     }
-    
+
     /*
      * Bootstrap plugin
      */
     public function boot()
     {
         UserExtend::addMethod_getFlaggedModels();
+    }
+
+    /**
+     * Registers back-end navigation items for this plugin.
+     *
+     * @return array
+     */
+    public function registerNavigation()
+    {
+        return [
+            'report' => [
+                'label' => 'User flags',
+                'url' => Backend::url('libuser/userflag/userflags'),
+                'icon' => 'icon-flag',
+                'permissions' => ['libuser.userflag.*'],
+                'order' => 500
+            ]
+        ];
     }
 }

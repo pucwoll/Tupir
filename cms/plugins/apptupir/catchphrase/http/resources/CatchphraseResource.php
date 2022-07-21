@@ -11,7 +11,6 @@ class CatchphraseResource extends Resource
 
     {
         $response = [
-            'type'        => 'catchphrase',
             'id'          => $this->id,
             'title'       => $this->title,
             'slug'        => $this->slug,

@@ -1,5 +1,4 @@
 export interface Catchphrase {
-	type: string
 	id: number
 	title: string
 	slug: string
@@ -14,7 +13,6 @@ export interface Catchphrase {
 }
 
 export interface CatchphraseUser {
-	type: string
 	id: number
 	name: string
 	username: string
