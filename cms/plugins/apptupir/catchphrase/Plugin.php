@@ -53,6 +53,8 @@ class Plugin extends PluginBase
         CatchphraseExtend::afterRestore_restorePlaysVisitsLikesBookmarksShares();
 
         CatchphraseExtend::updateResource_addPlaysVisitsLikesBookmarksSharesCommentsCount();
+        CatchphraseExtend::updateResource_addScore();
+        CatchphraseExtend::addUserHasAccessScope();
         CatchphraseExtend::bindEvent_createVisitFlagWhenSpecificCatchphraseIsRequested();
 
         UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'like', 'like_by_active_user');
