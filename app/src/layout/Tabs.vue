@@ -57,14 +57,12 @@ const isModalOpened = ref(false)
 const mainTabBar = ref<HTMLIonTabBarElement|null>(null)
 
 async function createModal() {
-  if(isModalOpened.value) {
-    if (modal.value) {
-      closeModal()
-    }
+  if(isModalOpened.value || modal.value) {
+    await closeModal()
     return
   }
+  console.log(isModalOpened.value, modal.value)
   isModalOpened.value = true
-
   modal.value = await modalController.create({
     component: CreateCatchphrase,
     initialBreakpoint: 0.95,
@@ -74,6 +72,7 @@ async function createModal() {
   document.querySelector(`#tab-button-${mainTabBar.value?.tabState.activeTab}`)?.classList.remove('tab-selected')
 
   document.querySelector('#main-tabs')?.appendChild(modal.value)
+  if(!modal.value) return
   modal.value.present()
 
   modal.value.onDidDismiss().then(() => {
@@ -81,14 +80,15 @@ async function createModal() {
   })
 }
 
-function closeModal() {
+async function closeModal() {
   if(modal.value) {
-    modal.value.dismiss()
-    modal.value = null
-    isModalOpened.value = false
-    // @ts-expect-error wrong types
-    document.querySelector(`#tab-button-${mainTabBar.value?.tabState.activeTab}`)?.classList.add('tab-selected')
+    await modal.value.dismiss()
   }
+  isModalOpened.value = false
+  modal.value = null
+  // @ts-expect-error wrong types
+  document.querySelector(`#tab-button-${mainTabBar.value?.tabState.activeTab}`)?.classList.add('tab-selected')
+
 }
 </script>
 
@@ -160,7 +160,7 @@ ion-tab-bar {
 }
 
 ion-fab-button {
-	margin-bottom: 9px;
+  margin-bottom: calc(var(--ion-safe-area-bottom) + 9px);
 	--box-shadow: none;
 	--background: var(--ion-background-color);
 	--background-activated: var(--ion-background-color);
