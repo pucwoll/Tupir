@@ -152,7 +152,6 @@ class CatchphraseExtend
         Catchphrase::extend(function (Catchphrase $catchphrase) {
             $catchphrase->addDynamicMethod('scopeUserHasAccess', function ($query) use ($catchphrase) {
                 $user = JWTAuth::getUser();
-                $user = User::find(1);
 
                 $query->whereHas('user', function ($query) {
                     return $query->isPublished();

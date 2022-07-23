@@ -9,7 +9,7 @@ class ProfileSimpleResource extends Resource
         return [
             'id'                 => $this->id,
             'name'               => $this->name,
-            'username'           => $this->nickname,
+            'username'           => $this->username,
             'bio'                => $this->bio,
             'avatar'             => $this->avatar,
             'user_role'          => $this->user_role,
