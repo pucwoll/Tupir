@@ -4,7 +4,7 @@
         "name": "Roman Sekerka",
         "username": "psycho",
         "bio": "TikTok influencer",
-        "email": "psycho@wezeo.com",
+        "email": "psycho@gmail.com",
         "password": "12345678",
         "password_confirmation": "12345678",
         "is_activated": true,
@@ -19,7 +19,7 @@
         "name": "Robert Geiss",
         "username": "robertogeissini",
         "bio": "Roooobert!",
-        "email": "roberto@wezeo.com",
+        "email": "robertogeissini@gmail.com",
         "password": "12345678",
         "password_confirmation": "12345678",
         "is_activated": true,
@@ -27,6 +27,21 @@
         "is_published": true,
         "avatar": {
             "url": "https://tupir.s3.eu-central-1.amazonaws.com/uploads/user/avatar/2/robertogeissini.jpg"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Marcel Merciak",
+        "username": "marcelito",
+        "bio": "Pici tam!",
+        "email": "marcelito@gmail.com",
+        "password": "12345678",
+        "password_confirmation": "12345678",
+        "is_activated": true,
+        "activated_at": "2022-05-19 23:07:52",
+        "is_published": true,
+        "avatar": {
+            "url": "https://tupir.s3.eu-central-1.amazonaws.com/uploads/user/avatar/3/marcelito.jpeg"
         }
     }
 ]

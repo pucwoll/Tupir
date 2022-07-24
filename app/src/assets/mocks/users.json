@@ -1,1 +1,74 @@
-[{"type":"user","id":1,"name":"Roman Sekerka","username":"psycho","bio":"TikTok influencer","email":"psycho@wezeo.com","catchphrases_count":7,"avatar":{"id":"1","disk_name":"62ca2e262a454351605156.jpeg","file_name":"psycho.jpeg","file_size":"13202","content_type":"image/jpeg","title":null,"description":null,"field":"avatar","sort_order":"1","created_at":"2022-07-10 01:40:54","updated_at":"2022-07-10 01:40:54","path":"https://tupir.s3.eu-central-1.amazonaws.com/uploads/public/62c/a2e/262/62ca2e262a454351605156.jpeg","extension":"jpeg"}},{"type":"user","id":2,"name":"Robert Geiss","username":"robertogeissini","bio":"<p>Roooobert!</p>","email":"roberto@wezeo.com","catchphrases_count":23,"avatar":{"id":"2","disk_name":"62ca2e269284e485096266.jpeg","file_name":"robertogeissini.jpeg","file_size":"106058","content_type":"image/jpeg","title":null,"description":null,"field":"avatar","sort_order":"2","created_at":"2022-07-10 01:40:54","updated_at":"2022-07-10 01:40:54","path":"https://tupir.s3.eu-central-1.amazonaws.com/uploads/public/62c/a2e/269/62ca2e269284e485096266.jpeg","extension":"jpeg"}}]
+[
+  {
+    "id": 3,
+    "name": "Marcel Merciak",
+    "username": "marcelito",
+    "bio": "Pici tam!",
+    "email": "marcelito@gmail.com",
+    "catchphrases_count": 20,
+    "user_role": "user",
+    "avatar": {
+      "id": 73,
+      "disk_name": "62dd9c49b30f4578017430.jpeg",
+      "file_name": "marcelito.jpeg",
+      "file_size": 32582,
+      "content_type": "image/jpeg",
+      "title": null,
+      "description": null,
+      "field": "avatar",
+      "sort_order": 73,
+      "created_at": "2022-07-24 19:23:54",
+      "updated_at": "2022-07-24 19:23:54",
+      "path": "https://tupir.s3.eu-central-1.amazonaws.com/uploads/public/62d/d9c/49b/62dd9c49b30f4578017430.jpeg",
+      "extension": "jpeg"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Robert Geiss",
+    "username": "robertogeissini",
+    "bio": "Roooobert!",
+    "email": "robertogeissini@gmail.com",
+    "catchphrases_count": 23,
+    "user_role": "user",
+    "avatar": {
+      "id": 72,
+      "disk_name": "62dd9c49009a2414725101.jpeg",
+      "file_name": "robertogeissini.jpeg",
+      "file_size": 106058,
+      "content_type": "image/jpeg",
+      "title": null,
+      "description": null,
+      "field": "avatar",
+      "sort_order": 72,
+      "created_at": "2022-07-24 19:23:53",
+      "updated_at": "2022-07-24 19:23:53",
+      "path": "https://tupir.s3.eu-central-1.amazonaws.com/uploads/public/62d/d9c/490/62dd9c49009a2414725101.jpeg",
+      "extension": "jpeg"
+    }
+  },
+  {
+    "id": 1,
+    "name": "Roman Sekerka",
+    "username": "psycho",
+    "bio": "TikTok influencer",
+    "email": "psycho@gmail.com",
+    "catchphrases_count": 7,
+    "user_role": "user",
+    "avatar": {
+      "id": 71,
+      "disk_name": "62dd9c483d599857623648.jpeg",
+      "file_name": "psycho.jpeg",
+      "file_size": 13202,
+      "content_type": "image/jpeg",
+      "title": null,
+      "description": null,
+      "field": "avatar",
+      "sort_order": 71,
+      "created_at": "2022-07-24 19:23:52",
+      "updated_at": "2022-07-24 19:23:52",
+      "path": "https://tupir.s3.eu-central-1.amazonaws.com/uploads/public/62d/d9c/483/62dd9c483d599857623648.jpeg",
+      "extension": "jpeg"
+    }
+  }
+]
