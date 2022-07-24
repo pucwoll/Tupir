@@ -35,7 +35,7 @@
               <h2 class="whitespace-pre-wrap mx-4 text-start">
                 <q>
                   {{ catchphrase.lyrics }}
-                </q>>
+                </q>
               </h2>
               <div class="ml-auto h-full" />
             </ion-button>
