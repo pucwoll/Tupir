@@ -9,6 +9,15 @@ export interface Catchphrase {
 	user: CatchphraseUser
 	created_at: Date
 	updated_at: Date
+  likes: number
+  bookmarks: number
+  shares: number
+  comments: number
+  score: number
+  like_by_active_user: boolean
+  bookmark_by_active_user: boolean
+  share_by_active_user: boolean
+  comment_by_active_user: boolean
 }
 
 export interface CatchphraseUser {
