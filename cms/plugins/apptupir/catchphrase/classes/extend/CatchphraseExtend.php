@@ -98,7 +98,7 @@ class CatchphraseExtend
         });
     }
 
-    public static function updateResource_addPlaysVisitsLikesBookmarksSharesCommentsCount()
+    public static function updateResource_addLikesBookmarksSharesCommentsCount()
     {
         Event::listen('apptupir.catchphrase.catchphrase.beforeReturnResource', function(&$response, Catchphrase $catchphrase) {
             $response['likes'] = UserFlag::where([
@@ -124,18 +124,6 @@ class CatchphraseExtend
             $response['comments'] = Comment::where([
                 'commentable_id' => $catchphrase->id,
                 'creatable_type' => User::class
-            ])->count();
-
-            $response['plays'] = UserFlag::where([
-                'flaggable_id'   => $catchphrase->id,
-                'flaggable_type' => Catchphrase::class,
-                'type'          => 'play'
-            ])->count();
-
-            $response['visits'] = UserFlag::where([
-                'flaggable_id'   => $catchphrase->id,
-                'flaggable_type' => Catchphrase::class,
-                'type'          => 'visit'
             ])->count();
         });
     }

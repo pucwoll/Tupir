@@ -52,7 +52,7 @@ class Plugin extends PluginBase
         CatchphraseExtend::beforeDelete_deletePlaysLikesBookmarksShares();
         CatchphraseExtend::afterRestore_restorePlaysVisitsLikesBookmarksShares();
 
-        CatchphraseExtend::updateResource_addPlaysVisitsLikesBookmarksSharesCommentsCount();
+        CatchphraseExtend::updateResource_addLikesBookmarksSharesCommentsCount();
         CatchphraseExtend::updateResource_addScore();
         CatchphraseExtend::addUserHasAccessScope();
         CatchphraseExtend::bindEvent_createVisitFlagWhenSpecificCatchphraseIsRequested();
@@ -61,8 +61,6 @@ class Plugin extends PluginBase
         UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'bookmark', 'bookmark_by_active_user');
         UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'share', 'share_by_active_user');
         UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'comment', 'comment_by_active_user');
-        UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'play', 'play_by_active_user');
-        UserFlagService::addTypeStatusToResource('apptupir.catchphrase.catchphrase.beforeReturnResource', 'visit', 'visit_by_active_user');
     }
 
     /**
