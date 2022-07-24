@@ -20,7 +20,6 @@ class CreateCatchphrasesTable extends Migration
 
             $table->integer('user_id')->index();
 
-            $table->unsignedInteger('sort_order')->nullable()->index();
             $table->boolean('is_published')->default(false)->index();
 
             $table->timestamps();

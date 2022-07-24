@@ -7,7 +7,6 @@ export interface Catchphrase {
 	tags_string: null | string
 	tags: null | Array<string>
 	user: CatchphraseUser
-	order: null | string
 	created_at: Date
 	updated_at: Date
 }
