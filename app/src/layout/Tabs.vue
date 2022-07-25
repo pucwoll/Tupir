@@ -15,7 +15,7 @@
           :class="{
             'modal-active tab-selected': modal && !tab.href,
           }"
-          @click="closeModal"
+          @click="closeModal(true)"
         >
           <ion-icon
             :icon="
@@ -82,7 +82,8 @@ async function createModal() {
   })
 }
 
-async function closeModal() {
+async function closeModal(dismiss = false) {
+  if(dismiss && modal.value) modal.value.dismiss()
   isModalOpened.value = false
   modal.value = null
   // @ts-expect-error wrong types
