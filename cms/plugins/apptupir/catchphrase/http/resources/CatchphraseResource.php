@@ -19,7 +19,6 @@ class CatchphraseResource extends Resource
             'tags_string' => $this->tags_string,
             'tags'        => $this->tags,
             'user'        => new SimpleUserResource($this->user),
-            'order'       => $this->sort_order,
             'created_at'  => $this->created_at->toDateTimeString(),
             'updated_at'  => $this->updated_at->toDateTimeString(),
         ];

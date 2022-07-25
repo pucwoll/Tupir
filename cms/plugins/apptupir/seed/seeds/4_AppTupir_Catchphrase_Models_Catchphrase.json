@@ -1,0 +1,222 @@
+[
+    {
+        "id": 31,
+        "title": "Krista boha vam do pice!",
+        "slug": "krista-boha-vam-do-pice",
+        "audio": "/marcel-merciak/krista-boha-vam-do-pice.mp3",
+        "lyrics": "Krista boha vam do pice!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 32,
+        "title": "Ale ani ja si tu kokot nevalam",
+        "slug": "ale-ani-ja-si-tu-kokot-nevalam",
+        "audio": "/marcel-merciak/ale-ani-ja-si-tu-kokot-nevalam.mp3",
+        "lyrics": "Ale ani ja si tu kokot nevalam.",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 33,
+        "title": "Co riesis?! Ake veci riesis?!",
+        "slug": "co-riesis-ake-veci-riesis",
+        "audio": "/marcel-merciak/co-riesis-ake-veci-riesis.mp3",
+        "lyrics": "Co riesis?! Ake veci riesis?!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 34,
+        "title": "Do pici tam! Kurva",
+        "slug": "do-pici-tam-kurva",
+        "audio": "/marcel-merciak/do-pici-tam-kurva.mp3",
+        "lyrics": "Do pici tam! Kurva.",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 35,
+        "title": "Dobre okay tak... Dobre",
+        "slug": "dobre-okay-tak-dobre",
+        "audio": "/marcel-merciak/dobre-okay-tak-dobre.mp3",
+        "lyrics": "Dobre okay tak... Dobre.",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 36,
+        "title": "Kurva!",
+        "slug": "kurva",
+        "audio": "/marcel-merciak/kurva.mp3",
+        "lyrics": "Kurva!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 37,
+        "title": "Osemkrat sa nieco pytam",
+        "slug": "osemkrat-sa-nieco-pytam",
+        "audio": "/marcel-merciak/osemkrat-sa-nieco-pytam.mp3",
+        "lyrics": "Osemkrat sa nieco pytam, do pice, a vy mi neviete povedat, kurva, ani makke 'F'!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 38,
+        "title": "Nechate ma kokotinu povedat!",
+        "slug": "nechate-ma-kokotinu-povedat",
+        "audio": "/marcel-merciak/nechate-ma-kokotinu-povedat.mp3",
+        "lyrics": "Nechate ma kokotinu povedat!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 39,
+        "title": "Nekomunikuju, to je katastrofa",
+        "slug": "nekomunikuju-to-je-katastrofa",
+        "audio": "/marcel-merciak/nekomunikuju-to-je-katastrofa.mp3",
+        "lyrics": "To, to ani nekomunikuju, to je katastrofa... toto.",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 40,
+        "title": "No... No...",
+        "slug": "no-no",
+        "audio": "/marcel-merciak/no-no.mp3",
+        "lyrics": "No... No...",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 41,
+        "title": "Parada",
+        "slug": "parada",
+        "audio": "/marcel-merciak/parada.mp3",
+        "lyrics": "Parada.",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 42,
+        "title": "Pice aj s takou spolupracou",
+        "slug": "pice-aj-s-takou-spolupracou",
+        "audio": "/marcel-merciak/pice-aj-s-takou-spolupracou.mp3",
+        "lyrics": "Pice aj s takou spolupracou toto naozaj, prisaham bohu!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 43,
+        "title": "To je katastrofa",
+        "slug": "to-je-katastrofa",
+        "audio": "/marcel-merciak/to-je-katastrofa.mp3",
+        "lyrics": "To je katastrofa.",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 44,
+        "title": "Uz som naozaj nasraty do pici",
+        "slug": "uz-som-naozaj-nasraty-do-pici",
+        "audio": "/marcel-merciak/uz-som-naozaj-nasraty-do-pici.mp3",
+        "lyrics": "Uz som naozaj nasraty do pici!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 45,
+        "title": "Dakujem, to je vsetko",
+        "slug": "dakujem-to-je-vsetko",
+        "audio": "/marcel-merciak/dakujem-to-je-vsetko.mp3",
+        "lyrics": "Super, dakujem pekne... To je vsetko.",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 46,
+        "title": "Preco ste ma tak zarezali do pici?!",
+        "slug": "preco-ste-ma-tak-zarezali-do-pici",
+        "audio": "/marcel-merciak/preco-ste-ma-tak-zarezali-do-pici.mp3",
+        "lyrics": "Preco ste ma tak zarezali do pici?!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 47,
+        "title": "Do pice!",
+        "slug": "do-pice",
+        "audio": "/marcel-merciak/do-pice.mp3",
+        "lyrics": "Do pice!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 48,
+        "title": "Nekric tu na mna, ja si tu kokot nevalam!",
+        "slug": "nekric-tu-na-mna-ja-si-tu-kokot-nevalam",
+        "audio": "/marcel-merciak/nekric-tu-na-mna-ja-si-tu-kokot-nevalam.mp3",
+        "lyrics": "Nekric tu na mna, ja si tu kokot nevalam!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 49,
+        "title": "Preco musis furt kricat na nas?!",
+        "slug": "preco-musis-furt-kricat-na-nas",
+        "audio": "/marcel-merciak/preco-musis-furt-kricat-na-nas.mp3",
+        "lyrics": "Preco musis furt kricat na nas?!",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    },
+    {
+        "id": 50,
+        "title": "Vsak sa tu snazime, kurva, robit okolo vas",
+        "slug": "vsak-sa-tu-snazime-kurva-robit-okolo-vas",
+        "audio": "/marcel-merciak/vsak-sa-tu-snazime-kurva-robit-okolo-vas.mp3",
+        "lyrics": "Vsak sa tu snazime, kurva, robit okolo vas.",
+        "user_id": 3,
+        "created_at": "2022-05-19 23:07:52",
+        "updated_at": "2022-05-19 23:07:52",
+        "is_published": true
+    }
+]

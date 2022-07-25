@@ -55,12 +55,12 @@ class Plugin extends PluginBase
         UserExtend::onScopeCanSee_filterPublished();
         UserExtend::addIsPublishedScope();
         UserExtend::addIsPublishedAsFillable();
-        UserExtend::updateListColumns_addIsPublishedSwitch();
-        UserExtend::updateFormFields_addIsPublishedSwitch();
         UserExtend::deleteUserFlags_onUserDelete();
         UserExtend::beforeShowCatchphrase_checkPublished();
         UserExtend::addCatchphrasesCountToColumns();
         UserExtend::addCatchphrasesCountToResource();
+        UserExtend::updateListColumns_addIsPublishedSwitch();
+        UserExtend::updateFormFields_addIsPublishedSwitch();
 
         UserExtend::setMailTemplateForForgottenPassword();
 

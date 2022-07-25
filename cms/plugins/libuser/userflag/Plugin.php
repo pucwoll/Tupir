@@ -45,12 +45,12 @@ class Plugin extends PluginBase
     public function registerNavigation()
     {
         return [
-            'report' => [
-                'label' => 'User flags',
-                'url' => Backend::url('libuser/userflag/userflags'),
-                'icon' => 'icon-flag',
+            'userflag' => [
+                'label'       => 'User flags',
+                'url'         => Backend::url('libuser/userflag/userflags'),
+                'icon'        => 'icon-flag',
                 'permissions' => ['libuser.userflag.*'],
-                'order' => 500
+                'order'       => 500
             ]
         ];
     }

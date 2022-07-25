@@ -6,18 +6,25 @@ columns:
     id:
         label: ID
         searchable: true
+        type: number
     flaggable_type:
         label: Flaggable type
         searchable: true
     flaggable_id:
         label: Flaggable ID
         searchable: true
+        type: number
     user_id:
         label: User ID
         searchable: true
+        type: number
     type:
         label: Type
         searchable: true
+    value:
+        label: Value
+        searchable: true
+        type: number
     created_at:
         label: Created at
         searchable: true
