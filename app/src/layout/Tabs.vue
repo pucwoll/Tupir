@@ -58,7 +58,9 @@ const mainTabBar = ref<HTMLIonTabBarElement|null>(null)
 
 async function createModal() {
   if(isModalOpened.value || modal.value) {
-    await closeModal()
+    if(modal.value) {
+      await modal.value.dismiss()
+    }
     return
   }
   console.log(isModalOpened.value, modal.value)
@@ -75,20 +77,16 @@ async function createModal() {
   if(!modal.value) return
   modal.value.present()
 
-  modal.value.onDidDismiss().then(() => {
+  modal.value.onWillDismiss().then(() => {
     closeModal()
   })
 }
 
 async function closeModal() {
-  if(modal.value) {
-    await modal.value.dismiss()
-  }
   isModalOpened.value = false
   modal.value = null
   // @ts-expect-error wrong types
   document.querySelector(`#tab-button-${mainTabBar.value?.tabState.activeTab}`)?.classList.add('tab-selected')
-
 }
 </script>
 

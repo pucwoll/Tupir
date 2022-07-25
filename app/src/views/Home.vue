@@ -25,9 +25,10 @@
     </ion-header>
     <ion-content
       fullscreen
+      :scroll-y="false"
     >
       <swiper
-        :modules="[EffectCoverflow, IonicSlides]"
+        :modules="[EffectCoverflow, Virtual, IonicSlides]"
         :direction="'vertical'"
         class="h-full"
         :slides-per-view="3"
@@ -39,12 +40,14 @@
           modifier: 1,
           slideShadows: false,
         }"
+        virtual
         slide-to-clicked-slide
         centered-slides
       >
         <swiper-slide
-          v-for="catchphrase in catchphrasesStore.catchphrases"
+          v-for="(catchphrase, index) in catchphrasesStore.catchphrases"
           :key="catchphrase.id"
+          :virtual-index="index"
         >
           <catchphrase-card
             :user="catchphrase.user"
@@ -64,7 +67,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import CatchphraseCard from '@/components/CatchphraseCard.vue'
 import { useAudioStore } from '@/store/audio'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { EffectCoverflow } from 'swiper'
+import { EffectCoverflow, Virtual } from 'swiper'
 import { IonicSlides } from '@ionic/vue'
 
 import 'swiper/css'
