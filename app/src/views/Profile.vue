@@ -22,7 +22,10 @@
       </h1>
       <div class="wrapper">
         <ion-avatar class="avatar">
-          <img src="@/assets/avatar.jpeg">
+          <img
+            src="@/assets/avatar.jpeg"
+            style="height: 100%; width: 100%;"
+          >
         </ion-avatar>
         <h1 class="text-center font-bold -mt-16">
           @jeliinekj

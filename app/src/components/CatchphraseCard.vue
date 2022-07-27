@@ -7,6 +7,7 @@
             <img
               :src="user.avatar.path"
               alt="avatar"
+              style="height: 100%; width: 100%;"
             >
           </ion-avatar>
           <div class="grow">
