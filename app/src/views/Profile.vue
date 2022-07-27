@@ -37,7 +37,7 @@
         <div class="flex justify-evenly text-center mt-4 mb-8">
           <div class="w-32">
             <p class="font-bold">
-              146
+              128
             </p>
             <p class="font-medium">
               <ion-label color="medium">
@@ -57,7 +57,7 @@
           </div>
           <div class="w-32">
             <p class="font-bold">
-              1488
+              1337
             </p>
             <p class="font-medium">
               <ion-label color="medium">
