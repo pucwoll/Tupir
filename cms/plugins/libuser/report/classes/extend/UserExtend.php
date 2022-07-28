@@ -11,7 +11,7 @@ class UserExtend
             $model->hasMany['reports'] = [
                 UserReport::class,
                 'delete'     => true,
-                'softDelete' => true,
+                'softDelete' => true
             ];
         });
     }
