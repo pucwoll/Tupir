@@ -1,0 +1,12 @@
+{
+    "name": "wintegration/firebasepush",
+    "authors": [
+        {
+            "name": "Patrik Nemeček",
+            "email": "nemecek@wezeo.com"
+        }
+    ],
+    "require": {
+        "plokko/laravel-firebase": "^0.1.3"
+    }
+}

@@ -1,0 +1,28 @@
+<?= Form::ajax('onSend', [
+    'class' => 'form-elements',
+    'data-stripe-load-indicator' => true,
+    'data-request-confirm' => 'You are about to send every singe user this message'
+]) ?>
+<div class="form-group span-left">
+    <label for="header">Header</label>
+    <input class="form-control" type="text" name="header" id="header">
+
+    <label for="body">Body</label>
+    <input class="form-control" type="text" name="body" id="body">
+
+    <label for="router">Router(optional)</label>
+    <input class="form-control" type="text" name="router" id="router">
+
+    <label for="externalUrl">External Url(optional)</label>
+    <input class="form-control" type="text" name="externalUrl" id="externalUrl">
+
+    <button
+        data-attach-loading
+        style="margin-top: 40px"
+        class="btn btn-default"
+        type="submit">
+        Upload
+    </button>
+</div>
+
+<?= Form::close() ?>
