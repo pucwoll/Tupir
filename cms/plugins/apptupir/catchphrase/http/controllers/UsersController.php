@@ -10,7 +10,7 @@ class UsersController extends Controller
     {
         return SimpleUserResource::collection(
             User::isPublished()
-                ->orderBy('created_at', 'desc')
+                ->inRandomOrder()
                 ->get()
         );
     }

@@ -13,10 +13,10 @@ class CatchphrasesController extends Controller
     {
         return CatchphraseResource::collection(
             Catchphrase::isPublished()
-                ->orderBy('created_at', 'desc')
                 ->whereHas('user', function ($query) {
                     return $query->isPublished();
                 })
+                ->inRandomOrder()
                 ->get()
         );
     }
