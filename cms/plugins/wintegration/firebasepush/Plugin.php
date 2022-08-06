@@ -88,7 +88,7 @@ class Plugin extends PluginBase
     {
         return [
             'firebasepush' => [
-                'label'       => 'Push Notifications',
+                'label'       => 'Push notifications',
                 'url'         => \Backend\Facades\Backend::url('wintegration/firebasepush/notifications'),
                 'icon'        => 'icon-comments',
             ],
