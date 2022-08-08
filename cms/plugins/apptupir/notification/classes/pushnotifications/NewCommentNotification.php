@@ -40,7 +40,7 @@ class NewCommentNotification extends Notification
 
         $push->data([
             'router' => json_encode([
-                'path' => "/catchphrase/{$this->comment->commentable->id}",
+                'path'   => "/catchphrase/{$this->comment->commentable->id}",
                 'params' => [
                     'showComments' => true
                 ]

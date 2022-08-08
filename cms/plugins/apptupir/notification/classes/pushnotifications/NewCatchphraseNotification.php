@@ -35,15 +35,14 @@ class NewCatchphraseNotification extends Notification
      */
     public function toFirebasePush($notifiable)
     {
-
         $push = FCM::notificationTitle('New catchphrase');
 //        $push->notificationBody($this->message->text);
 
         $push->data([
             'router' => json_encode([
-                'name' => 'feed-profile-catchphrases',
+                'name'   => 'feed-profile-catchphrases',
                 'params' => [
-                    'userId' => $this->catchphrase->user->id,
+                    'userId'        => $this->catchphrase->user->id,
                     'catchphraseId' => $this->catchphrase->id
                 ]
             ])

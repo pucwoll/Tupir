@@ -19,7 +19,7 @@ class Plugin extends PluginBase
         return [
             'name'        => 'Notification',
             'description' => 'No description provided yet...',
-            'author'      => 'AppGamemakers',
+            'author'      => 'AppTupir',
             'icon'        => 'icon-leaf'
         ];
     }

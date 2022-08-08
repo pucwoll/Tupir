@@ -27,7 +27,7 @@ class NewFollowersNotification extends Notification
 
         $push->data([
             'router' => json_encode([
-                'path' => '/my-profile',
+                'path' => '/my-profile'
             ])
         ]);
 
