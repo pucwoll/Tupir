@@ -21,6 +21,9 @@ class FeedCatchphrasesController extends Controller
         $user = JWTAuth::getUser();
 
         $catchphrases = Catchphrase::isPublished()
+            ->whereHas('user', function ($query) {
+                return $query->isPublished()->canSee();
+            })
             ->whereIn('user_id', $user->following->pluck('flaggable_id')->toArray())
             ->userHasAccess()
             ->orderByDesc('created_at')

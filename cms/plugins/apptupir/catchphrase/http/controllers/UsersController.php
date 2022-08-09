@@ -10,6 +10,7 @@ class UsersController extends Controller
     {
         return SimpleUserResource::collection(
             User::isPublished()
+                ->canSee()
                 ->inRandomOrder()
                 ->get()
         );
@@ -18,6 +19,7 @@ class UsersController extends Controller
     public function show($key)
     {
         $user = User::isPublished()
+            ->canSee()
             ->where('username', $key)
             ->orWhere('id', $key)
             ->firstOrFail();
