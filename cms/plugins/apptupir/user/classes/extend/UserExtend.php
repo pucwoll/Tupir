@@ -268,11 +268,11 @@ class UserExtend
 
             $column->addColumns([
                 'catchphrases_count' => [
-                    'label'            => 'Catchphrases count',
+                    'label'            => 'Catchphrases',
                     'type'             => 'number',
                     'relation'         => 'catchphrases',
-                    'useRelationCount' => 'true',
-                ],
+                    'useRelationCount' => 'true'
+                ]
             ]);
         });
     }
