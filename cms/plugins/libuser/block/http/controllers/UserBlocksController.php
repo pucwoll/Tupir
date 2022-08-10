@@ -3,6 +3,7 @@
 use RainLab\User\Models\User;
 use Illuminate\Routing\Controller;
 use LibUser\UserApi\Facades\JWTAuth;
+use LibUser\UserFlag\Models\UserFlag;
 use October\Rain\Exception\ApplicationException;
 
 class UserBlocksController extends Controller
@@ -17,7 +18,19 @@ class UserBlocksController extends Controller
         }
 
         // Delete follows
-        $user->following()->where('flaggable_type', User::class)->where('flaggable_id', $user->id)->delete();
+        $follow = UserFlag::find(
+            UserFlag::where([
+                'flaggable_type' => User::class,
+                'flaggable_id'   => $blockedUser->id,
+                'user_id'       => $user->id,
+                'type'          => 'follow'
+            ])->value('id')
+        );
+
+        if ($follow) {
+            $follow->value = false;
+            $follow->save();
+        }
 
         $user->blockedUsers()->syncWithoutDetaching($blockedUser);
 
