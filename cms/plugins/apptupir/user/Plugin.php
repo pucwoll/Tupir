@@ -5,6 +5,7 @@ use System\Classes\PluginBase;
 use AppTupir\User\Classes\Extend\UserExtend;
 use AppTupir\User\Classes\Extend\UserFlagExtend;
 use LibUser\UserFlag\Classes\Services\UserFlagService;
+use AppTupir\User\Classes\Extend\UsersControllerExtend;
 use AppTupir\User\Classes\Extend\UserExtendDefaultAssets;
 
 /**
@@ -61,10 +62,11 @@ class Plugin extends PluginBase
         UserExtend::addCatchphrasesCountToResource();
         UserExtend::updateListColumns_addIsPublishedSwitch();
         UserExtend::updateFormFields_addIsPublishedSwitch();
-
         UserExtend::setMailTemplateForForgottenPassword();
 
         UserExtendDefaultAssets::beforeSave_setDefaultAvatar();
+
+        UsersControllerExtend::enableUsernameAuth();
 
         UserFlagExtend::addUserToAliasesConfig();
         UserFlagExtend::softDeleteUserFlagsOnUserDeleteAndRestore();
