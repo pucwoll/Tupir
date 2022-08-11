@@ -8,7 +8,6 @@ use AppTupir\User\Http\Resources\SimpleUserResource;
 class CatchphraseResource extends Resource
 {
     public function toArray($request)
-
     {
         $response = [
             'id'          => $this->id,

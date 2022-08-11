@@ -6,7 +6,6 @@ use AppTupir\Catchphrase\Models\Catchphrase;
 class SimpleUserResource extends Resource
 {
     public function toArray($request)
-
     {
         $response = [
             'id'                 => $this->id,

@@ -2,6 +2,7 @@
 
 use Rainlab\User\Models\User;
 use October\Rain\Database\Model;
+use Illuminate\Support\Facades\DB;
 
 class Catchphrase extends Model
 {
@@ -28,7 +29,7 @@ class Catchphrase extends Model
         'tags',
         'is_published',
         'user_id',
-        'audio',
+        'audio'
     ];
 
     /**
@@ -36,7 +37,7 @@ class Catchphrase extends Model
      */
 
     protected $casts = [
-        'is_published' => 'boolean',
+        'is_published' => 'boolean'
     ];
 
     /**
@@ -44,15 +45,15 @@ class Catchphrase extends Model
      */
     public $rules = [
         'title'        => 'required',
-        'slug'         => [
-            'required',
+        'slug'         => 'required',
+        'uuid'         => [
             'regex:/(?!^\d+$)^[_A-z0-9\-]*$/',
-            'unique:apptupir_catchphrases,slug',
+            'unique:apptupir_catchphrases,uuid'
         ],
         'lyrics'       => 'required',
         'user'         => 'required',
         'audio'        => 'required',
-        'is_published' => 'boolean',
+        'is_published' => 'boolean'
     ];
 
     /**
@@ -92,6 +93,15 @@ class Catchphrase extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function beforeSave()
+    {
+        $this->uuid = str_random(5);
+
+        while (DB::table($this->getTable())->where('uuid', $this->uuid)->exists()) {
+            $this->uuid = str_random(5);
+        }
+    }
 
     public function getTagsAttribute()
     {
