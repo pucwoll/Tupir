@@ -1,37 +1,12 @@
 {
     "name": "october/october",
-    "description": "October CMS",
-    "homepage": "https://octobercms.com",
-    "type": "project",
-    "keywords": ["october", "cms", "octobercms", "laravel"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Alexey Bobkov",
-            "email": "aleksey.bobkov@gmail.com",
-            "role": "Co-founder"
-        },
-        {
-            "name": "Samuel Georges",
-            "email": "daftspunky@gmail.com",
-            "role": "Co-founder"
-        }
-    ],
-    "support": {
-        "paid": "https://octobercms.com/premium-support",
-        "issues": "https://github.com/octobercms/october/issues",
-        "forum": "https://octobercms.com/forum/",
-        "docs": "https://octobercms.com/docs/",
-        "source": "https://github.com/octobercms/october"
-    },
     "require": {
         "php": ">=7.2.9",
         "october/rain": "1.1.*",
         "october/system": "1.1.*",
         "october/backend": "1.1.*",
         "laravel/framework": "~6.0",
-        "tymon/jwt-auth": "^1.0",
-        "plokko/laravel-firebase": "^0.2.1"
+        "wikimedia/composer-merge-plugin": "^2.0"
     },
     "scripts": {
         "post-create-project-cmd": [
@@ -41,10 +16,21 @@
             "php artisan october:version"
         ]
     },
+    "extra": {
+        "merge-plugin": {
+            "include": [
+                "plugins/*/*/composer.json"
+            ],
+            "recurse": true,
+            "replace": false,
+            "merge-dev": false
+        }
+    },
     "config": {
         "preferred-install": "dist",
         "allow-plugins": {
-            "composer/installers": true
+            "composer/installers": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "dev",
