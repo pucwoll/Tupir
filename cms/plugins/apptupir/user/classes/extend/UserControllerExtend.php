@@ -9,14 +9,14 @@ class UserControllerExtend
     public static function enableUsernameAuth()
     {
         Event::listen('libuser.userapi.beforeAuthenticate', function ($params) {
-            $user = User::isActivated()
+            $params['login'] = User::firstOrFail()
                 ->where('email', $params['login'])
                 ->orWhere('username', $params['login'])
-                ->value('id');
+                ->value('email');
 
-            $params['login'] = User::findOrFail($user)->value('email');
-
-            return Auth::authenticate($params, false);
+            if (isset($params['login'])) {
+                return Auth::authenticate($params, false);
+            }
         });
     }
 }
