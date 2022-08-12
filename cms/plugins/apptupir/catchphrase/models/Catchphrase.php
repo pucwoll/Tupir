@@ -94,7 +94,7 @@ class Catchphrase extends Model
     public $attachOne = [];
     public $attachMany = [];
 
-    public function beforeSave()
+    public function beforeCreate()
     {
         $this->uuid = str_random(5);
 

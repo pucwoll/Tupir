@@ -3,12 +3,12 @@
 use October\Rain\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
-class UpdateUsersAddIsPublished extends Migration
+class UpdateUsersAddUUID extends Migration
 {
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->boolean('is_published')->default(true);
+            $table->string('uuid')->nullable()->unique();
         });
     }
 

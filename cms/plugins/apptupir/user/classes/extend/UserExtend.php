@@ -15,6 +15,24 @@ use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
 
 class UserExtend
 {
+    public static function addUUIDToUser()
+    {
+        User::extend(function($user) {
+            $user->bindEvent('model.beforeCreate', function() use ($user) {
+                $user->uuid = str_random(5);
+
+                while (DB::table($user->getTable())->where('uuid', $user->uuid)->exists()) {
+                    $user->uuid = str_random(5);
+                }
+            });
+
+            $user->rules['uuid'] = [
+                'regex:/(?!^\d+$)^[_A-z0-9\-]*$/',
+                'unique:users,uuid'
+            ];
+        });
+    }
+
     public static function onScopeCanSee_filterPublished()
     {
         Event::listen('libuser.block.scopeCanSee', function ($query) {

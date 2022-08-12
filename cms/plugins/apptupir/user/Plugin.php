@@ -53,9 +53,10 @@ class Plugin extends PluginBase
         UserExtend::addVisitsRelationToUser();
         UserExtend::addCatchphraseRelationToUser();
 
-        UserExtend::onScopeCanSee_filterPublished();
+        UserExtend::addUUIDToUser();
         UserExtend::addIsPublishedScope();
         UserExtend::addIsPublishedAsFillable();
+        UserExtend::onScopeCanSee_filterPublished();
         UserExtend::deleteUserFlags_onUserDelete();
         UserExtend::beforeShowCatchphrase_checkPublished();
         UserExtend::addCatchphrasesCountToColumns();

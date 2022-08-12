@@ -1,4 +1,5 @@
 1.0.1:
     - First version of User
+    - 2022_06_05_update_users_add_uuid.php
     - 2022_06_05_update_users_add_is_published.php
     - 2022_06_05_update_users_add_bio.php

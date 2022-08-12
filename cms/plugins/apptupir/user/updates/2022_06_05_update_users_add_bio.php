@@ -1,6 +1,6 @@
 <?php namespace AppTupir\User\Updates;
 
-use Schema;
+use October\Rain\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
 class UpdateUsersAddBio extends Migration
