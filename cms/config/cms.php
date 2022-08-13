@@ -317,20 +317,20 @@ return [
             'disk'            => 's3',
             'folder'          => 'uploads',
             'path'            => 'https://tupir.s3.eu-central-1.amazonaws.com/uploads',
-            'temporaryUrlTTL' => 3600,
+            'temporaryUrlTTL' => 3600
         ],
 
         'media' => [
             'disk'   => 's3',
             'folder' => 'media',
-            'path'   => 'https://tupir.s3.eu-central-1.amazonaws.com/media',
+            'path'   => 'https://tupir.s3.eu-central-1.amazonaws.com/media'
         ],
 
         'resized' => [
             'disk'   => 's3',
             'folder' => 'resized',
-            'path'   => 'https://tupir.s3.eu-central-1.amazonaws.com/resized',
-        ],
+            'path'   => 'https://tupir.s3.eu-central-1.amazonaws.com/resized'
+        ]
 
     ],
 

@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 's3',
+    'default' => 'local',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
-            'url' => '/storage/app',
+            'url' => '/storage/app'
         ],
 
         's3' => [
@@ -54,7 +54,7 @@ return [
             'key' => 'AKIAT6W77LLHDRWW5VU4',
             'secret' => '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',
             'region' => 'eu-central-1',
-            'bucket' => 'tupir',
+            'bucket' => 'tupir'
         ],
 
         'rackspace' => [
@@ -63,9 +63,9 @@ return [
             'key' => 'your-key',
             'container' => 'your-container',
             'endpoint' => 'https://identity.api.rackspacecloud.com/v2.0/',
-            'region' => 'IAD',
-        ],
+            'region' => 'IAD'
+        ]
 
-    ],
+    ]
 
 ];
