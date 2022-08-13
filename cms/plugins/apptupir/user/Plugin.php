@@ -1,5 +1,6 @@
 <?php namespace AppTupir\User;
 
+use AppTupir\User\Classes\Extend\UserLoginApiControllerExtend;
 use Backend;
 use System\Classes\PluginBase;
 use AppTupir\User\Classes\Extend\UserExtend;
@@ -67,7 +68,7 @@ class Plugin extends PluginBase
 
         UserExtendDefaultAssets::beforeSave_setDefaultAvatar();
 
-        UserControllerExtend::enableUsernameAuth();
+        UserLoginApiControllerExtend::enableUsernameAuth();
 
         UserFlagExtend::addUserToAliasesConfig();
         UserFlagExtend::softDeleteUserFlagsOnUserDeleteAndRestore();
