@@ -63,6 +63,7 @@ class Plugin extends PluginBase
         UserExtend::addCatchphrasesCountToColumns();
         UserExtend::addCatchphrasesCountToResource();
         UserExtend::updateListColumns_addIsPublishedSwitch();
+        UserExtend::updateListColumns_removeSurname();
         UserExtend::updateFormFields_addIsPublishedSwitch();
         UserExtend::setMailTemplateForForgottenPassword();
 

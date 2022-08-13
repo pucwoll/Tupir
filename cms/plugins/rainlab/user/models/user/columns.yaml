@@ -6,12 +6,14 @@ columns:
 
     id:
         label: rainlab.user::lang.user.id
-        invisible: true
+
+    uuid:
+        label: UUID
+        searchable: true
 
     username:
         label: rainlab.user::lang.user.username
         searchable: true
-        invisible: false
 
     name:
         label: rainlab.user::lang.user.name

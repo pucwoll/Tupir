@@ -93,9 +93,25 @@ class UserExtend
             $column->addColumns([
                 'is_published' => [
                     'label' => 'Is published',
-                    'type'  => 'switch',
+                    'type'  => 'switch'
                 ],
             ]);
+        });
+    }
+
+    public static function updateListColumns_removeSurname()
+    {
+        Users::extendListColumns(function($column, $model) {
+
+            if (!$model instanceof User) {
+                return;
+            }
+
+            if ($column->alias !== 'list') {
+                return;
+            }
+
+            $column->removeColumn('surname');
         });
     }
 
