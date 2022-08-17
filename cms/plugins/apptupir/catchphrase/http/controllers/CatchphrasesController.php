@@ -24,8 +24,9 @@ class CatchphrasesController extends Controller
     public function show($key)
     {
         $catchphrase = Catchphrase::isPublished()
-            ->where('slug', $key)
-            ->orWhere('id', $key)
+            ->where('id', $key)
+            ->orWhere('uuid', $key)
+            ->orWhere('slug', $key)
             ->whereHas('user', function ($query) {
                 return $query->isPublished();
             })

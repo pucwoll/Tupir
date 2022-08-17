@@ -14,8 +14,9 @@ class UsersCatchphrasesController extends Controller
         $sortType = Input::get('sort_type');
 
         $user = User::isPublished()
-            ->where('username', $key)
-            ->orWhere('id', $key)
+            ->where('id', $key)
+            ->orWhere('uuid', $key)
+            ->orWhere('username', $key)
             ->value('id');
 
         if ($sortType === 'newest') {

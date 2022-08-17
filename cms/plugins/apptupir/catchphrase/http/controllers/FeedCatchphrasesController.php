@@ -1,6 +1,5 @@
 <?php namespace AppTupir\Catchphrase\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use LibUser\UserApi\Facades\JWTAuth;
 use AppTupir\Catchphrase\Models\Catchphrase;
@@ -9,14 +8,14 @@ use AppTupir\Catchphrase\Http\Resources\CatchphraseResource;
 
 class FeedCatchphrasesController extends Controller
 {
-    public function recommended(Request $request)
+    public function recommended()
     {
         $user = JWTAuth::getUser();
 
         return RecommendService::getCatchphraseFeedForUser($user);
     }
 
-    public function following(Request $request)
+    public function following()
     {
         $user = JWTAuth::getUser();
 

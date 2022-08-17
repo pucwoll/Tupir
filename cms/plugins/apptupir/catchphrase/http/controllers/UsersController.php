@@ -20,8 +20,9 @@ class UsersController extends Controller
     {
         $user = User::isPublished()
             ->canSee()
-            ->where('username', $key)
-            ->orWhere('id', $key)
+            ->where('id', $key)
+            ->orWhere('uuid', $key)
+            ->orWhere('username', $key)
             ->firstOrFail();
 
         return new SimpleUserResource($user);

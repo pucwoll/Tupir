@@ -16,10 +16,12 @@ class SearchController extends Controller
         $users = User::isPublished()
                 ->where('name', 'like', '%' . $search . '%')
                 ->orWhere('username', 'like', '%' . $search . '%')
+                ->orWhere('uuid', 'like', '%' . $search . '%')
                 ->get();
 
         $catchphrases = Catchphrase::isPublished()
                 ->where('title', 'like', '%' . $search . '%')
+                ->orWhere('uuid', 'like', '%' . $search . '%')
                 ->orWhere('slug', 'like', '%' . $search . '%')
                 ->orWhere('lyrics', 'like', '%' . $search . '%')
                 ->orWhere('tags_string', 'like', '%' . $search . '%')
