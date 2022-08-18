@@ -51,10 +51,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'AKIAT6W77LLHDRWW5VU4',
-            'secret' => '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',
-            'region' => 'eu-central-1',
-            'bucket' => 'tupir'
+            'key' => env('S3_KEY'),
+            'secret' => env('S3_SECRET'),
+            'region' => env('S3_REGION'),
+            'bucket' => env('S3_BUCKET')
         ],
 
         'rackspace' => [
