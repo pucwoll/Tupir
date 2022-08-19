@@ -10,8 +10,9 @@ class ProfilesController extends Controller
     public function __invoke(Request $request, $key)
     {
         $user = User::isPublished()
-            ->where('username', $key)
-            ->orWhere('id', $key)
+            ->where('id', $key)
+            ->orWhere('uuid', $key)
+            ->orWhere('username', $key)
             ->canSee()
             ->firstOrFail();
 
