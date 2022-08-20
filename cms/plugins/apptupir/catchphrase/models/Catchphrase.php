@@ -25,6 +25,7 @@ class Catchphrase extends Model
         'title',
         'slug',
         'lyrics',
+        'description',
         'tags_string',
         'tags',
         'is_published',

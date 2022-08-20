@@ -15,6 +15,7 @@ class CreateCatchphrasesTable extends Migration
 
             $table->string('title')->nullable()->index();
             $table->string('slug')->nullable();
+            $table->string('description')->nullable();
             $table->string('audio')->nullable();
             $table->text('lyrics')->nullable();
 

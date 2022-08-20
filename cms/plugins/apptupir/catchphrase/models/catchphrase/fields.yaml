@@ -23,6 +23,11 @@ fields:
         type: textarea
         size: large
         span: full
+    description:
+        label: Description
+        type: textarea
+        span: full
+        size: small
     tags_string:
         label: Tags
         type: taglist
