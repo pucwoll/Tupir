@@ -6,16 +6,24 @@ import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    Icons({ compiler: 'vue3' }),
+    Icons({
+      compiler: 'vue3',
+      customCollections: {
+        'tupir': FileSystemIconLoader('./src/assets/icons'),
+      }
+    }),
     Components({
       resolvers: [
-        IconsResolver(),
+        IconsResolver({
+          customCollections: ['tupir']
+        }),
         (componentName) => {
           if(componentName.startsWith('Ion')) {
             return {

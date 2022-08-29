@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CatchphraseCard: typeof import('./src/components/CatchphraseCard.vue')['default']
+    IIonVolumeHigh: typeof import('~icons/ion/volume-high')['default']
     IonApp: typeof import('@ionic/vue')['IonApp']
     IonAvatar: typeof import('@ionic/vue')['IonAvatar']
     IonButton: typeof import('@ionic/vue')['IonButton']
@@ -28,6 +29,8 @@ declare module '@vue/runtime-core' {
     IonTabs: typeof import('@ionic/vue')['IonTabs']
     IonTitle: typeof import('@ionic/vue')['IonTitle']
     IonToolbar: typeof import('@ionic/vue')['IonToolbar']
+    ITupirLogo: typeof import('~icons/tupir/logo')['default']
+    ITupirPause: typeof import('~icons/tupir/pause')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

@@ -26,12 +26,15 @@
             <ion-button
               class="h-full grow"
               color="dark"
-              @click="playAudio(catchphrase)"
+              @click="playAudio"
             >
-              <ion-icon
-                :icon="volumeHigh"
+              <i-tupir-logo
+                v-if="audioStore.currentAudio?.src !== catchphrase.audio"
                 class="icon"
-                color="dark"
+              />
+              <i-tupir-pause
+                v-else
+                class="icon"
               />
               <h2 class="whitespace-pre-wrap mx-4 text-start">
                 <q>
@@ -42,18 +45,6 @@
             </ion-button>
           </ion-buttons>
         </div>
-        <ion-buttons>
-          <ion-button
-            @click="showActions(catchphrase)"
-          >
-            <ion-icon
-              slot="icon-only"
-              :icon="ellipsisHorizontal"
-              class="icon"
-              color="dark"
-            />
-          </ion-button>
-        </ion-buttons>
       </div>
       <div>
         <ion-buttons class="flex flex-col items-center">
@@ -104,25 +95,32 @@
 
 <script setup lang="ts">
 import type { Catchphrase, CatchphraseUser } from '@/interfaces/catchphrases'
-import { arrowRedoOutline, chatbubbleEllipsesOutline, ellipsisHorizontal, heartOutline, volumeHigh } from 'ionicons/icons'
+import { arrowRedoOutline, chatbubbleEllipsesOutline, heartOutline } from 'ionicons/icons'
 import { useAudioStore } from '@/store/audio'
 import { actionSheetController } from '@ionic/vue'
 import { Share } from '@capacitor/share'
 
 const audioStore = useAudioStore()
 
-defineProps<{
+const props = defineProps<{
   user: CatchphraseUser
   catchphrase: Catchphrase
 }>()
 
-async function playAudio(catchphrase: Catchphrase) {
-  console.log(catchphrase)
+async function playAudio() {
   if(!audioStore.currentAudio?.paused) {
     audioStore.currentAudio?.pause()
+    if(audioStore.currentAudio?.src === props.catchphrase.audio) {
+      audioStore.currentAudio = undefined
+      return
+    }
     audioStore.currentAudio = undefined
   }
-  audioStore.currentAudio = new Audio(catchphrase.audio)
+
+  audioStore.currentAudio = new Audio(props.catchphrase.audio)
+  audioStore.currentAudio.addEventListener('ended', () => {
+    audioStore.currentAudio = undefined
+  })
   await audioStore.currentAudio.play()
 }
 
@@ -134,9 +132,9 @@ async function share() {
   })
 }
 
-async function showActions(catchphrase: Catchphrase) {
+async function showActions() {
   const sheet = await actionSheetController.create({
-    header: catchphrase.title,
+    header: props.catchphrase.title,
     buttons: [
       {
         text: 'Block',
