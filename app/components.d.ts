@@ -8,7 +8,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CatchphraseCard: typeof import('./src/components/CatchphraseCard.vue')['default']
-    IIonVolumeHigh: typeof import('~icons/ion/volume-high')['default']
     IonApp: typeof import('@ionic/vue')['IonApp']
     IonAvatar: typeof import('@ionic/vue')['IonAvatar']
     IonButton: typeof import('@ionic/vue')['IonButton']

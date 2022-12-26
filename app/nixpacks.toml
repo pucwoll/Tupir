@@ -1,1 +1,1 @@
-providers = ["staticfile"]
+providers = ["staticfile", "nodejs"]
