@@ -9,7 +9,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "start": "npx http-server -a http://0.0.0.0 -p ${PORT} ./dist"
+    "start": "npx http-server -a 0.0.0.0 -p ${PORT} ./dist"
   },
   "dependencies": {
     "@capacitor/android": "^4.1.0",
